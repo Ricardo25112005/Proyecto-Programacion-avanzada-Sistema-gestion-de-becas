@@ -1,13 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package proyecto.programacion.avanzada.sistema.gestion.de.becas;
 
-/**
- *
- * @author rpaez
- */
+import java.util.HashMap;
+import java.util.Map;
+
 public class ProyectoProgramacionAvanzadaSistemaGestionDeBecas {
 
     /**
@@ -15,6 +10,7 @@ public class ProyectoProgramacionAvanzadaSistemaGestionDeBecas {
      */
     public static void main(String[] args) {
         System.out.println("Hello World");
+        //Map<Integer,String> mapaEmpleados = new HashMap<>();  prueba de como crear mapa
     }
     
 }
