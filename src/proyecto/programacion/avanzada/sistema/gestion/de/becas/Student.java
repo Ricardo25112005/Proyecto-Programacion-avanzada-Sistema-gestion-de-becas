@@ -111,7 +111,7 @@ public class Student {
         }
         else{
             for(Postulation p : listPostulation){
-                p.showPostulation();
+                System.out.println(" - " + p);
             }
         }
     }

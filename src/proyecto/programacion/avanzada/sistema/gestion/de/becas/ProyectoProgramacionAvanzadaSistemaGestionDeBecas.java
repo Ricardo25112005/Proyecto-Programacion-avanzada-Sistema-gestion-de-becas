@@ -12,11 +12,12 @@ public class ProyectoProgramacionAvanzadaSistemaGestionDeBecas {
         System.out.println("Hello World");
         //Map<Integer,String> mapaEmpleados = new HashMap<>();  prueba de como crear mapa
         Servicios servicios = new Servicios();
+        Maps maps = new Maps();
         while (true) {
             System.out.println("\nSistema Gestión Becas");
             System.out.println("=====================");
             Servicios.mostrarMenuAdministrador();
-            servicios.leerArgumentos();
+            servicios.leerArgumentos(maps);
         }
     }
     

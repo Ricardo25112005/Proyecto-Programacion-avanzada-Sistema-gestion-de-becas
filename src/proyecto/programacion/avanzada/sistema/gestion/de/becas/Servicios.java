@@ -4,12 +4,8 @@
  */
 package proyecto.programacion.avanzada.sistema.gestion.de.becas;
 import java.io.*;
-/**
- *
- * @author vicen
- */
- public class Servicios {
 
+ public class Servicios {
     // Mostrar menú (estático, se puede llamar sin objeto)
     public static void mostrarMenuAdministrador() {
         System.out.println("=== Menú Administrador ===");    
@@ -22,7 +18,7 @@ import java.io.*;
     }
 
     // Leer opción del usuario y ejecutar acción
-    public void leerArgumentos() {
+    public void leerArgumentos(Maps maps) {
         BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
         try {
             String text = r.readLine();
@@ -33,7 +29,7 @@ import java.io.*;
                     cargarAjustes();
                     break;
                 case 2:
-                    mostrarBecas();
+                    mostrarBecas(maps);
                     break;
                 case 3:
                     registrarAlumno();
@@ -62,9 +58,10 @@ import java.io.*;
         System.out.println(">> Ejecutando función: cargarAjustes()");
     }
 
-    private void mostrarBecas() {
+    private void mostrarBecas(Maps maps) {
         limpiaPantalla();
         System.out.println(">> Ejecutando función: mostrarBecas()");
+        maps.ShowPostulationsEstudiante();
     }
 
     private void registrarAlumno() {
