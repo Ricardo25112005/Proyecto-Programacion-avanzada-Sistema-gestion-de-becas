@@ -13,26 +13,31 @@ public class Postulation {
     private String idStudent;
     private String idBeca;
     private String state;
+    private String datePostulation;
     
     public Postulation(){
         this.idPostulation = "";
         this.idStudent = "";
         this.idBeca = "";
         this.state = "";
+        this.datePostulation = "";
     }
-    public Postulation(String idPostulation, String idStudent, String idBeca){
+    public Postulation(String idPostulation, String idStudent, String idBeca, String datePostulation){
         this.idPostulation = idPostulation;
         this.idStudent = idStudent;
         this.idBeca = idBeca;
         this.state = "En espera";
+        this.datePostulation = datePostulation;
     }
     
     public String getIdPostulation() { return idPostulation; }
     public String getIdStudent() { return idStudent; }
     public String getIdBeca() { return idBeca; }
     public String getState() { return state; }
+    public String getDatePostulation() {return datePostulation;}
     public void setIdPostulation(String idPostulation) {this.idPostulation = idPostulation;}
     public void setIdStudent(String idStudent) {this.idStudent = idStudent;}
     public void setIdBeca(String idBeca) {this.idBeca = idBeca;}
     public void setState(String state) {this.state = state;}
+    public void setDatePostulation(String datePostulation) {this.datePostulation = datePostulation;}
 }
