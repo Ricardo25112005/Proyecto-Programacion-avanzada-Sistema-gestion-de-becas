@@ -9,8 +9,8 @@ import java.util.*;
 import java.nio.charset.StandardCharsets;
 
 /**
- * @author rpaez
- * @author Vicente Papito Novoa
+ * @author Ricardo Paez 
+ * @author Vicente Novoa
  */
 public class Student {
     private String name;

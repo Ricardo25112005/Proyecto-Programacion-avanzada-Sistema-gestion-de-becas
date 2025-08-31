@@ -69,22 +69,7 @@ public class Servicios {
         }
     }
 
-    // Registrar alumno modificando el archivo CSV (para uso programático)
-    private void registrarAlumno(Maps maps, String rut, String nombre, String correo, int telefono, 
-                                float tramoSocioeconomico, String carrera, String direccion, 
-                                String institucion, float aprobacionEstimada) {
-        limpiaPantalla();
-        System.out.println(">> Ejecutando función: registrarAlumno() - Modificación de CSV");
-        
-        boolean success = Student.createAndSaveToCSV(maps, rut, nombre, correo, telefono, 
-                                                    tramoSocioeconomico, carrera, direccion, 
-                                                    institucion, aprobacionEstimada);
-        if (success) {
-            System.out.println("Estudiante registrado exitosamente en el archivo CSV: " + nombre);
-        } else {
-            System.out.println("No se pudo registrar el estudiante en el archivo CSV.");
-        }
-    }
+    
 
     // ===== OTRAS FUNCIONES =====
     private void cargarAjustes(Maps maps) {
