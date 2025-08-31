@@ -17,8 +17,7 @@ public class DataLoader {
     // ====================
     // ESTUDIANTES
     // ====================
-    public static List<Student> cargarEstudiantes(String archivo, Maps maps) {
-        List<Student> estudiantes = new ArrayList<>();
+    public static void cargarEstudiantes(String archivo, Maps maps) {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(archivo), StandardCharsets.UTF_8))) {
             String linea = br.readLine(); // saltar encabezado
             while ((linea = br.readLine()) != null) {
@@ -35,20 +34,17 @@ public class DataLoader {
                         d[7],                                // institucion
                         Float.parseFloat(d[8])               // aprobacion estimada
                 );
-                estudiantes.add(e);
                 maps.getMapStudent().put(d[0], e);
             }
         } catch (IOException e) {
             System.err.println("Error al leer estudiantes: " + e.getMessage());
         }
-        return estudiantes;
     }
 
     // ====================
     // BECAS
     // ====================
-    public static List<Beca> cargarBecas(String archivo, Maps maps) {
-        List<Beca> becas = new ArrayList<>();
+    public static void cargarBecas(String archivo, Maps maps) {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(archivo), StandardCharsets.UTF_8))) {
             String linea = br.readLine(); // saltar encabezado
             while ((linea = br.readLine()) != null) {
@@ -62,25 +58,22 @@ public class DataLoader {
                         Integer.parseInt(d[5]),                  // cupos
                         d[3]                                   //requisitos
                 );
-                becas.add(b);
                 maps.getMapBeca().put(d[0], b);
             }
         } catch (IOException e) {
             System.err.println("Error al leer becas: " + e.getMessage());
         }
-        return becas;
     }
 
     // ====================
     // POSTULACIONES
     // ====================
-    public static List<Postulation> cargarPostulaciones(String archivo, Maps maps) {
-        List<Postulation> postulaciones = new ArrayList<>();
+    public static void cargarPostulaciones(String archivo, Maps maps) {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(archivo), StandardCharsets.UTF_8))) {
             String linea = br.readLine(); // saltar encabezado
             while ((linea = br.readLine()) != null) {
                 String[] d = linea.split(",", -1);
-
+    
                 Postulation p = new Postulation(
                         d[0],  // codigo postulacion
                         d[1],  // codigo beca
@@ -88,7 +81,6 @@ public class DataLoader {
                         //d[3],  // estado
                         d[4]   // fecha
                 );
-                postulaciones.add(p);
                 
                 // ====================
                 // Agregar postulación al estudiante correspondiente
@@ -98,12 +90,11 @@ public class DataLoader {
                     s.addPostulation(p);
                 } else {
                     System.out.println("No se encontró estudiante con RUT: " + d[2]);
-                }
+}
             }
         } catch (IOException e) {
             System.err.println("Error al leer postulaciones: " + e.getMessage());
         }
-        return postulaciones;
     }
 }
 

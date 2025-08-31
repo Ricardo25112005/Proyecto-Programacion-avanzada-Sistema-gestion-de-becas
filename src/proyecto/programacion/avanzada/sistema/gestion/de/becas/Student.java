@@ -133,7 +133,7 @@ public class Student {
         }
         else{
             for(Postulation p : listPostulation){
-                System.out.println(" - " + p);
+                p.showPostulation();
             }
         }
     }

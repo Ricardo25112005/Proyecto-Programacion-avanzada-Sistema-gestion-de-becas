@@ -10,7 +10,7 @@ import java.io.*;
     public static void mostrarMenuAdministrador() {
         System.out.println("=== Menú Administrador ===");    
         System.out.println("1. Cargar Ajustes");
-        System.out.println("2. Mostrar Becas");
+        System.out.println("2. Mostrar Estudiante");
         System.out.println("3. Registrar Alumno");
         System.out.println("4. Generar Reporte");
         System.out.println("5. Salir");
