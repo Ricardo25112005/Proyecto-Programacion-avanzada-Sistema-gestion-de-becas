@@ -19,6 +19,7 @@ import java.nio.charset.StandardCharsets;
  */
 
 public class Student {
+    //Variables De Instancia
     private String name;
     private String rut;
     private String address;
@@ -29,7 +30,7 @@ public class Student {
     private String institution;
     private float estimatedApproval;
     private LinkedList<Postulation> listPostulation;
-    
+    //Constructores
     public Student() {
         this.name = "";
         this.rut = "";
@@ -57,7 +58,7 @@ public class Student {
         this.estimatedApproval = estimatedApproval;
         this.listPostulation = new LinkedList<>();
     }
-    
+    //Metodos 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
     public String getRut() { return rut; }
@@ -77,7 +78,7 @@ public class Student {
     public void setEstimatedApproval(float estimatedApproval) { this.estimatedApproval = estimatedApproval; }
     public float getEstimatedApproval() { return estimatedApproval; }
     public LinkedList<Postulation> getListPostulation(){return listPostulation; }
-    
+    //Función que muestra los datos del estudiante y su lista de postulaciones
     public void showData() {
         System.out.println("\n=== Datos del Postulante ===");
         System.out.println("Nombre: " + name);
@@ -96,16 +97,16 @@ public class Student {
             }
         }
     }
-    
+    //Función para añadir una postulación si se tiene el objeto
     public void addPostulation(Postulation p) {
         listPostulation.add(p);
     }
-    
+    //Función que añade una postulación a la lista si se tiene solo los datos de la postulación, no el objeto
     public void addPostulation(String idPostulation, String idStudent, String idBeca, String datePostulation) {
         Postulation p = new Postulation(idPostulation, this.rut, idBeca, datePostulation);
         listPostulation.add(p);
     }
-    
+    //Función que elimina una postulación de la lista
     public void removePostulation(Postulation p) {
         listPostulation.remove(p);
     }
