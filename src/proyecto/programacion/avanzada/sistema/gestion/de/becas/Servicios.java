@@ -5,10 +5,10 @@
 package proyecto.programacion.avanzada.sistema.gestion.de.becas;
 import java.io.*;
 
- public class Servicios {
+public class Servicios {
     // Mostrar menú (estático, se puede llamar sin objeto)
     public static void mostrarMenuAdministrador() {
-        System.out.println("=== Menú Administrador ===");    
+        System.out.println("=== Menú Administrador ===");
         System.out.println("1. Cargar Ajustes");
         System.out.println("2. Mostrar Estudiante");
         System.out.println("3. Registrar Alumno");
@@ -22,8 +22,11 @@ import java.io.*;
         BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
         try {
             String text = r.readLine();
-            int opcion = Integer.parseInt(text);
-
+            if (text == null || text.trim().isEmpty()) {
+                System.out.println("Entrada vacía. Debe ingresar un número válido.");
+                return;
+            }
+            int opcion = Integer.parseInt(text.trim());
             switch (opcion) {
                 case 1:
                     cargarAjustes(maps);
@@ -32,7 +35,7 @@ import java.io.*;
                     mostrarBecas(maps);
                     break;
                 case 3:
-                    registrarAlumno();
+                    registrarAlumno(maps);
                     break;
                 case 4:
                     generarReporte();
@@ -52,7 +55,38 @@ import java.io.*;
         }
     }
 
-    // ===== FUNCIONES DE EJEMPLO =====
+    // Registrar alumno desde la terminal
+    private void registrarAlumno(Maps maps) {
+        limpiaPantalla();
+        System.out.println(">> Ejecutando función: registrarAlumno() - Ingreso por terminal");
+        
+        Student estudiante = Student.createFromTerminal(maps);
+        if (estudiante != null) {
+            maps.getMapStudent().put(estudiante.getRut(), estudiante);
+            System.out.println("Estudiante registrado exitosamente: " + estudiante.getName());
+        } else {
+            System.out.println("No se pudo registrar el estudiante.");
+        }
+    }
+
+    // Registrar alumno modificando el archivo CSV (para uso programático)
+    private void registrarAlumno(Maps maps, String rut, String nombre, String correo, int telefono, 
+                                float tramoSocioeconomico, String carrera, String direccion, 
+                                String institucion, float aprobacionEstimada) {
+        limpiaPantalla();
+        System.out.println(">> Ejecutando función: registrarAlumno() - Modificación de CSV");
+        
+        boolean success = Student.createAndSaveToCSV(maps, rut, nombre, correo, telefono, 
+                                                    tramoSocioeconomico, carrera, direccion, 
+                                                    institucion, aprobacionEstimada);
+        if (success) {
+            System.out.println("Estudiante registrado exitosamente en el archivo CSV: " + nombre);
+        } else {
+            System.out.println("No se pudo registrar el estudiante en el archivo CSV.");
+        }
+    }
+
+    // ===== OTRAS FUNCIONES =====
     private void cargarAjustes(Maps maps) {
         limpiaPantalla();
         System.out.println(">> Ejecutando función: cargarAjustes()");
@@ -70,17 +104,14 @@ import java.io.*;
         maps.ShowPostulationsEstudiante();
     }
 
-    private void registrarAlumno() {
-        limpiaPantalla();
-        System.out.println(">> Ejecutando función: registrarAlumno()");
-    }
-
     private void generarReporte() {
         limpiaPantalla();
         System.out.println(">> Ejecutando función: generarReporte()");
     }
-    public void limpiaPantalla()
-    {
-        for(int i = 0 ; i < 50 ;i++){System.out.println("");}
+
+    public void limpiaPantalla() {
+        for (int i = 0; i < 50; i++) {
+            System.out.println("");
+        }
     }
 }
