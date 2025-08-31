@@ -9,9 +9,15 @@ import java.util.*;
 import java.nio.charset.StandardCharsets;
 
 /**
- * @author Ricardo Paez 
- * @author Vicente Novoa
+ * @archivo: Student.java
+ * @Project: Sistema Gestion De Becas
+ * @Descripcion: Clase que representa a un Estudiante
+ * @author Daniel Monsalve, Ricardo Paez, Vicente Novoa
+ * @Lenguaje: Java
+ * @version: 1.0.0
+ * @Fecha: 27-08-25
  */
+
 public class Student {
     private String name;
     private String rut;
@@ -72,7 +78,7 @@ public class Student {
     public float getEstimatedApproval() { return estimatedApproval; }
     
     public void showData() {
-        System.out.println("=== Datos del Postulante ===");
+        System.out.println("\n=== Datos del Postulante ===");
         System.out.println("Nombre: " + name);
         System.out.println("RUT: " + rut);
         System.out.println("Dirección: " + address);

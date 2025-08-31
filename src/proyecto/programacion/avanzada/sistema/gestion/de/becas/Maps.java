@@ -7,6 +7,16 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @archivo: Maps.java
+ * @Project: Sistema Gestion De Becas
+ * @Descripcion: Clase que representa a una coleccion Maps para hacer eficiente el acceso a los datos.
+ * @author Daniel Monsalve, Ricardo Paez, Vicente Novoa
+ * @Lenguaje: Java
+ * @version: 1.0.0
+ * @Fecha: 28-08-25
+ */
+
 public class Maps {
     private Map<String,Student> mapStudent;
     private Map<String,Beca> mapBeca;

@@ -1,7 +1,14 @@
 package proyecto.programacion.avanzada.sistema.gestion.de.becas;
 
-import java.util.HashMap;
-import java.util.Map;
+/**
+ * @archivo: ProyectoProgramacionAvanzadaSistemaGestionDeBecas.java
+ * @Project: Sistema Gestion De Becas
+ * @Descripcion: archivo main del programa
+ * @author Daniel Monsalve, Ricardo Paez, Vicente Novoa
+ * @Lenguaje: Java
+ * @version: 1.0.0
+ * @Fecha: 20-08-25
+ */
 
 public class ProyectoProgramacionAvanzadaSistemaGestionDeBecas {
 

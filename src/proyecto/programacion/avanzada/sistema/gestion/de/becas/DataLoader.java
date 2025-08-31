@@ -8,8 +8,13 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 /**
- *
- * @author Daniel Monsalve
+ * @archivo: DataLoader.java
+ * @Project: Sistema Gestion De Becas
+ * @Descripcion: Clase que representa a una Carga de archivos (en este caso .csv)
+ * @author Daniel Monsalve, Ricardo Paez, Vicente Novoa
+ * @Lenguaje: Java
+ * @version: 1.0.0
+ * @Fecha: 30-08-25
  */
 
 public class DataLoader {
@@ -76,8 +81,8 @@ public class DataLoader {
     
                 Postulation p = new Postulation(
                         d[0],  // codigo postulacion
-                        d[1],  // codigo beca
                         d[2],  // rut estudiante
+                        d[1],  // codigo beca
                         //d[3],  // estado
                         d[4]   // fecha
                 );

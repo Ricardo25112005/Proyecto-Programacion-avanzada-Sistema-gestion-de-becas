@@ -5,9 +5,16 @@
 package proyecto.programacion.avanzada.sistema.gestion.de.becas;
 
 /**
- *
- * @author rpaez
+ * @archivo: Postulation.java
+ * @Project: Sistema Gestion De Becas
+ * @Descripcion: Clase que representa una Postulacion de un Estudiante a una Beca
+ * @author Daniel Monsalve, Ricardo Paez, Vicente Novoa
+ * @Lenguaje: Java
+ * @version: 1.0.0
+ * @Fecha: 27-08-25
  */
+
+
 public class Postulation {
     private String idPostulation;
     private String idStudent;

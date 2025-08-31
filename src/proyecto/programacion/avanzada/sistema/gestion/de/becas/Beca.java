@@ -6,8 +6,13 @@ package proyecto.programacion.avanzada.sistema.gestion.de.becas;
 import java.util.ArrayList;
 import java.util.List;
 /**
- *
- * @author Daniel Monsalve
+ * @archivo: Beca.java
+ * @Project: Sistema Gestion De Becas
+ * @Descripcion: Clase que representa a una Beca
+ * @author Daniel Monsalve, Ricardo Paez, Vicente Novoa
+ * @Lenguaje: Java
+ * @version: 1.0.0
+ * @Fecha: 27-08-25
  */
 public class Beca {
     private String codeBeca;

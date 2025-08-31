@@ -5,6 +5,16 @@
 package proyecto.programacion.avanzada.sistema.gestion.de.becas;
 import java.io.*;
 
+/**
+ * @archivo: Servicios.java
+ * @Project: Sistema Gestion De Becas
+ * @Descripcion: Clase que representa al menu del sistema
+ * @author Daniel Monsalve, Ricardo Paez, Vicente Novoa
+ * @Lenguaje: Java
+ * @version: 1.0.0
+ * @Fecha: 26-08-25
+ */
+
 public class Servicios {
     // Mostrar menú (estático, se puede llamar sin objeto)
     public static void mostrarMenuAdministrador() {
@@ -85,7 +95,7 @@ public class Servicios {
 
     private void mostrarBecas(Maps maps) {
         limpiaPantalla();
-        System.out.println(">> Ejecutando función: mostrarBecas()");
+        System.out.println(">> Ejecutando función: mostrarEstudiante()");
         maps.ShowPostulationsEstudiante();
     }
 
