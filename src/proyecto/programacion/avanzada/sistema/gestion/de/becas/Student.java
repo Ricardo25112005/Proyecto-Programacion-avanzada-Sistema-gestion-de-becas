@@ -76,6 +76,7 @@ public class Student {
     public String getInstitution() { return institution; }
     public void setEstimatedApproval(float estimatedApproval) { this.estimatedApproval = estimatedApproval; }
     public float getEstimatedApproval() { return estimatedApproval; }
+    public LinkedList<Postulation> getListPostulation(){return listPostulation; }
     
     public void showData() {
         System.out.println("\n=== Datos del Postulante ===");

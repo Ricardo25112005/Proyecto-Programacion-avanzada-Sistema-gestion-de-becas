@@ -51,4 +51,37 @@ public class Maps {
             System.out.println("Error al leer entrada: " + e.getMessage());
         }
     }
+    
+    public void buscarPostulacion(String rut, String idPostulation){
+        Student estudiante = mapStudent.get(rut);
+        if (estudiante != null) {
+            // Buscar en su lista de postulaciones
+            for (Postulation p : estudiante.getListPostulation()) {
+                if (p.getIdPostulation().equals(idPostulation)) {
+                    System.out.println("Postulación encontrada: ");
+                    p.showPostulation();
+                    return;
+                }
+            }
+            System.out.println("No se encontró postulación con ese ID.");
+        } else {
+            System.out.println("No existe alumno con ese RUT.");
+        }
+    }
+    
+    public void buscarPostulacion(String rut) {
+        Student estudiante = mapStudent.get(rut);
+        if (estudiante != null) {
+            if (estudiante.getListPostulation().isEmpty()) {
+                System.out.println("El alumno no tiene postulaciones registradas.");
+            } else {
+                System.out.println("Postulaciones del alumno " + estudiante.getName() + ":");
+                for (Postulation p : estudiante.getListPostulation()) {
+                    p.showPostulation(); // asumiendo que Postulation tiene este método
+                }
+            }
+        } else {
+            System.out.println("No existe alumno con ese RUT.");
+        }
+    }
 }

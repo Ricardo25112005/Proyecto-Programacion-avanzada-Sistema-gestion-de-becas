@@ -22,8 +22,9 @@ public class Servicios {
         System.out.println("1. Cargar Ajustes");
         System.out.println("2. Mostrar Estudiante");
         System.out.println("3. Registrar Alumno");
-        System.out.println("4. Generar Reporte");
-        System.out.println("5. Salir");
+        System.out.println("4. Busqueda de postulación");
+        System.out.println("5. Generar Reporte");
+        System.out.println("6. Salir");
         System.out.print("Seleccione una opción: ");
     }
 
@@ -42,15 +43,18 @@ public class Servicios {
                     cargarAjustes(maps);
                     break;
                 case 2:
-                    mostrarBecas(maps);
+                    mostrarEstudiante(maps);
                     break;
                 case 3:
                     registrarAlumno(maps);
                     break;
                 case 4:
-                    generarReporte();
+                    busquedaPostulacion(maps);
                     break;
                 case 5:
+                    generarReporte();
+                    break;
+                case 6:
                     System.out.println("Saliendo del sistema...");
                     System.exit(0);
                     break;
@@ -93,10 +97,58 @@ public class Servicios {
         System.out.println("Datos cargados correctamente");
     }
 
-    private void mostrarBecas(Maps maps) {
+    private void mostrarEstudiante(Maps maps) {
         limpiaPantalla();
         System.out.println(">> Ejecutando función: mostrarEstudiante()");
         maps.ShowPostulationsEstudiante();
+    }
+    
+    private void busquedaPostulacion(Maps maps){
+        BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
+        try {
+            limpiaPantalla();
+            System.out.println("=== Búsqueda de Postulación ===");
+            System.out.println("1. Buscar con ID de postulación y RUT del alumno");
+            System.out.println("2. Buscar solo con RUT del alumno");
+            System.out.print("Seleccione una opción: ");
+
+            String opcionStr = r.readLine();
+            if (opcionStr == null || opcionStr.trim().isEmpty()) {
+                System.out.println("Entrada vacía. Debe ingresar un número válido.");
+                return;
+            }
+
+            int opcion = Integer.parseInt(opcionStr.trim());
+            switch (opcion) {
+                case 1: {
+                    limpiaPantalla();
+                    System.out.print("Ingrese el RUT del alumno: ");
+                    String rut = r.readLine().trim();
+                    System.out.print("Ingrese el ID de la postulación: ");
+                    String idPostulacion = r.readLine().trim();
+
+                    // Llamada a la función de otra clase (ejemplo en Maps)
+                    maps.buscarPostulacion(rut, idPostulacion);
+                    break;
+                }
+                case 2: {
+                    limpiaPantalla();
+                    System.out.print("Ingrese el RUT del alumno: ");
+                    String rut = r.readLine().trim();
+
+                    // Llamada a otra función (ejemplo en Maps)
+                    maps.buscarPostulacion(rut);
+                    break;
+                }
+                default:
+                    System.out.println("Opción no válida.");
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error de entrada/salida: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("Debe ingresar un número válido.");
+        }
     }
 
     private void generarReporte() {

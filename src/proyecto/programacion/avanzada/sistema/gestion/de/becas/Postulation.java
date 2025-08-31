@@ -49,10 +49,11 @@ public class Postulation {
     public void setDatePostulation(String datePostulation) {this.datePostulation = datePostulation;}
     
     public void showPostulation() {
-    System.out.println("ID Postulación: " + idPostulation);
-    System.out.println("ID Estudiante: " + idStudent);
-    System.out.println("ID Beca: " + idBeca);
-    System.out.println("Estado: " + state);
-    System.out.println("Fecha de Postulación: " + datePostulation);
+        System.out.println("===================================");
+        System.out.println("ID Postulación: " + idPostulation);
+        System.out.println("ID Estudiante: " + idStudent);
+        System.out.println("ID Beca: " + idBeca);
+        System.out.println("Estado: " + state);
+        System.out.println("Fecha de Postulación: " + datePostulation);
     }
 }
