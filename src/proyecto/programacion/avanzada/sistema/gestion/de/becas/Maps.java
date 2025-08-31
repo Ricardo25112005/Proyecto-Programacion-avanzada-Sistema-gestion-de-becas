@@ -18,9 +18,10 @@ import java.util.Map;
  */
 
 public class Maps {
+    //Variables De Instancia
     private Map<String,Student> mapStudent;
     private Map<String,Beca> mapBeca;
-    
+    //Costructor
     public Maps(){
         this.mapStudent = new HashMap<>();
         this.mapBeca = new HashMap<>();
@@ -33,7 +34,7 @@ public class Maps {
     public Map<String, Beca> getMapBeca() {
         return mapBeca;
     }
-
+    //Se crea función que muestra los datos del Estudiante y su lista de postulaciones con su rut
     public void ShowPostulationsEstudiante(){
         try {
             BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
@@ -51,7 +52,7 @@ public class Maps {
             System.out.println("Error al leer entrada: " + e.getMessage());
         }
     }
-    
+    //Función que busca postulación si se tiene el rut y el id de la postulación
     public void buscarPostulacion(String rut, String idPostulation){
         Student estudiante = mapStudent.get(rut);
         if (estudiante != null) {
@@ -68,7 +69,7 @@ public class Maps {
             System.out.println("No existe alumno con ese RUT.");
         }
     }
-    
+    //Función que busca una postulación si solo se tiene el rut
     public void buscarPostulacion(String rut) {
         Student estudiante = mapStudent.get(rut);
         if (estudiante != null) {
