@@ -10,7 +10,8 @@ import java.util.*;
 /**
  * @archivo: DataLoader.java
  * @Project: Sistema Gestion De Becas
- * @Descripcion: Clase que representa a una Carga de archivos (en este caso .csv)
+ * @Descripcion: Clase que representa a una Carga de archivos (en este caso .csv). Aqui lo que hacemos es usar los datos
+ * de los archivos para poblar las colecciones de mapas.
  * @author Daniel Monsalve, Ricardo Paez, Vicente Novoa
  * @Lenguaje: Java
  * @version: 1.0.0
@@ -28,6 +29,7 @@ public class DataLoader {
             while ((linea = br.readLine()) != null) {
                 String[] d = linea.split(",", -1); // -1 = no perder columnas vacías
 
+                //Aqui se representa cada columna del estudiantes.csv (por ejemplo d[1] significa tomar los valores de la columna)
                 Student e = new Student(
                         d[1],                                  // nombre
                         d[0],                                  // rut
@@ -54,7 +56,7 @@ public class DataLoader {
             String linea = br.readLine(); // saltar encabezado
             while ((linea = br.readLine()) != null) {
                 String[] d = linea.split(",", -1);
-
+                //Aqui se representa cada columna del becas.csv (por ejemplo d[1] significa tomar los valores de la columna)
                 Beca b = new Beca(
                         d[0],                                   // codigo
                         d[1],                                   // nombre
@@ -78,7 +80,7 @@ public class DataLoader {
             String linea = br.readLine(); // saltar encabezado
             while ((linea = br.readLine()) != null) {
                 String[] d = linea.split(",", -1);
-    
+                //Aqui se representa cada columna del postulaciones.csv (por ejemplo d[1] significa tomar los valores de la columna)
                 Postulation p = new Postulation(
                         d[0],  // codigo postulacion
                         d[2],  // rut estudiante
