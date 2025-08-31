@@ -57,10 +57,10 @@ import java.io.*;
         limpiaPantalla();
         System.out.println(">> Ejecutando función: cargarAjustes()");
         
-        DataLoader.cargarEstudiantes("estudiantes.csv", maps);
-        DataLoader.cargarBecas("becas.csv", maps);
-        DataLoader.cargarPostulaciones("postulaciones.csv", maps);
-        
+        DataLoader.cargarEstudiantes("src/resources/estudiantes.csv", maps);
+        DataLoader.cargarBecas("src/resources/becas.csv", maps);
+        DataLoader.cargarPostulaciones("src/resources/postulaciones.csv", maps);
+    
         System.out.println("Datos cargados correctamente");
     }
 
