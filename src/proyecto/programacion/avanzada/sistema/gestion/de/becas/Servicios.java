@@ -96,22 +96,25 @@ public class Servicios {
     
         System.out.println("Datos cargados correctamente");
     }
-
+    //Llama al metodo de map ShowPostulationsEstudiante, para mostra cada atributo del estudiante.
     private void mostrarEstudiante(Maps maps) {
         limpiaPantalla();
         System.out.println(">> Ejecutando función: mostrarEstudiante()");
         maps.ShowPostulationsEstudiante();
     }
-    
+    /** Busca postulaciones de estudiantes en el sistema, ya sea por RUT del estudiante e ID de postulación
+        o solo por RUT para mostrar todas las postulaciones asociadas. */
     private void busquedaPostulacion(Maps maps){
         BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
         try {
             limpiaPantalla();
+            // Mostrar sub-menú de búsqueda
             System.out.println("=== Búsqueda de Postulación ===");
             System.out.println("1. Buscar con ID de postulación y RUT del alumno");
             System.out.println("2. Buscar solo con RUT del alumno");
             System.out.print("Seleccione una opción: ");
-
+            
+            // Leer y validar la opción ingresada
             String opcionStr = r.readLine();
             if (opcionStr == null || opcionStr.trim().isEmpty()) {
                 System.out.println("Entrada vacía. Debe ingresar un número válido.");
@@ -150,12 +153,12 @@ public class Servicios {
             System.out.println("Debe ingresar un número válido.");
         }
     }
-
+    //Metodo vacio, falta implementar.
     private void generarReporte() {
         limpiaPantalla();
         System.out.println(">> Ejecutando función: generarReporte()");
     }
-
+    //Metodo que genera 50 lineas vacias, para una mejor vision.
     public void limpiaPantalla() {
         for (int i = 0; i < 50; i++) {
             System.out.println("");
