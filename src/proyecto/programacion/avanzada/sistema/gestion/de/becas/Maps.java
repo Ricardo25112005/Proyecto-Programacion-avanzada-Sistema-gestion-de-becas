@@ -16,6 +16,14 @@ public class Maps {
         this.mapBeca = new HashMap<>();
     }
     
+    public Map<String, Student> getMapStudent() {
+        return mapStudent;
+    }
+
+    public Map<String, Beca> getMapBeca() {
+        return mapBeca;
+    }
+
     public void ShowPostulationsEstudiante(){
         try {
             BufferedReader r = new BufferedReader(new InputStreamReader(System.in));

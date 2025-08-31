@@ -120,6 +120,11 @@ public class Student {
         listPostulation.add(p);
     }
     
+    public void addPostulation(String idPostulation, String idStudent, String idBeca, String datePostulation){
+        Postulation p = new Postulation(idPostulation, this.rut, idBeca, datePostulation);
+        listPostulation.add(p);
+    }
+    
     public void removePostulation(Postulation p){
         listPostulation.remove(p);
     }
