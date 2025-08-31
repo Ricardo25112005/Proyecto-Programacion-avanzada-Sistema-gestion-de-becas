@@ -9,8 +9,6 @@ public class ProyectoProgramacionAvanzadaSistemaGestionDeBecas {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Hello World");
-        //Map<Integer,String> mapaEmpleados = new HashMap<>();  prueba de como crear mapa
         Servicios servicios = new Servicios();
         Maps maps = new Maps();
         while (true) {
@@ -20,5 +18,4 @@ public class ProyectoProgramacionAvanzadaSistemaGestionDeBecas {
             servicios.leerArgumentos(maps);
         }
     }
-    
 }

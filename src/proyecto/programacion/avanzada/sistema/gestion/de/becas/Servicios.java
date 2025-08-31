@@ -26,7 +26,7 @@ import java.io.*;
 
             switch (opcion) {
                 case 1:
-                    cargarAjustes();
+                    cargarAjustes(maps);
                     break;
                 case 2:
                     mostrarBecas(maps);
@@ -53,9 +53,15 @@ import java.io.*;
     }
 
     // ===== FUNCIONES DE EJEMPLO =====
-    private void cargarAjustes() {
+    private void cargarAjustes(Maps maps) {
         limpiaPantalla();
         System.out.println(">> Ejecutando función: cargarAjustes()");
+        
+        DataLoader.cargarEstudiantes("estudiantes.csv", maps);
+        DataLoader.cargarBecas("becas.csv", maps);
+        DataLoader.cargarPostulaciones("postulaciones.csv", maps);
+        
+        System.out.println("Datos cargados correctamente");
     }
 
     private void mostrarBecas(Maps maps) {
