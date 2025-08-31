@@ -16,6 +16,8 @@ public class Student {
     private int phone;
     private float socioEconomicSection;
     private String carrer;
+    private String institution;
+    private float estimatedApproval;
     private LinkedList<Postulation> listPostulation;
     
     public Student(){
@@ -26,10 +28,12 @@ public class Student {
         this.phone = 0;
         this.socioEconomicSection = 0.0f;
         this.carrer = "";
+        this.institution = "";
+        this.estimatedApproval = 0.0f;
         this.listPostulation = new LinkedList<>();
     }
     
-    public Student(String name, String rut, String address, String mail, int phone, float socioEconomicSection, String carrer){
+    public Student(String name, String rut, String address, String mail, int phone, float socioEconomicSection, String carrer, String institution, float estimatedApproval){
         this.name = name;
         this.rut = rut;
         this.address = address;
@@ -37,6 +41,8 @@ public class Student {
         this.phone = phone;
         this.socioEconomicSection = socioEconomicSection;
         this.carrer = carrer;
+        this.institution = institution;
+        this.estimatedApproval = estimatedApproval;
         this.listPostulation = new LinkedList<>();;
     }
     
@@ -94,6 +100,22 @@ public class Student {
     
     public void setCarrer(String carrer){
         this.carrer = carrer;
+    }
+    
+    public void setInstitution(String institution){
+        this.institution = institution;
+    }
+    
+    public String getInstitution(){
+        return institution;
+    }
+    
+    public void setEstimatedApproval(float estimatedApproval){
+        this.estimatedApproval = estimatedApproval;
+    }
+    
+    public float getEstimatedApproval(){
+        return estimatedApproval;
     }
     
     public void showData(){

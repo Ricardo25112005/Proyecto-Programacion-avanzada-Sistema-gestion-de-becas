@@ -31,9 +31,9 @@ public class DataLoader {
                         d[2],                                  // correo
                         Integer.parseInt(d[3]),                // telefono
                         Float.parseFloat(d[4]),                // tramo socioeconomico
-                        d[5]                                   // carrera
-                        //d[7],                                // institucion
-                        //Float.parseFloat(d[8])               // aprobacion estimada
+                        d[5],                                   // carrera
+                        d[7],                                // institucion
+                        Float.parseFloat(d[8])               // aprobacion estimada
                 );
                 estudiantes.add(e);
                 maps.getMapStudent().put(d[0], e);
