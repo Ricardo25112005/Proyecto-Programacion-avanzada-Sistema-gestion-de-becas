@@ -16,12 +16,13 @@ package proyecto.programacion.avanzada.sistema.gestion.de.becas;
 
 
 public class Postulation {
-    private String idPostulation;
-    private String idStudent;
-    private String idBeca;
-    private String state;
-    private String datePostulation;
+    private String idPostulation; // Identificador único de la postulación
+    private String idStudent;     // RUT del estudiante que postula
+    private String idBeca;       // Identificador de la beca a la que se postula
+    private String state;        // Estado de la postulación (e.g., "En espera", "Aprobada", "Rechazada")
+    private String datePostulation; // Fecha de la postulación
     
+    //Constructor que inicializa los atributos con valores vacíos.
     public Postulation(){
         this.idPostulation = "";
         this.idStudent = "";
@@ -29,6 +30,7 @@ public class Postulation {
         this.state = "";
         this.datePostulation = "";
     }
+    //Constructor que inicializa una postulación con los datos proporcionados, estableciendo el estado por defecto como "En espera"
     public Postulation(String idPostulation, String idStudent, String idBeca, String datePostulation){
         this.idPostulation = idPostulation;
         this.idStudent = idStudent;
@@ -37,19 +39,26 @@ public class Postulation {
         this.datePostulation = datePostulation;
     }
     
-    public String getIdPostulation() { return idPostulation; }
-    public String getIdStudent() { return idStudent; }
-    public String getIdBeca() { return idBeca; }
-    public String getState() { return state; }
-    public String getDatePostulation() {return datePostulation;}
-    public void setIdPostulation(String idPostulation) {this.idPostulation = idPostulation;}
-    public void setIdStudent(String idStudent) {this.idStudent = idStudent;}
-    public void setIdBeca(String idBeca) {this.idBeca = idBeca;}
-    public void setState(String state) {this.state = state;}
-    public void setDatePostulation(String datePostulation) {this.datePostulation = datePostulation;}
+    public String getIdPostulation() { return idPostulation; } // Obtiene el identificador de la postulación.
+    public String getIdStudent() { return idStudent; } // Retorna El ID de la postulación.
+    public String getIdBeca() { return idBeca; } //Obtiene el RUT del estudiante
+    public String getState() { return state; }// Retorna el RUT del estudiante
+    public String getDatePostulation() {return datePostulation;} //Obtiene el identificador de la beca.
+    public void setIdPostulation(String idPostulation) {this.idPostulation = idPostulation;} // retorna el identificador de la beca
+    public void setIdStudent(String idStudent) {this.idStudent = idStudent;}// Obtiene el estado de la postulación
+    public void setIdBeca(String idBeca) {this.idBeca = idBeca;} // Retorna el estado de la postulación.
+    public void setState(String state) {this.state = state;} //Obtiene la fecha de la postulación.
+    public void setDatePostulation(String datePostulation) {this.datePostulation = datePostulation;} // Retorna La fecha de postulación.
     
+    
+    /**
+     * Muestra los detalles de la postulación en la consola, incluyendo ID, RUT del estudiante, 
+     * ID de la beca, estado y fecha.
+     */
     public void showPostulation() {
+        // Imprimir separador visual
         System.out.println("===================================");
+        // Mostrar cada atributo de la postulación
         System.out.println("ID Postulación: " + idPostulation);
         System.out.println("ID Estudiante: " + idStudent);
         System.out.println("ID Beca: " + idBeca);
