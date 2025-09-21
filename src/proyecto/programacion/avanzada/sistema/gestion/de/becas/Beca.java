@@ -66,11 +66,18 @@ public class Beca {
         }
     }
     
-    
     //Getters varios para cada atributo
     public String getCodigo() { return codeBeca; }
     public String getNombre() { return nomBeca; }
+    public float getPorcAprob() {return porcAprob; }
+    public int getMonto(){return monto;}
     public int getCupos() { return cupos; }
-    public double getMonto() { return monto; }
-    public String requisitos() { return requisitos; }
+    public String getRequisitos() { return requisitos; }
+    
+    //Setter varios para cada atributo
+    public void setCodigo(String codeBeca) { this.codeBeca = codeBeca; }
+    public void setNombre(String nomBeca) { this.nomBeca = nomBeca; }
+    public void setCupos(int cupos) {  this.cupos = cupos; }
+    public void setMonto(int monto) { this.monto = monto; }
+    public void setRequisitos(String requisitos) { this.requisitos = requisitos; }
 }

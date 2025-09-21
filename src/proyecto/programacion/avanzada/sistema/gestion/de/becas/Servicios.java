@@ -19,11 +19,11 @@ public class Servicios {
     // Mostrar menú (estático, se puede llamar sin objeto)
     public static void mostrarMenuAdministrador() {
         System.out.println("=== Menú Administrador ===");
-        System.out.println("1. Cargar Ajustes");
-        System.out.println("2. Mostrar Estudiante");
-        System.out.println("3. Registrar Alumno");
-        System.out.println("4. Busqueda de postulación");
-        System.out.println("5. Generar Reporte");
+        System.out.println("1. Mostrar Estudiante");
+        System.out.println("2. Registrar Alumno");
+        System.out.println("3. Busqueda de postulación");
+        System.out.println("4. Generar Reporte");
+        System.out.println("5. Guardar CSV");
         System.out.println("6. Salir");
         System.out.print("Seleccione una opción: ");
     }
@@ -40,19 +40,19 @@ public class Servicios {
             int opcion = Integer.parseInt(text.trim());
             switch (opcion) {
                 case 1:
-                    cargarAjustes(maps);
-                    break;
-                case 2:
                     mostrarEstudiante(maps);
                     break;
-                case 3:
+                case 2:
                     registrarAlumno(maps);
                     break;
-                case 4:
+                case 3:
                     busquedaPostulacion(maps);
                     break;
-                case 5:
+                case 4:
                     generarReporte();
+                    break;
+                case 5:
+                    guardarDatos(maps);
                     break;
                 case 6:
                     System.out.println("Saliendo del sistema...");
@@ -86,16 +86,6 @@ public class Servicios {
     
 
     // ===== OTRAS FUNCIONES =====
-    private void cargarAjustes(Maps maps) {
-        limpiaPantalla();
-        System.out.println(">> Ejecutando función: cargarAjustes()");
-        
-        DataLoader.cargarEstudiantes("src/resources/estudiantes.csv", maps);
-        DataLoader.cargarBecas("src/resources/becas.csv", maps);
-        DataLoader.cargarPostulaciones("src/resources/postulaciones.csv", maps);
-    
-        System.out.println("Datos cargados correctamente");
-    }
     //Llama al metodo de map ShowPostulationsEstudiante, para mostra cada atributo del estudiante.
     private void mostrarEstudiante(Maps maps) {
         limpiaPantalla();
@@ -153,6 +143,14 @@ public class Servicios {
             System.out.println("Debe ingresar un número válido.");
         }
     }
+    
+    private void guardarDatos(Maps maps) {
+        DataLoader.guardarEstudiantes("src/resources/estudiantes.csv", maps);
+        DataLoader.guardarBecas("src/resources/becas.csv", maps);
+        DataLoader.guardarPostulaciones("src/resources/postulaciones.csv", maps);
+        System.out.println("Datos guardados exitosamente en CSV.");
+    }
+    
     //Metodo vacio, falta implementar.
     private void generarReporte() {
         limpiaPantalla();
