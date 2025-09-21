@@ -14,15 +14,20 @@ import java.util.List;
  * @version: 1.0.0
  * @Fecha: 27-08-25
  */
+
+//Construccion de la clase Beca
+
 public class Beca {
-    private String codeBeca;
-    private String nomBeca;
-    private float porcAprob;
-    private int monto;
-    private int cupos;
-    private String requisitos;
-    private List<Postulation> postulaciones;
+    private String codeBeca;                        //Codigo de la beca: Es un String que identifica a la beca y le da unicidad
+    private String nomBeca;                         // Nombre de la beca: Un String que contiene el nombre de la beca
+    private float porcAprob;                        // Un Flotante que contiene el porcentaje de aprobacion de la beca
+    private int monto;                              // Un entero que contiene el monto en pesos de la beca
+    private int cupos;                              // Un entero que contiene los cupos disponibles de la beca
+    private String requisitos;                      // Requisitos de la beca
+    private List<Postulation> postulaciones;        // Contiene una lista de postulaciones mostrando todos los estudiantes que quieren esta beca
     
+    
+    //Constructor iniciando las variables
     public Beca(String codeBeca, String nomBeca, float porcAprob, int monto, int cupos, String requisitos){
         this.codeBeca = codeBeca;
         this.nomBeca = nomBeca;
@@ -33,6 +38,9 @@ public class Beca {
         this.postulaciones = new ArrayList<>();
     }
     
+    //Codificacion de metodos:
+    
+    //Metodo para agrefar una postulacion a la beca
     public void agregarPostulacion(Postulation postulacion){
         if (postulaciones.size() < cupos){
             postulaciones.add(postulacion);
@@ -41,10 +49,12 @@ public class Beca {
         }
     }
     
+    //Obtener las postulaciones que se van hecho a la beca
     public List<Postulation> getPostulaciones(){
         return postulaciones;
     }
     
+    //Mostrar una postulacion en particular
     public void mostrarPostulaciones(){
         if (postulaciones.isEmpty()){
             System.out.println("No hay postulaciones para " + nomBeca);
