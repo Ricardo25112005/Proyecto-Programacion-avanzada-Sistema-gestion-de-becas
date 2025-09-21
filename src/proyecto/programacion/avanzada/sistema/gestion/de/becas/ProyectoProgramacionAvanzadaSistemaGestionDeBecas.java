@@ -18,6 +18,13 @@ public class ProyectoProgramacionAvanzadaSistemaGestionDeBecas {
     public static void main(String[] args) {
         Servicios servicios = new Servicios();
         Maps maps = new Maps();
+        
+        DataLoader.cargarEstudiantes("src/resources/estudiantes.csv", maps);
+        DataLoader.cargarBecas("src/resources/becas.csv", maps);
+        DataLoader.cargarPostulaciones("src/resources/postulaciones.csv", maps);
+        System.out.println("Datos cargados automáticamente al inicio.");
+        
+        
         while (true) {
             System.out.println("\nSistema Gestión Becas");
             System.out.println("=====================");

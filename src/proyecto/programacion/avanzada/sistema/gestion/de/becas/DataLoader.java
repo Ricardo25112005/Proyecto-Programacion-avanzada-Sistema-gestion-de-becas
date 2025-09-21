@@ -28,6 +28,7 @@ public class DataLoader {
             while ((linea = br.readLine()) != null) {
                 String[] d = linea.split(",", -1); // -1 = no perder columnas vacías
 
+                //Aqui se representa cada columna del estudiantes.csv (por ejemplo d[1] significa tomar los valores de la columna)
                 Student e = new Student(
                         d[1],                                  // nombre
                         d[0],                                  // rut
@@ -45,6 +46,22 @@ public class DataLoader {
             System.err.println("Error al leer estudiantes: " + e.getMessage());
         }
     }
+    public static void guardarEstudiantes(String archivo, Maps maps) {
+        try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(archivo), StandardCharsets.UTF_8))) {
+            bw.write("rut,nombre,correo,telefono,tramo_socioeconomico,carrera,direccion,institucion,aprobacion_estimada\n");
+            for (Student s : maps.getMapStudent().values()) {
+                // Escapar comas y convertir , a ; en dirección para formato CSV
+                String direccion = s.getAddress().replace(",", ";");
+                // Usar punto (.) como separador decimal para float
+                String line = String.format(Locale.US, "%s,%s,%s,%d,%.1f,%s,%s,%s,%.1f\n",
+                        s.getRut(), s.getName().replace(",", "\\,"), s.getMail(), s.getPhone(), s.getSocioEconomicSection(),
+                        s.getCarrer().replace(",", "\\,"), direccion, s.getInstitution().replace(",", "\\,"), s.getEstimatedApproval());
+                bw.write(line);
+            }
+        } catch (IOException e) {
+            System.err.println("Error al guardar estudiantes: " + e.getMessage());
+        }
+    }
 
     // ====================
     // BECAS
@@ -54,7 +71,7 @@ public class DataLoader {
             String linea = br.readLine(); // saltar encabezado
             while ((linea = br.readLine()) != null) {
                 String[] d = linea.split(",", -1);
-
+                //Aqui se representa cada columna del becas.csv (por ejemplo d[1] significa tomar los valores de la columna)
                 Beca b = new Beca(
                         d[0],                                   // codigo
                         d[1],                                   // nombre
@@ -69,6 +86,19 @@ public class DataLoader {
             System.err.println("Error al leer becas: " + e.getMessage());
         }
     }
+    // Método para guardar becas en CSV
+    public static void guardarBecas(String archivo, Maps maps) {
+        try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(archivo), StandardCharsets.UTF_8))) {
+            bw.write("codigo_beca,nombre_beca,porcentaje_acceso,requisito,monto,cupos\n");
+            for (Beca b : maps.getMapBeca().values()) {
+                String line = String.format(Locale.US, "%s,%s,%.1f,%s,%d,%d\n",
+                        b.getCodigo(), b.getNombre(), b.getPorcAprob(), b.getRequisitos(), (int) b.getMonto(), b.getCupos());
+                bw.write(line);
+            }
+        } catch (IOException e) {
+            System.err.println("Error al guardar becas: " + e.getMessage());
+        }
+    }
 
     // ====================
     // POSTULACIONES
@@ -78,7 +108,7 @@ public class DataLoader {
             String linea = br.readLine(); // saltar encabezado
             while ((linea = br.readLine()) != null) {
                 String[] d = linea.split(",", -1);
-    
+                //Aqui se representa cada columna del postulaciones.csv (por ejemplo d[1] significa tomar los valores de la columna)
                 Postulation p = new Postulation(
                         d[0],  // codigo postulacion
                         d[2],  // rut estudiante
@@ -101,5 +131,24 @@ public class DataLoader {
             System.err.println("Error al leer postulaciones: " + e.getMessage());
         }
     }
+    
+    public static void guardarPostulaciones(String archivo, Maps maps) {
+        Set<String> uniquePostulaciones = new HashSet<>();
+        try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(archivo), StandardCharsets.UTF_8))) {
+            bw.write("codigo_postulacion,codigo_beca,rut_estudiante,estado_postulacion,fecha_postulacion\n");
+            for (Student s : maps.getMapStudent().values()) {
+                for (Postulation p : s.getListPostulation()) {
+                    String key = p.getIdPostulation();
+                    if (!uniquePostulaciones.contains(key)) {
+                        String line = String.format("%s,%s,%s,%s,%s\n",
+                                p.getIdPostulation(), p.getIdBeca(), p.getIdStudent(), p.getState(), p.getDatePostulation());
+                        bw.write(line);
+                        uniquePostulaciones.add(key);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error al guardar postulaciones: " + e.getMessage());
+        }
+    }
 }
-
