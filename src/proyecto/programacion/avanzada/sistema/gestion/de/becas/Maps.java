@@ -17,6 +17,7 @@ package proyecto.programacion.avanzada.sistema.gestion.de.becas;
 import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Iterator;
 
 public class Maps {
     private Map<String, Student> mapStudent;
@@ -193,4 +194,85 @@ public class Maps {
     
     public void agregarAlumno(Student estudiante){mapStudent.put(estudiante.getRut(), estudiante);}
     public void agregarBeca(Beca beca){mapBeca.put(beca.getCodigo(), beca);}
+    
+ 
+    public void eliminarPostulacionEspecifica() {
+        try {
+            // 1. Pedir RUT del estudiante
+            String rut = JOptionPane.showInputDialog("Ingrese RUT del estudiante:");
+            if (rut == null || rut.trim().isEmpty()) return;
+        
+            rut = rut.trim(); // Limpiar espacios
+        
+            // 2. Pedir ID de la beca
+            String idBeca = JOptionPane.showInputDialog("Ingrese ID de la beca:");
+            if (idBeca == null || idBeca.trim().isEmpty()) return;
+        
+            idBeca = idBeca.trim(); // Limpiar espacios
+        
+            // 3. Buscar estudiante
+            Student estudiante = mapStudent.get(rut);
+            if (estudiante == null) {
+                JOptionPane.showMessageDialog(null, "Estudiante no encontrado.");
+                return;
+            }
+        
+            // 4. Buscar beca
+            Beca beca = mapBeca.get(idBeca);
+            if (beca == null) {
+                JOptionPane.showMessageDialog(null, "Beca no encontrada.");
+                return;
+            }
+        
+            // 5. ELIMINAR DE AMBOS LADOS
+            boolean eliminadoEstudiante = false;
+            boolean eliminadoBeca = false;
+        
+            // Eliminar del estudiante
+            Iterator<Postulation> iteratorEst = estudiante.getListPostulation().iterator();
+            while (iteratorEst.hasNext()) {
+                Postulation p = iteratorEst.next();
+                if (p.getIdBeca().equals(idBeca)) {
+                    iteratorEst.remove();
+                    eliminadoEstudiante = true;
+                    break; // Solo debería haber una postulación por beca
+                }
+            }
+        
+            // Eliminar de la beca
+            Iterator<Postulation> iteratorBeca = beca.getPostulaciones().iterator();
+            while (iteratorBeca.hasNext()) {
+                Postulation p = iteratorBeca.next();
+                if (p.getIdStudent().equals(rut)) {
+                    iteratorBeca.remove();
+                    eliminadoBeca = true;
+                    break;
+                }
+            }
+        
+            // 6. Confirmar resultados
+            if (eliminadoEstudiante && eliminadoBeca) {
+                JOptionPane.showMessageDialog(null, 
+                    "Postulación eliminada correctamente de ambos lados.\n" +
+                    "Estudiante: " + rut + "\n" +
+                    "Beca: " + idBeca);
+            } else if (eliminadoEstudiante) {
+                JOptionPane.showMessageDialog(null, 
+                    "Postulación eliminada solo del estudiante.\n" +
+                    "No se encontró en la beca.");
+            } else if (eliminadoBeca) {
+                JOptionPane.showMessageDialog(null, 
+                    "Postulación eliminada solo de la beca.\n" +
+                    "No se encontró en el estudiante.");
+            } else {
+                JOptionPane.showMessageDialog(null, 
+                    "No se encontró la postulación.\n" +
+                    "Verifique que el estudiante " + rut + 
+                    " esté postulando a la beca " + idBeca);
+            }
+        
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar postulación: " + e.getMessage());
+        }
+    }
 }

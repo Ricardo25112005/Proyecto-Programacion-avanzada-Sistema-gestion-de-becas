@@ -66,6 +66,14 @@ public class Servicios extends JFrame {
         });
         panel.add(btnBuscar);
 
+        JButton btnEliminarPostulacion = new JButton("Eliminar Postulación por RUT y Beca");
+        btnEliminarPostulacion.addActionListener(e -> {
+            dispose();
+            maps.eliminarPostulacionEspecifica();
+            volverAlMenu();
+        });
+        panel.add(btnEliminarPostulacion);
+
         JButton btnSalir = new JButton("Salir");
         btnSalir.addActionListener(e -> System.exit(0));
         panel.add(btnSalir);
