@@ -17,22 +17,18 @@ import java.util.List;
 
 //Construccion de la clase Beca
 
-public class Beca {
+public abstract class Beca {
     private String codeBeca;                        //Codigo de la beca: Es un String que identifica a la beca y le da unicidad
     private String nomBeca;                         // Nombre de la beca: Un String que contiene el nombre de la beca
-    private float porcAprob;                        // Un Flotante que contiene el porcentaje de aprobacion de la beca
-    private int monto;                              // Un entero que contiene el monto en pesos de la beca
     private int cupos;                              // Un entero que contiene los cupos disponibles de la beca
     private String requisitos;                      // Requisitos de la beca
     private List<Postulation> postulaciones;        // Contiene una lista de postulaciones mostrando todos los estudiantes que quieren esta beca
     
     
     //Constructor iniciando las variables
-    public Beca(String codeBeca, String nomBeca, float porcAprob, int monto, int cupos, String requisitos){
+    public Beca(String codeBeca, String nomBeca, int cupos, String requisitos){
         this.codeBeca = codeBeca;
         this.nomBeca = nomBeca;
-        this.porcAprob = porcAprob;
-        this.monto = monto;
         this.cupos = cupos;
         this.requisitos = requisitos;
         this.postulaciones = new ArrayList<>();
@@ -66,18 +62,16 @@ public class Beca {
         }
     }
     
+    public void mostrarBeca(){}
+    
+    
     //Getters varios para cada atributo
     public String getCodigo() { return codeBeca; }
     public String getNombre() { return nomBeca; }
-    public float getPorcAprob() {return porcAprob; }
-    public int getMonto(){return monto;}
     public int getCupos() { return cupos; }
     public String getRequisitos() { return requisitos; }
-    
-    //Setter varios para cada atributo
-    public void setCodigo(String codeBeca) { this.codeBeca = codeBeca; }
-    public void setNombre(String nomBeca) { this.nomBeca = nomBeca; }
-    public void setCupos(int cupos) {  this.cupos = cupos; }
-    public void setMonto(int monto) { this.monto = monto; }
-    public void setRequisitos(String requisitos) { this.requisitos = requisitos; }
+    public void setCodigo(String codeBeca) {this.codeBeca = codeBeca;}
+    public void setNombre(String nomBeca) {this.nomBeca = nomBeca;}
+    public void setCupos(int cupos) {this.cupos = cupos;}
+    public void setRequisitos(String requisitos) {this.requisitos = requisitos;}
 }

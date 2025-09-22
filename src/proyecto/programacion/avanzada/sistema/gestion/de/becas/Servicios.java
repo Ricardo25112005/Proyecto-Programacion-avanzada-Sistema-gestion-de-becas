@@ -83,6 +83,17 @@ public class Servicios extends JFrame {
         });
         panel.add(btnBuscar);
         panel.add(Box.createRigidArea(new Dimension(0, 10)));
+        
+        JButton btnBuscarBeca = new JButton("Buscar Beca");
+        btnBuscarBeca.setMaximumSize(new Dimension(300, 40));
+        btnBuscarBeca.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnBuscarBeca.addActionListener(e -> {
+            dispose();
+            maps.buscarBeca();
+            volverAlMenu();
+        });
+        panel.add(btnBuscarBeca);
+        panel.add(Box.createRigidArea(new Dimension(0, 10)));
 
         JButton btnModificar = new JButton("Modificar");
         btnModificar.setMaximumSize(new Dimension(300, 40));

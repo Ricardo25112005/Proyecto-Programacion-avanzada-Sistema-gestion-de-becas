@@ -358,4 +358,34 @@ public class Maps {
             JOptionPane.showMessageDialog(null, "Error al eliminar beca: " + e.getMessage());
         }
     }
+    
+    public void buscarBeca() {
+        String codigo = javax.swing.JOptionPane.showInputDialog(
+                null,
+                "Ingrese el ID de la beca:",
+                "Buscar Beca",
+                javax.swing.JOptionPane.QUESTION_MESSAGE
+        );
+
+        if (codigo != null && !codigo.trim().isEmpty()) {
+            Beca beca = mapBeca.get(codigo);
+            if (beca != null) {
+                beca.mostrarBeca(); // llama al método polimórfico de la subclase
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(
+                    null,
+                    "No se encontró ninguna beca con el código: " + codigo,
+                    "Error",
+                    javax.swing.JOptionPane.ERROR_MESSAGE
+                );
+            }
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(
+                null,
+                "Debe ingresar un código válido.",
+                "Advertencia",
+                javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+        }
+    }
 }
