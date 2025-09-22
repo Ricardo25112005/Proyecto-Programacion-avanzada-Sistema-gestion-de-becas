@@ -275,4 +275,87 @@ public class Maps {
             JOptionPane.showMessageDialog(null, "Error al eliminar postulación: " + e.getMessage());
         }
     }
+    
+    public void eliminarEstudiantePorRUT() {
+        try {
+            // 1. Pedir RUT del estudiante
+            String rutInput = JOptionPane.showInputDialog("Ingrese RUT del estudiante a eliminar:");
+            if (rutInput == null || rutInput.trim().isEmpty()) return;
+        
+            String rut = rutInput.trim();
+        
+            // 2. Buscar estudiante
+            Student estudiante = mapStudent.get(rut);
+            if (estudiante == null) {
+                JOptionPane.showMessageDialog(null, "Estudiante no encontrado.");
+                return;
+            }
+        
+            // 3. ELIMINAR POSTULACIONES DEL ESTUDIANTE DE TODAS LAS BECAS
+            int postulacionesEliminadas = 0;
+            for (Postulation postulacion : estudiante.getListPostulation()) {
+                Beca beca = mapBeca.get(postulacion.getIdBeca());
+                if (beca != null) {
+                    // Eliminar la postulación de la beca
+                    boolean eliminado = beca.getPostulaciones()
+                        .removeIf(p -> p.getIdStudent().equals(rut));
+                    if (eliminado) {
+                        postulacionesEliminadas++;
+                    }
+                }
+            }
+        
+            // 4. ELIMINAR AL ESTUDIANTE
+            mapStudent.remove(rut);
+        
+            // 5. Confirmar resultados
+            JOptionPane.showMessageDialog(null, 
+                "✓ Estudiante eliminado correctamente.\n" +
+                "RUT: " + rut + "\n" +
+                "Postulaciones eliminadas: " + postulacionesEliminadas);
+        
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar estudiante: " + e.getMessage());
+        }
+    }
+    
+    public void eliminarBecaPorID() {
+        try {
+            // 1. Pedir ID de la beca
+            String idInput = JOptionPane.showInputDialog("Ingrese ID de la beca a eliminar:");
+            if (idInput == null || idInput.trim().isEmpty()) return;
+        
+            String idBeca = idInput.trim();
+        
+            // 2. Buscar beca
+            Beca beca = mapBeca.get(idBeca);
+            if (beca == null) {
+                JOptionPane.showMessageDialog(null, "Beca no encontrada.");
+                return;
+            }
+        
+            // 3. ELIMINAR POSTULACIONES DE LA BECA DE TODOS LOS ESTUDIANTES
+            int postulacionesEliminadas = 0;
+            for (Student estudiante : mapStudent.values()) {
+                // Eliminar postulaciones a esta beca del estudiante
+                int eliminadas = estudiante.getListPostulation().size();
+                estudiante.getListPostulation().removeIf(p -> p.getIdBeca().equals(idBeca));
+                eliminadas = eliminadas - estudiante.getListPostulation().size();
+                postulacionesEliminadas += eliminadas;
+            }
+        
+            // 4. ELIMINAR LA BECA
+            mapBeca.remove(idBeca);
+        
+            // 5. Confirmar resultados
+            JOptionPane.showMessageDialog(null, 
+                "✓ Beca eliminada correctamente.\n" +
+                "ID Beca: " + idBeca + "\n" +
+                "Nombre: " + beca.getNombre() + "\n" +
+                "Postulaciones eliminadas: " + postulacionesEliminadas);
+        
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar beca: " + e.getMessage());
+        }
+    }
 }

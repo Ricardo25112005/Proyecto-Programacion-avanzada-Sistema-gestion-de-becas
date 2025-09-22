@@ -28,7 +28,7 @@ public class Servicios extends JFrame {
         setLocationRelativeTo(null);
 
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(6, 1, 10, 10));
+        panel.setLayout(new GridLayout(7, 1, 10, 10));
 
         JLabel titulo = new JLabel("Menú Principal", JLabel.CENTER);
         titulo.setFont(new Font("Arial", Font.BOLD, 20));
@@ -66,13 +66,13 @@ public class Servicios extends JFrame {
         });
         panel.add(btnBuscar);
 
-        JButton btnEliminarPostulacion = new JButton("Eliminar Postulación por RUT y Beca");
-        btnEliminarPostulacion.addActionListener(e -> {
+        JButton btnEliminarDatos = new JButton("Eliminar Datos");
+        btnEliminarDatos.addActionListener(e -> {
             dispose();
-            maps.eliminarPostulacionEspecifica();
+            mostrarSubmenuEliminacion();
             volverAlMenu();
         });
-        panel.add(btnEliminarPostulacion);
+        panel.add(btnEliminarDatos);
 
         JButton btnSalir = new JButton("Salir");
         btnSalir.addActionListener(e -> System.exit(0));
@@ -100,4 +100,44 @@ public class Servicios extends JFrame {
             maps.buscarPostulacion(rut, idPost);
         }
     }
+    
+    private void mostrarSubmenuEliminacion() {
+        // Crear opciones para el submenú
+        String[] opciones = {
+            "Eliminar Postulación por RUT y Beca",
+            "Eliminar Estudiante", 
+            "Eliminar Beca",
+            "Volver al Menú Principal"
+        };
+    
+        // Mostrar diálogo de selección
+        String seleccion = (String) JOptionPane.showInputDialog(
+            null,
+            "Seleccione tipo de eliminación:",
+            "Submenú - Eliminar Datos",
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            opciones,
+            opciones[0]
+        );
+    
+        // Procesar selección
+        if (seleccion != null) {
+            switch (seleccion) {
+                case "Eliminar Postulación por RUT y Beca":
+                    maps.eliminarPostulacionEspecifica();
+                    break;
+                case "Eliminar Estudiante":
+                    maps.eliminarEstudiantePorRUT();
+                    break;
+                case "Eliminar Beca":
+                    maps.eliminarBecaPorID();
+                    break;
+                case "Volver al Menú Principal":
+                    // Simplemente vuelve al menú
+                    break;
+            }
+        }
+    }
+    
 }
