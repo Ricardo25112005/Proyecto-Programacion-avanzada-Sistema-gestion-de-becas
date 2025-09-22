@@ -23,58 +23,91 @@ public class Servicios extends JFrame {
     public Servicios(Maps maps) {
         this.maps = maps;
         setTitle("Sistema de Gestión de Becas");
-        setSize(500, 300);
+        setSize(500, 400); // Tamaño para formato de lista
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
+        // Usar BoxLayout vertical para formato de lista
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(7, 1, 10, 10));
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); // Margen
 
-        JLabel titulo = new JLabel("Menú Principal", JLabel.CENTER);
+        // Título centrado
+        JLabel titulo = new JLabel("Sistema de Gestión de Becas", JLabel.CENTER);
         titulo.setFont(new Font("Arial", Font.BOLD, 20));
+        titulo.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(titulo);
+        panel.add(Box.createRigidArea(new Dimension(0, 20))); // Espacio después del título
 
+        // Botones en formato lista
         JButton btnRegistrar = new JButton("Registrar Estudiante");
+        btnRegistrar.setMaximumSize(new Dimension(300, 40));
+        btnRegistrar.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnRegistrar.addActionListener(e -> {
             dispose(); // Cierra menú
             maps.createFromTerminal();
             volverAlMenu(); // Reabre menú
         });
         panel.add(btnRegistrar);
-        
+        panel.add(Box.createRigidArea(new Dimension(0, 10)));
+
         JButton btnRegistrarBeca = new JButton("Registrar Beca");
+        btnRegistrarBeca.setMaximumSize(new Dimension(300, 40));
+        btnRegistrarBeca.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnRegistrarBeca.addActionListener(e -> {
             dispose(); // Cierra menú
-            //maps.RegistrarBeca();
+            // maps.RegistrarBeca(); // Descomentar cuando se implemente
             volverAlMenu(); // Reabre menú
         });
         panel.add(btnRegistrarBeca);
+        panel.add(Box.createRigidArea(new Dimension(0, 10)));
 
         JButton btnMostrarPostulaciones = new JButton("Mostrar Datos Estudiante");
+        btnMostrarPostulaciones.setMaximumSize(new Dimension(300, 40));
+        btnMostrarPostulaciones.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnMostrarPostulaciones.addActionListener(e -> {
             dispose();
             maps.ShowPostulationsEstudiante();
             volverAlMenu();
         });
         panel.add(btnMostrarPostulaciones);
+        panel.add(Box.createRigidArea(new Dimension(0, 10)));
 
         JButton btnBuscar = new JButton("Buscar Postulación");
+        btnBuscar.setMaximumSize(new Dimension(300, 40));
+        btnBuscar.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnBuscar.addActionListener(e -> {
             dispose();
             buscarPostulacion();
             volverAlMenu();
         });
         panel.add(btnBuscar);
+        panel.add(Box.createRigidArea(new Dimension(0, 10)));
+
+        JButton btnModificar = new JButton("Modificar");
+        btnModificar.setMaximumSize(new Dimension(300, 40));
+        btnModificar.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnModificar.addActionListener(e -> {
+            dispose(); // Cierra menú
+            new ModificarVentana(maps); // Abre ventana de modificación
+        });
+        panel.add(btnModificar);
+        panel.add(Box.createRigidArea(new Dimension(0, 10)));
 
         JButton btnEliminarDatos = new JButton("Eliminar Datos");
+        btnEliminarDatos.setMaximumSize(new Dimension(300, 40));
+        btnEliminarDatos.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnEliminarDatos.addActionListener(e -> {
             dispose();
             mostrarSubmenuEliminacion();
             volverAlMenu();
         });
         panel.add(btnEliminarDatos);
+        panel.add(Box.createRigidArea(new Dimension(0, 10)));
 
         JButton btnSalir = new JButton("Salir");
+        btnSalir.setMaximumSize(new Dimension(300, 40));
+        btnSalir.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnSalir.addActionListener(e -> System.exit(0));
         panel.add(btnSalir);
 
@@ -89,10 +122,10 @@ public class Servicios extends JFrame {
     }
 
     private void buscarPostulacion() {
-        String rut = JOptionPane.showInputDialog("Ingrese RUT del estudiante:");
+        String rut = JOptionPane.showInputDialog(this, "Ingrese RUT del estudiante (formato XX.XXX.XXX-Y):");
         if (rut == null || rut.trim().isEmpty()) return;
 
-        String idPost = JOptionPane.showInputDialog("Ingrese ID de la postulación (dejar vacío para mostrar todas):");
+        String idPost = JOptionPane.showInputDialog(this, "Ingrese ID de la postulación (dejar vacío para mostrar todas):");
 
         if (idPost == null || idPost.trim().isEmpty()) {
             maps.buscarPostulacion(rut);
@@ -100,19 +133,19 @@ public class Servicios extends JFrame {
             maps.buscarPostulacion(rut, idPost);
         }
     }
-    
+
     private void mostrarSubmenuEliminacion() {
         // Crear opciones para el submenú
         String[] opciones = {
             "Eliminar Postulación por RUT y Beca",
-            "Eliminar Estudiante", 
+            "Eliminar Estudiante",
             "Eliminar Beca",
             "Volver al Menú Principal"
         };
-    
+
         // Mostrar diálogo de selección
         String seleccion = (String) JOptionPane.showInputDialog(
-            null,
+            this,
             "Seleccione tipo de eliminación:",
             "Submenú - Eliminar Datos",
             JOptionPane.QUESTION_MESSAGE,
@@ -120,7 +153,7 @@ public class Servicios extends JFrame {
             opciones,
             opciones[0]
         );
-    
+
         // Procesar selección
         if (seleccion != null) {
             switch (seleccion) {
@@ -139,5 +172,4 @@ public class Servicios extends JFrame {
             }
         }
     }
-    
 }
