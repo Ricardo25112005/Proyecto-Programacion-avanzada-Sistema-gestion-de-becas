@@ -3,8 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package proyecto.programacion.avanzada.sistema.gestion.de.becas;
-import java.io.*;
-
 /**
  * @archivo: Servicios.java
  * @Project: Sistema Gestion De Becas
@@ -15,151 +13,83 @@ import java.io.*;
  * @Fecha: 26-08-25
  */
 
-public class Servicios {
-    // Mostrar menú (estático, se puede llamar sin objeto)
-    public static void mostrarMenuAdministrador() {
-        System.out.println("=== Menú Administrador ===");
-        System.out.println("1. Mostrar Estudiante");
-        System.out.println("2. Registrar Alumno");
-        System.out.println("3. Busqueda de postulación");
-        System.out.println("4. Generar Reporte");
-        System.out.println("5. Guardar CSV");
-        System.out.println("6. Salir");
-        System.out.print("Seleccione una opción: ");
-    }
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+    
+public class Servicios extends JFrame {
+    private Maps maps;
 
-    // Leer opción del usuario y ejecutar acción
-    public void leerArgumentos(Maps maps) {
-        BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
-        try {
-            String text = r.readLine();
-            if (text == null || text.trim().isEmpty()) {
-                System.out.println("Entrada vacía. Debe ingresar un número válido.");
-                return;
-            }
-            int opcion = Integer.parseInt(text.trim());
-            switch (opcion) {
-                case 1:
-                    mostrarEstudiante(maps);
-                    break;
-                case 2:
-                    registrarAlumno(maps);
-                    break;
-                case 3:
-                    busquedaPostulacion(maps);
-                    break;
-                case 4:
-                    generarReporte();
-                    break;
-                case 5:
-                    guardarDatos(maps);
-                    break;
-                case 6:
-                    System.out.println("Saliendo del sistema...");
-                    System.exit(0);
-                    break;
-                default:
-                    System.out.println("Opción no válida");
-                    break;
-            }
-        } catch (IOException e) {
-            System.out.println("Error de entrada/salida: " + e.getMessage());
-        } catch (NumberFormatException e) {
-            System.out.println("Debe ingresar un número válido.");
-        }
-    }
+    public Servicios(Maps maps) {
+        this.maps = maps;
+        setTitle("Sistema de Gestión de Becas");
+        setSize(500, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
 
-    // Registrar alumno desde la terminal
-    private void registrarAlumno(Maps maps) {
-        limpiaPantalla();
-        System.out.println(">> Ejecutando función: registrarAlumno() - Ingreso por terminal");
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(6, 1, 10, 10));
+
+        JLabel titulo = new JLabel("Menú Principal", JLabel.CENTER);
+        titulo.setFont(new Font("Arial", Font.BOLD, 20));
+        panel.add(titulo);
+
+        JButton btnRegistrar = new JButton("Registrar Estudiante");
+        btnRegistrar.addActionListener(e -> {
+            dispose(); // Cierra menú
+            maps.createFromTerminal();
+            volverAlMenu(); // Reabre menú
+        });
+        panel.add(btnRegistrar);
         
-        Student estudiante = Student.createFromTerminal(maps);
-        if (estudiante != null) {
-            maps.getMapStudent().put(estudiante.getRut(), estudiante);
-            System.out.println("Estudiante registrado exitosamente: " + estudiante.getName());
+        JButton btnRegistrarBeca = new JButton("Registrar Beca");
+        btnRegistrarBeca.addActionListener(e -> {
+            dispose(); // Cierra menú
+            //maps.RegistrarBeca();
+            volverAlMenu(); // Reabre menú
+        });
+        panel.add(btnRegistrarBeca);
+
+        JButton btnMostrarPostulaciones = new JButton("Mostrar Datos Estudiante");
+        btnMostrarPostulaciones.addActionListener(e -> {
+            dispose();
+            maps.ShowPostulationsEstudiante();
+            volverAlMenu();
+        });
+        panel.add(btnMostrarPostulaciones);
+
+        JButton btnBuscar = new JButton("Buscar Postulación");
+        btnBuscar.addActionListener(e -> {
+            dispose();
+            buscarPostulacion();
+            volverAlMenu();
+        });
+        panel.add(btnBuscar);
+
+        JButton btnSalir = new JButton("Salir");
+        btnSalir.addActionListener(e -> System.exit(0));
+        panel.add(btnSalir);
+
+        add(panel);
+    }
+
+    // Función que vuelve a abrir el menú principal
+    private void volverAlMenu() {
+        SwingUtilities.invokeLater(() -> {
+            new Servicios(maps).setVisible(true);
+        });
+    }
+
+    private void buscarPostulacion() {
+        String rut = JOptionPane.showInputDialog("Ingrese RUT del estudiante:");
+        if (rut == null || rut.trim().isEmpty()) return;
+
+        String idPost = JOptionPane.showInputDialog("Ingrese ID de la postulación (dejar vacío para mostrar todas):");
+
+        if (idPost == null || idPost.trim().isEmpty()) {
+            maps.buscarPostulacion(rut);
         } else {
-            System.out.println("No se pudo registrar el estudiante.");
-        }
-    }
-
-    
-
-    // ===== OTRAS FUNCIONES =====
-    //Llama al metodo de map ShowPostulationsEstudiante, para mostra cada atributo del estudiante.
-    private void mostrarEstudiante(Maps maps) {
-        limpiaPantalla();
-        System.out.println(">> Ejecutando función: mostrarEstudiante()");
-        maps.ShowPostulationsEstudiante();
-    }
-    /** Busca postulaciones de estudiantes en el sistema, ya sea por RUT del estudiante e ID de postulación
-        o solo por RUT para mostrar todas las postulaciones asociadas. */
-    private void busquedaPostulacion(Maps maps){
-        BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
-        try {
-            limpiaPantalla();
-            // Mostrar sub-menú de búsqueda
-            System.out.println("=== Búsqueda de Postulación ===");
-            System.out.println("1. Buscar con ID de postulación y RUT del alumno");
-            System.out.println("2. Buscar solo con RUT del alumno");
-            System.out.print("Seleccione una opción: ");
-            
-            // Leer y validar la opción ingresada
-            String opcionStr = r.readLine();
-            if (opcionStr == null || opcionStr.trim().isEmpty()) {
-                System.out.println("Entrada vacía. Debe ingresar un número válido.");
-                return;
-            }
-
-            int opcion = Integer.parseInt(opcionStr.trim());
-            switch (opcion) {
-                case 1: {
-                    limpiaPantalla();
-                    System.out.print("Ingrese el RUT del alumno: ");
-                    String rut = r.readLine().trim();
-                    System.out.print("Ingrese el ID de la postulación: ");
-                    String idPostulacion = r.readLine().trim();
-
-                    // Llamada a la función de otra clase (ejemplo en Maps)
-                    maps.buscarPostulacion(rut, idPostulacion);
-                    break;
-                }
-                case 2: {
-                    limpiaPantalla();
-                    System.out.print("Ingrese el RUT del alumno: ");
-                    String rut = r.readLine().trim();
-
-                    // Llamada a otra función (ejemplo en Maps)
-                    maps.buscarPostulacion(rut);
-                    break;
-                }
-                default:
-                    System.out.println("Opción no válida.");
-            }
-
-        } catch (IOException e) {
-            System.out.println("Error de entrada/salida: " + e.getMessage());
-        } catch (NumberFormatException e) {
-            System.out.println("Debe ingresar un número válido.");
-        }
-    }
-    
-    private void guardarDatos(Maps maps) {
-        DataLoader.guardarEstudiantes("src/resources/estudiantes.csv", maps);
-        DataLoader.guardarBecas("src/resources/becas.csv", maps);
-        DataLoader.guardarPostulaciones("src/resources/postulaciones.csv", maps);
-        System.out.println("Datos guardados exitosamente en CSV.");
-    }
-    
-    //Metodo vacio, falta implementar.
-    private void generarReporte() {
-        limpiaPantalla();
-        System.out.println(">> Ejecutando función: generarReporte()");
-    }
-    //Metodo que genera 50 lineas vacias, para una mejor vision.
-    public void limpiaPantalla() {
-        for (int i = 0; i < 50; i++) {
-            System.out.println("");
+            maps.buscarPostulacion(rut, idPost);
         }
     }
 }

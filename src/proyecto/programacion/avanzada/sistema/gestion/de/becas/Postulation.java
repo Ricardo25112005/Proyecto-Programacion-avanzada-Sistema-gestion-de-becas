@@ -15,6 +15,10 @@ package proyecto.programacion.avanzada.sistema.gestion.de.becas;
  */
 
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
 public class Postulation {
     private String idPostulation; // Identificador único de la postulación
     private String idStudent;     // RUT del estudiante que postula
@@ -56,13 +60,11 @@ public class Postulation {
      * ID de la beca, estado y fecha.
      */
     public void showPostulation() {
-        // Imprimir separador visual
-        System.out.println("===================================");
-        // Mostrar cada atributo de la postulación
-        System.out.println("ID Postulación: " + idPostulation);
-        System.out.println("ID Estudiante: " + idStudent);
-        System.out.println("ID Beca: " + idBeca);
-        System.out.println("Estado: " + state);
-        System.out.println("Fecha de Postulación: " + datePostulation);
+        String mensaje = "ID Postulación: " + idPostulation +
+                         "\nID Estudiante: " + idStudent +
+                         "\nID Beca: " + idBeca +
+                         "\nEstado: " + state +
+                         "\nFecha de Postulación: " + datePostulation;
+        JOptionPane.showMessageDialog(null, mensaje, "Detalles de la Postulación", JOptionPane.INFORMATION_MESSAGE);
     }
 }

@@ -1,11 +1,11 @@
 codigo_beca,nombre_beca,porcentaje_acceso,requisito,monto,cupos
-BPR-01,Beca Presidente de la República,48.5,Promedio >= 6.0,248000,40
 BJG-02,Beca Juan Gómez Millas,42.0,Promedio >= 5.5,1150000,20
-BNE-03,Beca Nuevo Milenio,50.0,Promedio >= 5.0,800000,30
-BVA-04,Beca Vocación de Profesor,60.0,Puntaje PDT alto,1800000,10
+BPR-01,Beca Presidente de la República,48.5,Promedio >= 6.0,248000,40
+BPC-07,Beca de Continuidad de Estudios,40.0,Cambio de institución en cierre,1000000,12
 BIA-05,Beca Indígena,35.0,Acreditar ascendencia indígena,654000,15
 BEX-06,Beca Excelencia Académica,55.0,Top 10% promoción,1300000,25
-BPC-07,Beca de Continuidad de Estudios,40.0,Cambio de institución en cierre,1000000,12
 BDA-08,Beca de Alimentación JUNAEB,65.0,Estudiantes con vulnerabilidad,32000,100
+BNE-03,Beca Nuevo Milenio,50.0,Promedio >= 5.0,800000,30
+BVA-04,Beca Vocación de Profesor,60.0,Puntaje PDT alto,1800000,10
 BFD-09,Beca de Fotocopias y Documentos,30.0,Apoyo en materiales de estudio,50000,50
 BCT-10,Beca de Talento Artístico,38.0,Demostrar habilidades artísticas,700000,8

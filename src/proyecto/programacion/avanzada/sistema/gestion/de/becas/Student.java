@@ -7,6 +7,10 @@ package proyecto.programacion.avanzada.sistema.gestion.de.becas;
 import java.io.*;
 import java.util.*;
 import java.nio.charset.StandardCharsets;
+import javax.swing.JOptionPane;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
 /**
  * @archivo: Student.java
@@ -80,22 +84,16 @@ public class Student {
     public LinkedList<Postulation> getListPostulation(){return listPostulation; }
     //Función que muestra los datos del estudiante y su lista de postulaciones
     public void showData() {
-        System.out.println("\n=== Datos del Postulante ===");
-        System.out.println("Nombre: " + name);
-        System.out.println("RUT: " + rut);
-        System.out.println("Dirección: " + address);
-        System.out.println("Correo: " + mail);
-        System.out.println("Teléfono: " + phone);
-        System.out.println("Tramo Socioeconómico: " + socioEconomicSection);
-        System.out.println("Carrera: " + carrer);
-        System.out.println("\n=== Lista de Postulaciones ===");
-        if (listPostulation.isEmpty()) {
-            System.out.println("No tiene postulaciones registradas.");
-        } else {
-            for (Postulation p : listPostulation) {
-                p.showPostulation();
-            }
-        }
+        String datosEstudiante = "Nombre: " + name +
+                                         "\nRUT: " + rut +
+                                         "\nDirección: " + address +
+                                         "\nCorreo: " + mail +
+                                         "\nTeléfono: " + phone +
+                                         "\nTramo Socioeconómico: " + socioEconomicSection +
+                                         "\nCarrera: " + carrer +
+                                         "\nInstitución: " + institution +
+                                         "\nAprobación Estimada: " + estimatedApproval;
+                JOptionPane.showMessageDialog(null, datosEstudiante, "Datos del Estudiante", JOptionPane.INFORMATION_MESSAGE);
     }
     //Función para añadir una postulación si se tiene el objeto
     public void addPostulation(Postulation p) {
@@ -109,101 +107,6 @@ public class Student {
     //Función que elimina una postulación de la lista
     public void removePostulation(Postulation p) {
         listPostulation.remove(p);
-    }
-
-    // Método para crear un estudiante desde la terminal
-    public static Student createFromTerminal(Maps maps) {
-        BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
-        try {
-            System.out.print("Ingrese RUT del estudiante (formato XX.XXX.XXX-Y): ");
-            String rut = r.readLine().trim();
-            if (rut.isEmpty() || !rut.matches("\\d{1,2}\\.\\d{3}\\.\\d{3}-[0-9kK]")) {
-                System.out.println("Error: El RUT debe tener el formato XX.XXX.XXX-Y.");
-                return null;
-            }
-            if (maps.getMapStudent().containsKey(rut)) {
-                System.out.println("Error: Ya existe un estudiante con el RUT " + rut);
-                return null;
-            }
-
-            System.out.print("Ingrese nombre del estudiante: ");
-            String nombre = r.readLine().trim();
-            if (nombre.isEmpty()) {
-                System.out.println("Error: El nombre no puede estar vacío.");
-                return null;
-            }
-
-            System.out.print("Ingrese correo del estudiante: ");
-            String correo = r.readLine().trim();
-            if (!correo.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
-                System.out.println("Error: Formato de correo inválido.");
-                return null;
-            }
-
-            System.out.print("Ingrese teléfono del estudiante: ");
-            String telefonoStr = r.readLine().trim();
-            int telefono;
-            try {
-                telefono = Integer.parseInt(telefonoStr);
-                if (telefono <= 0) {
-                    System.out.println("Error: El teléfono debe ser un número positivo.");
-                    return null;
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Error: El teléfono debe ser un número válido.");
-                return null;
-            }
-
-            System.out.print("Ingrese tramo socioeconómico (0.0 a 100.0): ");
-            String tramoStr = r.readLine().trim();
-            float tramoSocioeconomico;
-            try {
-                tramoSocioeconomico = Float.parseFloat(tramoStr);
-                if (tramoSocioeconomico < 0 || tramoSocioeconomico > 100) {
-                    System.out.println("Error: El tramo socioeconómico debe estar entre 0.0 y 100.0.");
-                    return null;
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Error: El tramo socioeconómico debe ser un número válido.");
-                return null;
-            }
-
-            System.out.print("Ingrese carrera del estudiante: ");
-            String carrera = r.readLine().trim();
-            if (carrera.isEmpty()) {
-                System.out.println("Error: La carrera no puede estar vacía.");
-                return null;
-            }
-
-            System.out.print("Ingrese dirección del estudiante (formato Región: X; Ciudad: Y; Calle: Z): ");
-            String direccion = r.readLine().trim();
-
-            System.out.print("Ingrese institución del estudiante: ");
-            String institucion = r.readLine().trim();
-            if (institucion.isEmpty()) {
-                System.out.println("Error: La institución no puede estar vacía.");
-                return null;
-            }
-
-            System.out.print("Ingrese aprobación estimada (0.0 a 100.0): ");
-            String aprobacionStr = r.readLine().trim();
-            float aprobacionEstimada;
-            try {
-                aprobacionEstimada = Float.parseFloat(aprobacionStr);
-                if (aprobacionEstimada < 0 || aprobacionEstimada > 100) {
-                    System.out.println("Error: La aprobación estimada debe estar entre 0.0 y 100.0.");
-                    return null;
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Error: La aprobación estimada debe ser un número válido.");
-                return null;
-            }
-
-            return new Student(nombre, rut, direccion, correo, telefono, tramoSocioeconomico, carrera, institucion, aprobacionEstimada);
-        } catch (IOException e) {
-            System.out.println("Error de entrada/salida: " + e.getMessage());
-            return null;
-        }
     }
 
 }

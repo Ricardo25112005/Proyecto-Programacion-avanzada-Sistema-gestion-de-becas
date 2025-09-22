@@ -1,22 +1,24 @@
 rut,nombre,correo,telefono,tramo_socioeconomico,carrera,direccion,institucion,aprobacion_estimada
-18.425.725-2,Pedro Campos,pedrocampos@gmail.com,981490936,68.6,Ingeniería Civil,"Región: Biobío; Ciudad: Concepción; Calle: Calle 951",Universidad de Concepción,73.4
-26.297.500-7,Luis Pérez,luispérez@gmail.com,977781554,65.1,Medicina,"Región: Metropolitana; Ciudad: Santiago; Calle: Calle 441",Pontificia Universidad Católica de Chile,97.9
-12.914.965-4,María González,maríagonzález@gmail.com,916034530,60.0,Arquitectura,"Región: Biobío; Ciudad: Concepción; Calle: Calle 935",Universidad de La Frontera,79.6
-27.816.750-4,Carlos Rivas,carlosrivas@gmail.com,998667147,68.5,Derecho,"Región: O'Higgins; Ciudad: Rancagua; Calle: Calle 265",Universidad de Concepción,92.8
 24.341.639-4,Valentina Muñoz,valentinamuñoz@gmail.com,953824076,61.9,Psicología,"Región: Antofagasta; Ciudad: Antofagasta; Calle: Calle 802",Universidad de Santiago de Chile,79.9
-18.550.674-7,Jorge Sánchez,jorgesánchez@gmail.com,983679771,35.7,Ingeniería Comercial,"Región: Maule; Ciudad: Talca; Calle: Calle 170",Universidad Austral de Chile,76.2
-23.274.381-5,Camila Fuentes,camilafuentes@gmail.com,965510153,44.8,Odontología,"Región: Araucanía; Ciudad: Temuco; Calle: Calle 910",Universidad Católica del Norte,80.3
-27.997.702-5,Felipe Díaz,felipedíaz@gmail.com,990442880,62.7,Enfermería,"Región: Antofagasta; Ciudad: Antofagasta; Calle: Calle 706",Pontificia Universidad Católica de Valparaíso,65.8
-21.488.108-9,Sofía Morales,sofíamorales@gmail.com,994261990,30.1,Periodismo,"Región: Valparaíso; Ciudad: Valparaíso; Calle: Calle 856",Pontificia Universidad Católica de Chile,79.7
-24.912.642-1,Diego Herrera,diegoherrera@gmail.com,900202027,40.9,Ingeniería Eléctrica,"Región: Valparaíso; Ciudad: Valparaíso; Calle: Calle 993",Universidad de Concepción,79.9
-29.355.514-8,Paula Reyes,paulareyes@gmail.com,906825377,35.0,Ingeniería en Computación,"Región: Metropolitana; Ciudad: Santiago; Calle: Calle 216",Universidad Técnica Federico Santa María,60.4
-23.649.301-2,Matías Vargas,matíasvargas@gmail.com,946765612,49.4,Sociología,"Región: Atacama; Ciudad: Copiapó; Calle: Calle 189",Universidad de Valparaíso,74.6
+18.425.725-2,Pedro Campos,pedrocampos@gmail.com,981490936,68.6,Ingeniería Civil,"Región: Biobío; Ciudad: Concepción; Calle: Calle 951",Universidad de Concepción,73.4
 25.946.664-2,Constanza Silva,constanzasilva@gmail.com,943186484,31.6,Trabajo Social,"Región: Valparaíso; Ciudad: Valparaíso; Calle: Calle 489",Universidad de La Frontera,81.3
+21.488.108-9,Sofía Morales,sofíamorales@gmail.com,994261990,30.1,Periodismo,"Región: Valparaíso; Ciudad: Valparaíso; Calle: Calle 856",Pontificia Universidad Católica de Chile,79.7
 18.112.893-4,Ignacio Rojas,ignaciorojas@gmail.com,903270442,53.9,Pedagogía en Matemáticas,"Región: Los Lagos; Ciudad: Puerto Montt; Calle: Calle 842",Universidad Austral de Chile,62.8
 11.914.155-2,Francisca Castro,franciscacastro@gmail.com,943013614,66.3,Pedagogía en Historia,"Región: Araucanía; Ciudad: Temuco; Calle: Calle 290",Universidad Técnica Federico Santa María,91.8
-29.305.279-3,Tomás Medina,tomásmedina@gmail.com,980217646,54.3,Cine,"Región: O'Higgins; Ciudad: Rancagua; Calle: Calle 18",Pontificia Universidad Católica de Chile,77.4
-12.525.590-0,Josefa Navarro,josefanavarro@gmail.com,941074028,36.1,Arte,"Región: O'Higgins; Ciudad: Rancagua; Calle: Calle 363",Pontificia Universidad Católica de Valparaíso,77.1
-11.273.790-4,Sebastián Paredes,sebastiánparedes@gmail.com,981142172,39.9,Música,"Región: Valparaíso; Ciudad: Valparaíso; Calle: Calle 484",Universidad de Concepción,77.6
-12.304.644-3,Antonia Carrasco,antoniacarrasco@gmail.com,915441142,48.8,Biología,"Región: O'Higgins; Ciudad: Rancagua; Calle: Calle 201",Universidad de La Frontera,74.7
+26.297.500-7,Luis Pérez,luispérez@gmail.com,977781554,65.1,Medicina,"Región: Metropolitana; Ciudad: Santiago; Calle: Calle 441",Pontificia Universidad Católica de Chile,97.9
+24.912.642-1,Diego Herrera,diegoherrera@gmail.com,900202027,40.9,Ingeniería Eléctrica,"Región: Valparaíso; Ciudad: Valparaíso; Calle: Calle 993",Universidad de Concepción,79.9
+23.649.301-2,Matías Vargas,matíasvargas@gmail.com,946765612,49.4,Sociología,"Región: Atacama; Ciudad: Copiapó; Calle: Calle 189",Universidad de Valparaíso,74.6
 17.714.854-4,Ricardo Vega,ricardovega@gmail.com,997024848,61.6,Química,"Región: Metropolitana; Ciudad: Santiago; Calle: Calle 997",Pontificia Universidad Católica de Chile,97.8
+11.273.790-4,Sebastián Paredes,sebastiánparedes@gmail.com,981142172,39.9,Música,"Región: Valparaíso; Ciudad: Valparaíso; Calle: Calle 484",Universidad de Concepción,77.6
 17.714.854-3,Ricardo Vega,ricardovega@gmail.com,997024848,61.6,Química,"Región: Metropolitana; Ciudad: Santiago; Calle: Calle 997",Pontificia Universidad Católica de Chile,97.8
+12.914.965-4,María González,maríagonzález@gmail.com,916034530,60.0,Arquitectura,"Región: Biobío; Ciudad: Concepción; Calle: Calle 935",Universidad de La Frontera,79.6
+29.305.279-3,Tomás Medina,tomásmedina@gmail.com,980217646,54.3,Cine,"Región: O'Higgins; Ciudad: Rancagua; Calle: Calle 18",Pontificia Universidad Católica de Chile,77.4
+12.304.644-3,Antonia Carrasco,antoniacarrasco@gmail.com,915441142,48.8,Biología,"Región: O'Higgins; Ciudad: Rancagua; Calle: Calle 201",Universidad de La Frontera,74.7
+23.274.381-5,Camila Fuentes,camilafuentes@gmail.com,965510153,44.8,Odontología,"Región: Araucanía; Ciudad: Temuco; Calle: Calle 910",Universidad Católica del Norte,80.3
+27.816.750-4,Carlos Rivas,carlosrivas@gmail.com,998667147,68.5,Derecho,"Región: O'Higgins; Ciudad: Rancagua; Calle: Calle 265",Universidad de Concepción,92.8
+18.550.674-7,Jorge Sánchez,jorgesánchez@gmail.com,983679771,35.7,Ingeniería Comercial,"Región: Maule; Ciudad: Talca; Calle: Calle 170",Universidad Austral de Chile,76.2
+21.984.385-2,Ricardo,rpaezb2511105@gmail.com,971247357,90.0,Informatica,Ongolmo,PUCV,100.0
+29.355.514-8,Paula Reyes,paulareyes@gmail.com,906825377,35.0,Ingeniería en Computación,"Región: Metropolitana; Ciudad: Santiago; Calle: Calle 216",Universidad Técnica Federico Santa María,60.4
+27.997.702-5,Felipe Díaz,felipedíaz@gmail.com,990442880,62.7,Enfermería,"Región: Antofagasta; Ciudad: Antofagasta; Calle: Calle 706",Pontificia Universidad Católica de Valparaíso,65.8
+22.222.222-2,pepito,mail@mail.pucv,987654321,32.0,derecho,su casa,PUCV,32.0
+12.525.590-0,Josefa Navarro,josefanavarro@gmail.com,941074028,36.1,Arte,"Región: O'Higgins; Ciudad: Rancagua; Calle: Calle 363",Pontificia Universidad Católica de Valparaíso,77.1

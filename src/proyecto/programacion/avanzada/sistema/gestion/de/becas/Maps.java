@@ -3,9 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package proyecto.programacion.avanzada.sistema.gestion.de.becas;
-import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @archivo: Maps.java
@@ -17,16 +14,19 @@ import java.util.Map;
  * @Fecha: 28-08-25
  */
 
+import javax.swing.*;
+import java.util.HashMap;
+import java.util.Map;
+
 public class Maps {
-    //Variables De Instancia
-    private Map<String,Student> mapStudent;
-    private Map<String,Beca> mapBeca;
-    //Costructor
-    public Maps(){
+    private Map<String, Student> mapStudent;
+    private Map<String, Beca> mapBeca;
+
+    public Maps() {
         this.mapStudent = new HashMap<>();
         this.mapBeca = new HashMap<>();
     }
-    
+
     public Map<String, Student> getMapStudent() {
         return mapStudent;
     }
@@ -34,55 +34,163 @@ public class Maps {
     public Map<String, Beca> getMapBeca() {
         return mapBeca;
     }
-    //Se crea función que muestra los datos del Estudiante y su lista de postulaciones con su rut
-    public void ShowPostulationsEstudiante(){
+
+    // Mostrar datos del estudiante y sus postulaciones en ventana
+    public void ShowPostulationsEstudiante() {
         try {
-            BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
-            System.out.print("Ingrese el RUT del estudiante: ");
-            String rut = r.readLine();  // Lee lo que escribe el usuario
-            
-            Student s = mapStudent.get(rut);
-            
+            String rut = JOptionPane.showInputDialog("Ingrese el RUT del estudiante:");
+            if (rut == null || rut.trim().isEmpty()) return;
+
+            Student s = mapStudent.get(rut.trim());
             if (s != null) {
-                s.showData();  // imprime los datos + postulaciones
+                // Mostrar datos del estudiante en un JOptionPane
+                s.showData();
+                // Mostrar cada postulación usando showPostulationGUI()
+                if (s.getListPostulation().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "El estudiante no tiene postulaciones registradas.");
+                } else {
+                    for (Postulation p : s.getListPostulation()) {
+                        p.showPostulation(); // Llama a la nueva función de Swing
+                    }
+                }
             } else {
-                System.out.println("No se encontró un estudiante con el RUT: " + rut);
+                JOptionPane.showMessageDialog(null, "No se encontró un estudiante con el RUT: " + rut);
             }
-        } catch (IOException e) {
-            System.out.println("Error al leer entrada: " + e.getMessage());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al mostrar datos: " + e.getMessage());
         }
     }
-    //Función que busca postulación si se tiene el rut y el id de la postulación
+
     public void buscarPostulacion(String rut, String idPostulation){
-        Student estudiante = mapStudent.get(rut);
+        if (rut == null || rut.trim().isEmpty() || idPostulation == null || idPostulation.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "RUT o ID de postulación inválido.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        Student estudiante = mapStudent.get(rut.trim());
         if (estudiante != null) {
-            // Buscar en su lista de postulaciones
+            boolean encontrada = false;
             for (Postulation p : estudiante.getListPostulation()) {
-                if (p.getIdPostulation().equals(idPostulation)) {
-                    System.out.println("Postulación encontrada: ");
-                    p.showPostulation();
-                    return;
+                if (p.getIdPostulation().equals(idPostulation.trim())) {
+                    p.showPostulation(); // mostrar en ventana
+                    encontrada = true;
+                    break;
                 }
             }
-            System.out.println("No se encontró postulación con ese ID.");
+            if (!encontrada) {
+                JOptionPane.showMessageDialog(null, "No se encontró postulación con ese ID.", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
         } else {
-            System.out.println("No existe alumno con ese RUT.");
+            JOptionPane.showMessageDialog(null, "No existe alumno con ese RUT.", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-    //Función que busca una postulación si solo se tiene el rut
+
+// Buscar todas las postulaciones de un estudiante por RUT
     public void buscarPostulacion(String rut) {
-        Student estudiante = mapStudent.get(rut);
+        if (rut == null || rut.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "RUT inválido.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        Student estudiante = mapStudent.get(rut.trim());
         if (estudiante != null) {
             if (estudiante.getListPostulation().isEmpty()) {
-                System.out.println("El alumno no tiene postulaciones registradas.");
+                JOptionPane.showMessageDialog(null, "El alumno no tiene postulaciones registradas.", "Información", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                System.out.println("Postulaciones del alumno " + estudiante.getName() + ":");
                 for (Postulation p : estudiante.getListPostulation()) {
-                    p.showPostulation(); // asumiendo que Postulation tiene este método
+                    p.showPostulation(); // mostrar cada postulación en ventana
                 }
             }
         } else {
-            System.out.println("No existe alumno con ese RUT.");
+            JOptionPane.showMessageDialog(null, "No existe alumno con ese RUT.", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
     }
+    
+    public void createFromTerminal() {
+    String rut;
+    // Validación del RUT
+    while (true) {
+        rut = JOptionPane.showInputDialog("Ingrese RUT del estudiante (formato XX.XXX.XXX-Y):");
+        if (rut == null) return; // usuario canceló
+        rut = rut.trim();
+        if (!rut.matches("\\d{1,2}\\.\\d{3}\\.\\d{3}-[0-9kK]")) {
+            JOptionPane.showMessageDialog(null, "Error: El RUT debe tener el formato XX.XXX.XXX-Y.", "Error", JOptionPane.ERROR_MESSAGE);
+            continue;
+        }
+        if (mapStudent.containsKey(rut)) {
+            JOptionPane.showMessageDialog(null, "Error: Ya existe un estudiante con el RUT " + rut, "Error", JOptionPane.ERROR_MESSAGE);
+            continue;
+        }
+        break; // RUT válido
+    }
+
+    // Pedimos el resto de los datos
+    String nombre = JOptionPane.showInputDialog("Ingrese nombre del estudiante:");
+    if (nombre == null || nombre.trim().isEmpty()) return;
+
+    String direccion = JOptionPane.showInputDialog("Ingrese dirección del estudiante:");
+    if (direccion == null || direccion.trim().isEmpty()) return;
+
+    String mail;
+    // Validación del correo
+    while (true) {
+        mail = JOptionPane.showInputDialog("Ingrese correo del estudiante:");
+        if (mail == null) return; // el usuario canceló
+        mail = mail.trim();
+        if (!mail.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+            JOptionPane.showMessageDialog(null, "Error: Formato de correo inválido.", "Error", JOptionPane.ERROR_MESSAGE);
+            continue;
+        }
+        break; // correo válido
+    }
+
+    int phone;
+    try {
+        String phoneStr = JOptionPane.showInputDialog("Ingrese teléfono del estudiante:");
+        if (phoneStr == null) return;
+        phone = Integer.parseInt(phoneStr.trim());
+        if (phone <= 0) throw new NumberFormatException();
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Error: Teléfono inválido.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    float socioEconomico;
+    try {
+        String socioStr = JOptionPane.showInputDialog("Ingrese tramo socioeconómico (0.0 a 100.0):");
+        if (socioStr == null) return;
+        socioEconomico = Float.parseFloat(socioStr.trim());
+        if (socioEconomico < 0 || socioEconomico > 100) throw new NumberFormatException();
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Error: Tramo socioeconómico inválido.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    String carrera = JOptionPane.showInputDialog("Ingrese carrera del estudiante:");
+    if (carrera == null || carrera.trim().isEmpty()) return;
+
+    String institucion = JOptionPane.showInputDialog("Ingrese institución del estudiante:");
+    if (institucion == null || institucion.trim().isEmpty()) return;
+
+    float aprobacion;
+    try {
+        String aprStr = JOptionPane.showInputDialog("Ingrese aprobación estimada (0.0 a 100.0):");
+        if (aprStr == null) return;
+        aprobacion = Float.parseFloat(aprStr.trim());
+        if (aprobacion < 0 || aprobacion > 100) throw new NumberFormatException();
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Error: Aprobación estimada inválida.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Crear el estudiante y agregarlo al mapa
+    Student nuevo = new Student(nombre, rut, direccion, mail, phone, socioEconomico, carrera, institucion, aprobacion);
+    mapStudent.put(rut,nuevo);
+
+    JOptionPane.showMessageDialog(null, "Estudiante registrado con éxito.");
+    }
+
+    
+    public void agregarAlumno(Student estudiante){mapStudent.put(estudiante.getRut(), estudiante);}
+    public void agregarBeca(Beca beca){mapBeca.put(beca.getCodigo(), beca);}
 }
