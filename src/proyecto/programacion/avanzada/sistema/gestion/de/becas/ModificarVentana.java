@@ -28,7 +28,7 @@ public class ModificarVentana extends JFrame {
     public ModificarVentana(Maps maps) {
         this.maps = maps;
         setTitle("Modificar Datos");
-        setSize(400, 250);
+        setSize(400, 300); // Aumentado para más botones
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -57,6 +57,13 @@ public class ModificarVentana extends JFrame {
         btnModificarPostulacion.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnModificarPostulacion.addActionListener(e -> modificarPostulacion());
         panel.add(btnModificarPostulacion);
+        panel.add(Box.createRigidArea(new Dimension(0, 10)));
+
+        JButton btnModificarBeca = new JButton("Modificar Beca");
+        btnModificarBeca.setMaximumSize(new Dimension(250, 40));
+        btnModificarBeca.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnModificarBeca.addActionListener(e -> modificarBeca());
+        panel.add(btnModificarBeca);
         panel.add(Box.createRigidArea(new Dimension(0, 10)));
 
         JButton btnVolver = new JButton("Volver al Menú");
@@ -97,7 +104,7 @@ public class ModificarVentana extends JFrame {
         try {
             // Crear un panel para todos los campos
             JDialog dialog = new JDialog(this, "Modificar Estudiante Completo", true);
-            dialog.setSize(400, 520); 
+            dialog.setSize(400, 440);
             dialog.setLocationRelativeTo(this);
             dialog.setLayout(new BoxLayout(dialog.getContentPane(), BoxLayout.Y_AXIS));
             dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -128,7 +135,7 @@ public class ModificarVentana extends JFrame {
             dialog.add(new JLabel("Teléfono:"));
             dialog.add(telefonoField);
             dialog.add(Box.createRigidArea(new Dimension(0, 10)));
-            dialog.add(new JLabel("Tramo Socioeconómico (0.0 a 100.0):"));
+            dialog.add(new JLabel("Tramo Socioeconómico:"));
             dialog.add(tramoField);
             dialog.add(Box.createRigidArea(new Dimension(0, 10)));
             dialog.add(new JLabel("Carrera:"));
@@ -137,7 +144,7 @@ public class ModificarVentana extends JFrame {
             dialog.add(new JLabel("Institución:"));
             dialog.add(institucionField);
             dialog.add(Box.createRigidArea(new Dimension(0, 10)));
-            dialog.add(new JLabel("Aprobación Estimada (0.0 a 100.0):"));
+            dialog.add(new JLabel("Aprobación Estimada:"));
             dialog.add(aprobacionField);
             dialog.add(Box.createRigidArea(new Dimension(0, 20)));
 
@@ -147,52 +154,89 @@ public class ModificarVentana extends JFrame {
                 try {
                     // Validar entradas
                     String nombre = nombreField.getText().trim();
-                    if (nombre.isEmpty()) throw new IllegalArgumentException("Nombre no válido.");
-                    String nuevoRut = rutField.getText().trim();
-                    if (!RUT_PATTERN.matcher(nuevoRut).matches()) throw new IllegalArgumentException("RUT no válido. Use formato XX.XXX.XXX-Y.");
+                    if (nombre.isEmpty()) {
+                        throw new IllegalArgumentException("El nombre no puede estar vacío.");
+                    }
+                    String rut = rutField.getText().trim();
+                    if (!RUT_PATTERN.matcher(rut).matches()) {
+                        throw new IllegalArgumentException("RUT no válido. Use formato XX.XXX.XXX-Y.");
+                    }
+                    if (!rut.equals(rutOriginal) && maps.getMapStudent().containsKey(rut)) {
+                        throw new IllegalArgumentException("El nuevo RUT ya existe.");
+                    }
                     String direccion = direccionField.getText().trim();
-                    if (direccion.isEmpty()) throw new IllegalArgumentException("Dirección no válida.");
+                    if (direccion.isEmpty()) {
+                        throw new IllegalArgumentException("La dirección no puede estar vacía.");
+                    }
                     String correo = correoField.getText().trim();
-                    if (correo.isEmpty() || !correo.contains("@")) throw new IllegalArgumentException("Correo no válido.");
-                    int telefono = Integer.parseInt(telefonoField.getText().trim());
-                    if (telefono <= 0) throw new NumberFormatException("Teléfono inválido.");
-                    float tramo = Float.parseFloat(tramoField.getText().trim());
-                    if (tramo < 0 || tramo > 100) throw new NumberFormatException("Tramo socioeconómico inválido.");
+                    if (correo.isEmpty() || !correo.contains("@")) {
+                        throw new IllegalArgumentException("Correo no válido.");
+                    }
+                    int telefono;
+                    try {
+                        telefono = Integer.parseInt(telefonoField.getText().trim());
+                        if (telefono < 0) {
+                            throw new IllegalArgumentException("Teléfono no puede ser negativo.");
+                        }
+                    } catch (NumberFormatException ex) {
+                        throw new IllegalArgumentException("Teléfono debe ser un número válido.");
+                    }
+                    float tramo;
+                    try {
+                        tramo = Float.parseFloat(tramoField.getText().trim());
+                        if (tramo < 0) {
+                            throw new IllegalArgumentException("Tramo socioeconómico no puede ser negativo.");
+                        }
+                    } catch (NumberFormatException ex) {
+                        throw new IllegalArgumentException("Tramo socioeconómico debe ser un número válido.");
+                    }
                     String carrera = carreraField.getText().trim();
-                    if (carrera.isEmpty()) throw new IllegalArgumentException("Carrera no válida.");
+                    if (carrera.isEmpty()) {
+                        throw new IllegalArgumentException("La carrera no puede estar vacía.");
+                    }
                     String institucion = institucionField.getText().trim();
-                    if (institucion.isEmpty()) throw new IllegalArgumentException("Institución no válida.");
-                    float aprobacion = Float.parseFloat(aprobacionField.getText().trim());
-                    if (aprobacion < 0 || aprobacion > 100) throw new NumberFormatException("Aprobación estimada inválida.");
+                    if (institucion.isEmpty()) {
+                        throw new IllegalArgumentException("La institución no puede estar vacía.");
+                    }
+                    float aprobacion;
+                    try {
+                        aprobacion = Float.parseFloat(aprobacionField.getText().trim());
+                        if (aprobacion < 0 || aprobacion > 100) {
+                            throw new IllegalArgumentException("Aprobación estimada debe estar entre 0 y 100.");
+                        }
+                    } catch (NumberFormatException ex) {
+                        throw new IllegalArgumentException("Aprobación estimada debe ser un número válido.");
+                    }
 
                     // Confirmar cambios
                     String confirmacion = String.format(
-                            "Confirmar cambios:\nNombre: %s\nRUT: %s\nDirección: %s\nCorreo: %s\nTeléfono: %d\nTramo Socioeconómico: %.1f\nCarrera: %s\nInstitución: %s\nAprobación Estimada: %.1f",
-                            nombre, nuevoRut, direccion, correo, telefono, tramo, carrera, institucion, aprobacion
-                    );
+                            "Confirmar cambios:\nNombre: %s\nRUT: %s\nDirección: %s\nCorreo: %s\nTeléfono: %d\nTramo: %.1f\nCarrera: %s\nInstitución: %s\nAprobación: %.1f",
+                            nombre, rut, direccion, correo, telefono, tramo, carrera, institucion, aprobacion);
                     int confirm = JOptionPane.showConfirmDialog(dialog, confirmacion, "Confirmar Cambios", JOptionPane.OK_CANCEL_OPTION);
                     if (confirm != JOptionPane.OK_OPTION) return;
 
                     // Actualizar estudiante
-                    Student nuevoEstudiante = new Student(nombre, nuevoRut, direccion, correo, telefono, tramo, carrera, institucion, aprobacion);
-                    nuevoEstudiante.getListPostulation().addAll(estudiante.getListPostulation()); // Conservar postulaciones
-                    maps.getMapStudent().remove(rutOriginal); // Eliminar antiguo
-                    maps.getMapStudent().put(nuevoRut, nuevoEstudiante); // Añadir nuevo
-
-                    // Actualizar RUT en postulaciones si cambió
-                    if (!nuevoRut.equals(rutOriginal)) {
-                        for (Postulation post : nuevoEstudiante.getListPostulation()) {
-                            post.setIdStudent(nuevoRut);
+                    if (!rut.equals(rutOriginal)) {
+                        maps.getMapStudent().remove(rutOriginal);
+                        estudiante.setRut(rut);
+                        for (Postulation p : estudiante.getListPostulation()) {
+                            p.setIdStudent(rut);
                         }
                     }
+                    estudiante.setName(nombre);
+                    estudiante.setAddress(direccion);
+                    estudiante.setMail(correo);
+                    estudiante.setPhone(telefono);
+                    estudiante.setSocioEconomicSection(tramo);
+                    estudiante.setCarrer(carrera);
+                    estudiante.setInstitution(institucion);
+                    estudiante.setEstimatedApproval(aprobacion);
+                    maps.getMapStudent().put(rut, estudiante);
 
                     // Guardar en CSV
                     DataLoader.guardarEstudiantes("src/resources/estudiantes.csv", maps);
-                    DataLoader.guardarPostulaciones("src/resources/postulaciones.csv", maps);
                     JOptionPane.showMessageDialog(dialog, "Estudiante modificado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                     dialog.dispose();
-                } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(dialog, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 } catch (IllegalArgumentException ex) {
                     JOptionPane.showMessageDialog(dialog, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -205,14 +249,12 @@ public class ModificarVentana extends JFrame {
     }
 
     private void modificarPostulacion() {
-        // Pedir el RUT del estudiante
-        String rut = JOptionPane.showInputDialog(this, "Ingrese el RUT del estudiante (formato XX.XXX.XXX-Y):");
+        String rut = JOptionPane.showInputDialog(this, "Ingrese RUT del estudiante (formato XX.XXX.XXX-Y):");
         if (rut == null || rut.trim().isEmpty() || !RUT_PATTERN.matcher(rut.trim()).matches()) {
             JOptionPane.showMessageDialog(this, "RUT no válido. Use formato XX.XXX.XXX-Y.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        // Buscar estudiante por RUT
         final Student estudiante = maps.getMapStudent().get(rut.trim());
         final String rutOriginal = rut.trim();
 
@@ -222,7 +264,7 @@ public class ModificarVentana extends JFrame {
         }
 
         // Verificar si tiene postulaciones
-        List<Postulation> postulaciones = estudiante.getListPostulation();
+        java.util.List<Postulation> postulaciones = estudiante.getListPostulation();
         if (postulaciones == null || postulaciones.isEmpty()) {
             JOptionPane.showMessageDialog(this, "El estudiante no tiene postulaciones registradas.", "Información", JOptionPane.INFORMATION_MESSAGE);
             return;
@@ -263,9 +305,9 @@ public class ModificarVentana extends JFrame {
 
     private void modificarPostulacionCompleta(final Student estudiante, final String rutOriginal, final Postulation postSeleccionada) {
         try {
-            // Crear un panel para todos los campos de la postulación
+            // Crear un panel para los campos de la postulación
             JDialog dialog = new JDialog(this, "Modificar Postulación", true);
-            dialog.setSize(400, 280); // Tamaño ajustado para los campos de postulación
+            dialog.setSize(400, 220);
             dialog.setLocationRelativeTo(this);
             dialog.setLayout(new BoxLayout(dialog.getContentPane(), BoxLayout.Y_AXIS));
             dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -273,15 +315,11 @@ public class ModificarVentana extends JFrame {
             // Campos de entrada
             JTextField idField = new JTextField(postSeleccionada.getIdPostulation(), 20);
             idField.setEditable(false); // ID no editable
-            JTextField idBecaField = new JTextField(postSeleccionada.getIdBeca(), 20);
             JTextField estadoField = new JTextField(postSeleccionada.getState(), 20);
             JTextField fechaField = new JTextField(postSeleccionada.getDatePostulation(), 20);
 
             dialog.add(new JLabel("ID Postulación (no editable):"));
             dialog.add(idField);
-            dialog.add(Box.createRigidArea(new Dimension(0, 10)));
-            dialog.add(new JLabel("ID Beca:"));
-            dialog.add(idBecaField);
             dialog.add(Box.createRigidArea(new Dimension(0, 10)));
             dialog.add(new JLabel("Estado (En espera/Aprobada/Rechazada):"));
             dialog.add(estadoField);
@@ -295,8 +333,6 @@ public class ModificarVentana extends JFrame {
             btnGuardar.addActionListener(e -> {
                 try {
                     // Validar entradas
-                    String idBeca = idBecaField.getText().trim();
-                    if (idBeca.isEmpty()) throw new IllegalArgumentException("ID Beca no válido.");
                     String estado = estadoField.getText().trim();
                     if (!estado.equalsIgnoreCase("En espera") && !estado.equalsIgnoreCase("Aprobada") && !estado.equalsIgnoreCase("Rechazada")) {
                         throw new IllegalArgumentException("Estado no válido. Use: En espera, Aprobada o Rechazada.");
@@ -308,14 +344,12 @@ public class ModificarVentana extends JFrame {
 
                     // Confirmar cambios
                     String confirmacion = String.format(
-                            "Confirmar cambios:\nID Postulación: %s\nID Beca: %s\nEstado: %s\nFecha: %s",
-                            postSeleccionada.getIdPostulation(), idBeca, estado, fecha
-                    );
+                            "Confirmar cambios:\nID Postulación: %s\nEstado: %s\nFecha: %s",
+                            postSeleccionada.getIdPostulation(), estado, fecha);
                     int confirm = JOptionPane.showConfirmDialog(dialog, confirmacion, "Confirmar Cambios", JOptionPane.OK_CANCEL_OPTION);
                     if (confirm != JOptionPane.OK_OPTION) return;
 
                     // Actualizar postulación
-                    postSeleccionada.setIdBeca(idBeca);
                     postSeleccionada.setState(estado);
                     postSeleccionada.setDatePostulation(fecha);
 
@@ -332,5 +366,166 @@ public class ModificarVentana extends JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error al abrir formulario: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    private void modificarBeca() {
+        // Pedir el ID de la beca
+        String codigo = JOptionPane.showInputDialog(this, "Ingrese el Codigo de la beca a modificar:");
+        if (codigo == null || codigo.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Codigo no válido.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Buscar beca por ID
+        final Beca beca = maps.getMapBeca().get(codigo.trim());
+        final String codigoOriginal = codigo.trim();
+
+        if (beca == null) {
+            JOptionPane.showMessageDialog(this, "No se encontró una beca con el Codigo: " + codigo, "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Crear formulario según tipo de beca
+        JDialog dialog = new JDialog(this, "Modificar Beca (" + beca.getTipo() + ")", true);
+        dialog.setSize(400, beca.getTipo().equals("Arancel") ? 320 : 360); // Más espacio para Manutención
+        dialog.setLocationRelativeTo(this);
+        dialog.setLayout(new BoxLayout(dialog.getContentPane(), BoxLayout.Y_AXIS));
+        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+
+        // Campos comunes
+        final JTextField codigoField = new JTextField(codigoOriginal, 20);
+        codigoField.setEditable(false); // Código no editable
+        final JTextField nombreField = new JTextField(beca.getNombre(), 20);
+        final JTextField cuposField = new JTextField(String.valueOf(beca.getCupos()), 20);
+        final JTextField requisitosField = new JTextField(beca.getRequisitos(), 20);
+
+        dialog.add(new JLabel("Código Beca (no editable):"));
+        dialog.add(codigoField);
+        dialog.add(Box.createRigidArea(new Dimension(0, 10)));
+        dialog.add(new JLabel("Nombre:"));
+        dialog.add(nombreField);
+        dialog.add(Box.createRigidArea(new Dimension(0, 10)));
+        dialog.add(new JLabel("Cupos:"));
+        dialog.add(cuposField);
+        dialog.add(Box.createRigidArea(new Dimension(0, 10)));
+        dialog.add(new JLabel("Requisitos:"));
+        dialog.add(requisitosField);
+        dialog.add(Box.createRigidArea(new Dimension(0, 10)));
+
+        // Campos específicos según tipo
+        final JTextField porcentajeField;
+        final JTextField montoField;
+        final JTextField periodoField;
+
+        if (beca.getTipo().equals("Arancel")) {
+            porcentajeField = new JTextField(String.valueOf(((BecaArancel) beca).getPorcentajeDescuento()), 20);
+            montoField = null; // No se usa
+            periodoField = null; // No se usa
+            dialog.add(new JLabel("Porcentaje de Descuento (%):"));
+            dialog.add(porcentajeField);
+            dialog.add(Box.createRigidArea(new Dimension(0, 20)));
+        } else {
+            porcentajeField = null; // No se usa
+            montoField = new JTextField(String.valueOf(((BecaManutencion) beca).getMonto()), 20);
+            periodoField = new JTextField(String.valueOf(((BecaManutencion) beca).getPeriodo()), 20);
+            dialog.add(new JLabel("Monto Manutención:"));
+            dialog.add(montoField);
+            dialog.add(Box.createRigidArea(new Dimension(0, 10)));
+            dialog.add(new JLabel("Período (meses):"));
+            dialog.add(periodoField);
+            dialog.add(Box.createRigidArea(new Dimension(0, 20)));
+        }
+
+        // Botón Guardar
+        JButton btnGuardar = new JButton("Guardar");
+        btnGuardar.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnGuardar.addActionListener(e -> {
+            try {
+                // Validar entradas comunes
+                String nombre = nombreField.getText().trim();
+                if (nombre.isEmpty()) {
+                    throw new IllegalArgumentException("El nombre no puede estar vacío.");
+                }
+                int cupos;
+                try {
+                    cupos = Integer.parseInt(cuposField.getText().trim());
+                    if (cupos < 0) {
+                        throw new IllegalArgumentException("Los cupos no pueden ser negativos.");
+                    }
+                } catch (NumberFormatException ex) {
+                    throw new IllegalArgumentException("Cupos debe ser un número entero válido.");
+                }
+                String requisitos = requisitosField.getText().trim();
+                if (requisitos.isEmpty()) {
+                    throw new IllegalArgumentException("Los requisitos no pueden estar vacíos.");
+                }
+
+                // Validar entradas específicas
+                if (beca.getTipo().equals("Arancel")) {
+                    float porcentaje;
+                    try {
+                        porcentaje = Float.parseFloat(porcentajeField.getText().trim());
+                        if (porcentaje < 0 || porcentaje > 100) {
+                            throw new IllegalArgumentException("El porcentaje debe estar entre 0 y 100.");
+                        }
+                    } catch (NumberFormatException ex) {
+                        throw new IllegalArgumentException("Porcentaje debe ser un número válido.");
+                    }
+                    // Confirmar cambios
+                    String confirmacion = String.format(
+                            "Confirmar cambios:\nCódigo: %s\nNombre: %s\nCupos: %d\nRequisitos: %s\nPorcentaje: %.1f%%",
+                            codigoOriginal, nombre, cupos, requisitos, porcentaje);
+                    int confirm = JOptionPane.showConfirmDialog(dialog, confirmacion, "Confirmar Cambios", JOptionPane.OK_CANCEL_OPTION);
+                    if (confirm != JOptionPane.OK_OPTION) return;
+
+                    // Actualizar beca
+                    beca.setNombre(nombre);
+                    beca.setCupos(cupos);
+                    beca.setRequisitos(requisitos);
+                    ((BecaArancel) beca).setPorcentajeDescuento(porcentaje);
+                } else if (beca.getTipo().equals("Manutención")) {
+                    int monto;
+                    try {
+                        monto = Integer.parseInt(montoField.getText().trim());
+                        if (monto < 0) {
+                            throw new IllegalArgumentException("El monto no puede ser negativo.");
+                        }
+                    } catch (NumberFormatException ex) {
+                        throw new IllegalArgumentException("Monto debe ser un número entero válido.");
+                    }
+                    int periodo;
+                    try {
+                        periodo = Integer.parseInt(periodoField.getText().trim());
+                        if (periodo < 0) {
+                            throw new IllegalArgumentException("El período no puede ser negativo.");
+                        }
+                    } catch (NumberFormatException ex) {
+                        throw new IllegalArgumentException("Período debe ser un número entero válido.");
+                    }
+                    // Confirmar cambios
+                    String confirmacion = String.format(
+                            "Confirmar cambios:\nCódigo: %s\nNombre: %s\nCupos: %d\nRequisitos: %s\nMonto: %d\nPeríodo: %d",
+                            codigoOriginal, nombre, cupos, requisitos, monto, periodo);
+                    int confirm = JOptionPane.showConfirmDialog(dialog, confirmacion, "Confirmar Cambios", JOptionPane.OK_CANCEL_OPTION);
+                    if (confirm != JOptionPane.OK_OPTION) return;
+
+                    // Actualizar beca
+                    beca.setNombre(nombre);
+                    beca.setCupos(cupos);
+                    beca.setRequisitos(requisitos);
+                    ((BecaManutencion) beca).setMonto(monto);
+                    ((BecaManutencion) beca).setPeriodo(periodo);
+                }
+
+                // Guardar en CSV
+                DataLoader.guardarBecas("src/resources/becas.csv", maps);
+                JOptionPane.showMessageDialog(dialog, "Beca modificada exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                dialog.dispose();
+            } catch (IllegalArgumentException ex) {
+                JOptionPane.showMessageDialog(dialog, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        });
+        dialog.add(btnGuardar);
+        dialog.setVisible(true);
     }
 }
