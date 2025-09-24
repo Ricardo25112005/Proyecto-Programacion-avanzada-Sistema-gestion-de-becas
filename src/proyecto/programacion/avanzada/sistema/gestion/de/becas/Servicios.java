@@ -23,7 +23,7 @@ public class Servicios extends JFrame {
     public Servicios(Maps maps) {
         this.maps = maps;
         setTitle("Sistema de Gestión de Becas");
-        setSize(500, 400); // Tamaño para formato de lista
+        setSize(700, 500); // Tamaño para formato de lista
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -56,10 +56,21 @@ public class Servicios extends JFrame {
         btnRegistrarBeca.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnRegistrarBeca.addActionListener(e -> {
             dispose(); // Cierra menú
-            // maps.RegistrarBeca(); // Descomentar cuando se implemente
+            //maps.registrarBeca(); // Descomentar cuando se implemente
             volverAlMenu(); // Reabre menú
         });
         panel.add(btnRegistrarBeca);
+        panel.add(Box.createRigidArea(new Dimension(0, 10)));
+        
+        JButton btnRegistrarPostulacion = new JButton("Registrar Postulacion");
+        btnRegistrarPostulacion.setMaximumSize(new Dimension(300, 40));
+        btnRegistrarPostulacion.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnRegistrarPostulacion.addActionListener(e -> {
+            dispose(); // Cierra menú
+            maps.registrarPostulacion();
+            volverAlMenu(); // Reabre menú
+        });
+        panel.add(btnRegistrarPostulacion);
         panel.add(Box.createRigidArea(new Dimension(0, 10)));
 
         JButton btnMostrarPostulaciones = new JButton("Mostrar Datos Estudiante");
