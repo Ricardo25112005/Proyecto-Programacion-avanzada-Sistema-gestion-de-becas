@@ -109,86 +109,99 @@ public class Maps {
     
     public void createFromTerminal() {
     String rut;
-    // Validación del RUT
-    while (true) {
-        rut = JOptionPane.showInputDialog("Ingrese RUT del estudiante (formato XX.XXX.XXX-Y):");
-        if (rut == null) return; // usuario canceló
-        rut = rut.trim();
-        if (!rut.matches("\\d{1,2}\\.\\d{3}\\.\\d{3}-[0-9kK]")) {
-            JOptionPane.showMessageDialog(null, "Error: El RUT debe tener el formato XX.XXX.XXX-Y.", "Error", JOptionPane.ERROR_MESSAGE);
-            continue;
+
+        // Validación del RUT
+        while (true) {
+            try {
+                rut = JOptionPane.showInputDialog("Ingrese RUT del estudiante (formato XX.XXX.XXX-Y):");
+                if (rut == null) return; // usuario canceló
+                rut = rut.trim();
+
+                if (!rut.matches("\\d{1,2}\\.\\d{3}\\.\\d{3}-[0-9kK]")) {
+                    throw new RutInvalidoException("El RUT debe tener el formato XX.XXX.XXX-Y.");
+                }
+                if (mapStudent.containsKey(rut)) {
+                    throw new RutInvalidoException("Ya existe un estudiante con el RUT " + rut);
+                }
+                break; // RUT válido
+            } catch (RutInvalidoException e) {
+                JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
-        if (mapStudent.containsKey(rut)) {
-            JOptionPane.showMessageDialog(null, "Error: Ya existe un estudiante con el RUT " + rut, "Error", JOptionPane.ERROR_MESSAGE);
-            continue;
+
+        // Nombre
+        String nombre = JOptionPane.showInputDialog("Ingrese nombre del estudiante:");
+        if (nombre == null || nombre.trim().isEmpty()) return;
+
+        // Dirección
+        String direccion = JOptionPane.showInputDialog("Ingrese dirección del estudiante:");
+        if (direccion == null || direccion.trim().isEmpty()) return;
+
+        // Validación del correo
+        String mail;
+        while (true) {
+            try {
+                mail = JOptionPane.showInputDialog("Ingrese correo del estudiante:");
+                if (mail == null) return; // el usuario canceló
+                mail = mail.trim();
+                if (!mail.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+                    throw new CorreoInvalidoException("Formato de correo inválido.");
+                }
+                break; // correo válido
+            } catch (CorreoInvalidoException e) {
+                JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
-        break; // RUT válido
-    }
 
-    // Pedimos el resto de los datos
-    String nombre = JOptionPane.showInputDialog("Ingrese nombre del estudiante:");
-    if (nombre == null || nombre.trim().isEmpty()) return;
-
-    String direccion = JOptionPane.showInputDialog("Ingrese dirección del estudiante:");
-    if (direccion == null || direccion.trim().isEmpty()) return;
-
-    String mail;
-    // Validación del correo
-    while (true) {
-        mail = JOptionPane.showInputDialog("Ingrese correo del estudiante:");
-        if (mail == null) return; // el usuario canceló
-        mail = mail.trim();
-        if (!mail.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
-            JOptionPane.showMessageDialog(null, "Error: Formato de correo inválido.", "Error", JOptionPane.ERROR_MESSAGE);
-            continue;
+        // Teléfono
+        int phone;
+        try {
+            String phoneStr = JOptionPane.showInputDialog("Ingrese teléfono del estudiante:");
+            if (phoneStr == null) return;
+            phone = Integer.parseInt(phoneStr.trim());
+            if (phone <= 0) throw new NumberFormatException();
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Error: Teléfono inválido.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
-        break; // correo válido
-    }
 
-    int phone;
-    try {
-        String phoneStr = JOptionPane.showInputDialog("Ingrese teléfono del estudiante:");
-        if (phoneStr == null) return;
-        phone = Integer.parseInt(phoneStr.trim());
-        if (phone <= 0) throw new NumberFormatException();
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(null, "Error: Teléfono inválido.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
+        // Socioeconómico
+        float socioEconomico;
+        try {
+            String socioStr = JOptionPane.showInputDialog("Ingrese tramo socioeconómico (0.0 a 100.0):");
+            if (socioStr == null) return;
+            socioEconomico = Float.parseFloat(socioStr.trim());
+            if (socioEconomico < 0 || socioEconomico > 100) throw new NumberFormatException();
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Error: Tramo socioeconómico inválido.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
-    float socioEconomico;
-    try {
-        String socioStr = JOptionPane.showInputDialog("Ingrese tramo socioeconómico (0.0 a 100.0):");
-        if (socioStr == null) return;
-        socioEconomico = Float.parseFloat(socioStr.trim());
-        if (socioEconomico < 0 || socioEconomico > 100) throw new NumberFormatException();
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(null, "Error: Tramo socioeconómico inválido.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
+        // Carrera
+        String carrera = JOptionPane.showInputDialog("Ingrese carrera del estudiante:");
+        if (carrera == null || carrera.trim().isEmpty()) return;
 
-    String carrera = JOptionPane.showInputDialog("Ingrese carrera del estudiante:");
-    if (carrera == null || carrera.trim().isEmpty()) return;
+        // Institución
+        String institucion = JOptionPane.showInputDialog("Ingrese institución del estudiante:");
+        if (institucion == null || institucion.trim().isEmpty()) return;
 
-    String institucion = JOptionPane.showInputDialog("Ingrese institución del estudiante:");
-    if (institucion == null || institucion.trim().isEmpty()) return;
+        // Aprobación
+        float aprobacion;
+        try {
+            String aprStr = JOptionPane.showInputDialog("Ingrese aprobación estimada (0.0 a 100.0):");
+            if (aprStr == null) return;
+            aprobacion = Float.parseFloat(aprStr.trim());
+            if (aprobacion < 0 || aprobacion > 100) throw new NumberFormatException();
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Error: Aprobación estimada inválida.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
-    float aprobacion;
-    try {
-        String aprStr = JOptionPane.showInputDialog("Ingrese aprobación estimada (0.0 a 100.0):");
-        if (aprStr == null) return;
-        aprobacion = Float.parseFloat(aprStr.trim());
-        if (aprobacion < 0 || aprobacion > 100) throw new NumberFormatException();
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(null, "Error: Aprobación estimada inválida.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
+        // Crear el estudiante y agregarlo al mapa
+        Student nuevo = new Student(nombre, rut, direccion, mail, phone, socioEconomico, carrera, institucion, aprobacion);
+        mapStudent.put(rut,nuevo);
 
-    // Crear el estudiante y agregarlo al mapa
-    Student nuevo = new Student(nombre, rut, direccion, mail, phone, socioEconomico, carrera, institucion, aprobacion);
-    mapStudent.put(rut,nuevo);
-
-    JOptionPane.showMessageDialog(null, "Estudiante registrado con éxito.");
+        JOptionPane.showMessageDialog(null, "Estudiante registrado con éxito.");
     }
 
     
