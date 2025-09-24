@@ -203,6 +203,93 @@ public class Maps {
 
         JOptionPane.showMessageDialog(null, "Estudiante registrado con éxito.");
     }
+    
+    public void registrarBeca(){
+        String idBeca;
+        
+        // Validación del id de la beca
+        while (true) {
+            try {
+                idBeca = JOptionPane.showInputDialog("Ingrese ID de la beca (formato ABC-XX):");
+                if (idBeca == null) return; // usuario canceló
+                idBeca = idBeca.trim();
+
+                if (!idBeca.matches("^[A-Z]{3}-\\d{2}$")) {
+                    throw new IdBecaInvalidoException("El ID de la beca debe tener el formato ABC-XX.");
+                }
+                if (mapStudent.containsKey(idBeca)) {
+                    throw new IdBecaInvalidoException("Ya existe una beca con el codigo " + idBeca);
+                }
+                break; // Id Invalido
+            } catch (IdBecaInvalidoException e) {
+                JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        
+        // Nombre de la beca
+        String nomBeca = JOptionPane.showInputDialog("Ingrese nombre de la beca:");
+        if (nomBeca == null || nomBeca.trim().isEmpty()) return;
+
+        int cupos;
+        try {
+            String cuposStr = JOptionPane.showInputDialog("Ingrese la cantidad de cupos de la beca:");
+            if (cuposStr == null) return;
+            cupos = Integer.parseInt(cuposStr.trim());
+            if (cupos <= 0) throw new NumberFormatException();
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Error: formato de cupo inválido.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        String requisitos = JOptionPane.showInputDialog("Ingrese los requisitos de la beca:");
+        if (requisitos == null || nomBeca.trim().isEmpty()) return;
+        
+        String tipoBeca = JOptionPane.showInputDialog("La beca que desea registrar es de Arancel o Manutencion?");
+        
+        if (tipoBeca.equals("Manutencion")){
+            int monto;
+            try {
+                String montoStr = JOptionPane.showInputDialog("Ingrese el monto de la beca:");
+                if (montoStr == null) return;
+                monto = Integer.parseInt(montoStr.trim());
+                if (cupos <= 0) throw new NumberFormatException();
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Error: formato de monto inválido.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            int periodo;
+            try {
+                String periodoStr = JOptionPane.showInputDialog("Ingrese el periodo de la beca:");
+                if (periodoStr == null) return;
+                periodo = Integer.parseInt(periodoStr.trim());
+                if (cupos <= 0) throw new NumberFormatException();
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Error: formato de periodo inválido.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            BecaManutencion nuevaBeca = new BecaManutencion(idBeca, nomBeca, cupos, requisitos, monto, periodo);
+            mapBeca.put(idBeca, nuevaBeca);
+        } 
+        else if (tipoBeca.equals("Arancel")) {
+            int porcentajeDescuento;
+            try {
+                String porcentajeDescuentoStr = JOptionPane.showInputDialog("Ingrese el monto de la beca:");
+                if (porcentajeDescuentoStr == null) return;
+                porcentajeDescuento = Integer.parseInt(porcentajeDescuentoStr.trim());
+                if (cupos <= 0) throw new NumberFormatException();
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Error: formato de porcentaje inválido.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            BecaArancel nuevaBeca = new BecaArancel(idBeca, nomBeca, cupos, requisitos, porcentajeDescuento);
+            mapBeca.put(idBeca, nuevaBeca);
+        }
+        
+        JOptionPane.showMessageDialog(null, "Beca registrada con éxito.");
+    }
 
     
     public void agregarAlumno(Student estudiante){mapStudent.put(estudiante.getRut(), estudiante);}

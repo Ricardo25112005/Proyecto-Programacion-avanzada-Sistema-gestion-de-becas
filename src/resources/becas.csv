@@ -1,6 +1,6 @@
 tipo,codigo_beca,nombre_beca,porcentaje_descuento,requisito,monto_Manutencion,cupos,Periodo
-Arancel,BPR-01,Beca Presidente de la República,48.5,Promedio >= 6.0,,40,
 Manutención,BJG-02,Beca Juan Gómez Millas,,Promedio >= 5.5,1150000,20,4
+Arancel,BPR-01,Beca Presidente de la República,48.5,Promedio >= 6.0,,40,
 Arancel,BPC-07,Beca de Continuidad de Estudios,40.0,Cambio de institución en cierre,,12,
 Arancel,BIA-05,Beca Indígena,35.0,Acreditar ascendencia indígena,,15,
 Manutención,BEX-06,Beca Excelencia Académica,,Top 10% promoción,1300000,25,10
