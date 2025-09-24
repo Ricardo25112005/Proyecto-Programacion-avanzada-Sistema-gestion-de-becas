@@ -26,6 +26,10 @@ public class BecaArancel extends Beca {
             + "Porcentaje de Descuento: " + porcentajeDescuento + "%";
         javax.swing.JOptionPane.showMessageDialog(null, mensaje, "Información de la Beca", javax.swing.JOptionPane.INFORMATION_MESSAGE);
     }
+    
+    @Override
+    public String getTipo(){return "Arancel";}
+    
     public float getPorcentajeDescuento() { return porcentajeDescuento; }
     public void setPorcentajeDescuento(float porcentajeDescuento) { this.porcentajeDescuento = porcentajeDescuento; }
 }

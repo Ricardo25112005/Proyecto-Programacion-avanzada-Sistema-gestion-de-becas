@@ -74,4 +74,5 @@ public abstract class Beca {
     public void setNombre(String nomBeca) {this.nomBeca = nomBeca;}
     public void setCupos(int cupos) {this.cupos = cupos;}
     public void setRequisitos(String requisitos) {this.requisitos = requisitos;}
+    public abstract String getTipo();
 }

@@ -29,6 +29,8 @@ public class BecaManutencion extends Beca{
             + "Cantidad de Meses: " + periodo;
         javax.swing.JOptionPane.showMessageDialog(null, mensaje, "Información de la Beca", javax.swing.JOptionPane.INFORMATION_MESSAGE);
     }
+    @Override
+    public String getTipo(){return "Manutención";}
     
     public int getMonto() { return monto; }
     public void setMonto(int monto) { this.monto = monto; }

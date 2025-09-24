@@ -119,10 +119,10 @@ public class DataLoader {
                 String monto = "";
                 String periodo = "";
 
-                if (b instanceof BecaArancel) {
+                if (b.getTipo().equals("Arancel")) {
                     tipo = "Arancel";
                     porcentaje = String.format(Locale.US, "%.1f", ((BecaArancel) b).getPorcentajeDescuento());
-                } else if (b instanceof BecaManutencion) {
+                } else if (b.getTipo().equals("Manutención")) {
                     tipo = "Manutención";
                     monto = String.valueOf(((BecaManutencion) b).getMonto());
                     periodo = String.valueOf(((BecaManutencion) b).getPeriodo());
