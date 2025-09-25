@@ -173,6 +173,7 @@ public class DataLoader {
                 Student s = maps.getMapStudent().get(d[2]);
                 if (s != null) {
                     s.addPostulation(p);
+                    maps.aumentarCont();
                 } else {
                     System.out.println("No se encontró estudiante con RUT: " + d[2]);
 }

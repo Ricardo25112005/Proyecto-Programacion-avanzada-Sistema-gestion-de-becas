@@ -18,14 +18,18 @@ import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Iterator;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Maps {
     private Map<String, Student> mapStudent;
     private Map<String, Beca> mapBeca;
+    private int cont;
 
     public Maps() {
         this.mapStudent = new HashMap<>();
         this.mapBeca = new HashMap<>();
+        this.cont = 10;
     }
 
     public Map<String, Student> getMapStudent() {
@@ -488,4 +492,79 @@ public class Maps {
             );
         }
     }
+    
+    public void registrarPostulacion() {
+        try {
+            //Pedir RUT del estudiante con validación
+            String rut;
+            while (true) {
+                try {
+                    rut = JOptionPane.showInputDialog("Ingrese el RUT del estudiante (formato XX.XXX.XXX-Y):");
+                    if (rut == null || rut.trim().isEmpty()) return;
+                    rut = rut.trim();
+
+                    // Validar formato con excepción personalizada
+                    if (!rut.matches("\\d{1,2}\\.\\d{3}\\.\\d{3}-[0-9kK]")) {
+                        throw new RutInvalidoException("El RUT debe tener el formato XX.XXX.XXX-Y.");
+                    }
+
+                    if (!mapStudent.containsKey(rut)) {
+                        throw new RutInvalidoException("No se encontró un estudiante con ese RUT.");
+                    }
+
+                    break; // válido → salimos del while
+                } catch (RutInvalidoException e) {
+                    JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+
+            Student estudiante = mapStudent.get(rut);
+
+            //Pedir ID de la beca
+            String idBeca = JOptionPane.showInputDialog("Ingrese el ID de la beca:");
+            if (idBeca == null || idBeca.trim().isEmpty()) return;
+            idBeca = idBeca.trim();
+
+            Beca beca = mapBeca.get(idBeca);
+            if (beca == null) {
+                JOptionPane.showMessageDialog(null, "No se encontró una beca con ese ID.");
+                return;
+            }
+
+            //Validar que el estudiante no tenga ya una postulación a esa beca
+            for (Postulation p : estudiante.getListPostulation()) {
+                if (p.getIdBeca().equals(idBeca)) {
+                    JOptionPane.showMessageDialog(null, "El estudiante ya está postulando a esta beca.");
+                    return;
+                }
+            }
+
+            //Generar ID único para la postulación
+            String idPostulation = String.format("PST-%03d", cont);
+            cont++;
+
+            //Registrar la fecha en formato dd/MM/yy
+            DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yy");
+            String fecha = LocalDate.now().format(formato);
+
+            //Crear la nueva postulación
+            Postulation nueva = new Postulation(idPostulation, rut, idBeca, fecha);
+
+            //Agregar al estudiante y a la beca
+            estudiante.addPostulation(nueva);
+            beca.agregarPostulacion(nueva);
+
+            //Confirmar
+            JOptionPane.showMessageDialog(null,
+                "✓ Postulación registrada con éxito.\n" +
+                "ID Postulación: " + idPostulation + "\n" +
+                "Estudiante: " + estudiante.getName() + "\n" +
+                "Beca: " + beca.getNombre() + "\n" +
+                "Fecha: " + fecha);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al registrar postulación: " + e.getMessage());
+        }
+    }
+    
+    public void aumentarCont(){cont += 1;}
 }

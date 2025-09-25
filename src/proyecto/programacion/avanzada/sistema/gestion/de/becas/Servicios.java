@@ -56,7 +56,7 @@ public class Servicios extends JFrame {
         btnRegistrarBeca.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnRegistrarBeca.addActionListener(e -> {
             dispose(); // Cierra menú
-            //maps.registrarBeca(); // Descomentar cuando se implemente
+            maps.registrarBeca(); // Descomentar cuando se implemente
             volverAlMenu(); // Reabre menú
         });
         panel.add(btnRegistrarBeca);
