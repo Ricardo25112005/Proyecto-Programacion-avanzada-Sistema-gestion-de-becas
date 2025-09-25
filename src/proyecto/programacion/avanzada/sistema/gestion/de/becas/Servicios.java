@@ -139,6 +139,19 @@ public class Servicios extends JFrame {
         });
         panel.add(btnEliminarDatos);
         panel.add(Box.createRigidArea(new Dimension(0, 10)));
+        
+        // En la clase Servicios.java, dentro del constructor, después de los otros botones:
+
+        JButton btnGenerarReporte = new JButton("Generar Reporte TXT");
+        btnGenerarReporte.setMaximumSize(new Dimension(300, 40));
+        btnGenerarReporte.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnGenerarReporte.addActionListener(e -> {
+            dispose();
+            ReportGenerator.generarReporteDesdeMenu(maps);
+            volverAlMenu();
+        });
+        panel.add(btnGenerarReporte);
+        panel.add(Box.createRigidArea(new Dimension(0, 10)));
 
         JButton btnSalir = new JButton("Salir");
         btnSalir.setMaximumSize(new Dimension(300, 40));

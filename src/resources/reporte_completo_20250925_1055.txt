@@ -1,0 +1,416 @@
+================================================================================
+SISTEMA DE GESTIÓN DE BECAS - REPORTE DEL SISTEMA
+Generado: 25/09/2025 10:55:57
+================================================================================
+
+ESTADÍSTICAS GENERALES DEL SISTEMA
+--------------------------------------------------
+Total de Estudiantes registrados: 23
+Total de Becas disponibles: 10
+Total de Postulaciones realizadas: 20
+
+LISTADO DE ESTUDIANTES REGISTRADOS
+--------------------------------------------------
+1. RUT: 24.341.639-4
+   Nombre: Valentina Muñoz
+   Carrera: Psicología
+   Institución: Universidad de Santiago de Chile
+   Postulaciones realizadas: 1
+   Aprobación estimada: 79,9%
+   Tramo socioeconómico: 61,9
+
+2. RUT: 18.425.725-2
+   Nombre: Pedro Campos
+   Carrera: Ingeniería Civil
+   Institución: Universidad de Concepción
+   Postulaciones realizadas: 1
+   Aprobación estimada: 73,4%
+   Tramo socioeconómico: 68,6
+
+3. RUT: 25.946.664-2
+   Nombre: Constanza Silva
+   Carrera: Trabajo Social
+   Institución: Universidad de La Frontera
+   Postulaciones realizadas: 1
+   Aprobación estimada: 81,3%
+   Tramo socioeconómico: 31,6
+
+4. RUT: 21.488.108-9
+   Nombre: Sofía Morales
+   Carrera: Periodismo
+   Institución: Pontificia Universidad Católica de Chile
+   Postulaciones realizadas: 1
+   Aprobación estimada: 79,7%
+   Tramo socioeconómico: 30,1
+
+5. RUT: 18.112.893-4
+   Nombre: Ignacio Rojas
+   Carrera: Pedagogía en Matemáticas
+   Institución: Universidad Austral de Chile
+   Postulaciones realizadas: 0
+   Aprobación estimada: 62,8%
+   Tramo socioeconómico: 53,9
+
+6. RUT: 11.914.155-2
+   Nombre: Francisca Castro
+   Carrera: Pedagogía en Historia
+   Institución: Universidad Técnica Federico Santa María
+   Postulaciones realizadas: 1
+   Aprobación estimada: 91,8%
+   Tramo socioeconómico: 66,3
+
+7. RUT: 26.297.500-7
+   Nombre: Luis Pérez
+   Carrera: Medicina
+   Institución: Pontificia Universidad Católica de Chile
+   Postulaciones realizadas: 0
+   Aprobación estimada: 97,9%
+   Tramo socioeconómico: 65,1
+
+8. RUT: 24.912.642-1
+   Nombre: Diego Herrera
+   Carrera: Ingeniería Eléctrica
+   Institución: Universidad de Concepción
+   Postulaciones realizadas: 0
+   Aprobación estimada: 79,9%
+   Tramo socioeconómico: 40,9
+
+9. RUT: 23.649.301-2
+   Nombre: Matías Vargas
+   Carrera: Sociología
+   Institución: Universidad de Valparaíso
+   Postulaciones realizadas: 1
+   Aprobación estimada: 74,6%
+   Tramo socioeconómico: 49,4
+
+10. RUT: 17.714.854-4
+   Nombre: Ricardo Vega
+   Carrera: Química
+   Institución: Pontificia Universidad Católica de Chile
+   Postulaciones realizadas: 1
+   Aprobación estimada: 97,8%
+   Tramo socioeconómico: 61,6
+
+11. RUT: 11.273.790-4
+   Nombre: Sebastián Paredes
+   Carrera: Música
+   Institución: Universidad de Concepción
+   Postulaciones realizadas: 1
+   Aprobación estimada: 77,6%
+   Tramo socioeconómico: 39,9
+
+12. RUT: 17.714.854-3
+   Nombre: Ricardo Vega
+   Carrera: Química
+   Institución: Pontificia Universidad Católica de Chile
+   Postulaciones realizadas: 0
+   Aprobación estimada: 97,8%
+   Tramo socioeconómico: 61,6
+
+13. RUT: 12.914.965-4
+   Nombre: María González
+   Carrera: Arquitectura
+   Institución: Universidad de La Frontera
+   Postulaciones realizadas: 0
+   Aprobación estimada: 79,6%
+   Tramo socioeconómico: 60,0
+
+14. RUT: 29.305.279-3
+   Nombre: Tomás Medina
+   Carrera: Cine
+   Institución: Pontificia Universidad Católica de Chile
+   Postulaciones realizadas: 0
+   Aprobación estimada: 77,4%
+   Tramo socioeconómico: 54,3
+
+15. RUT: 12.304.644-3
+   Nombre: Antonia Carrasco
+   Carrera: Biología
+   Institución: Universidad de La Frontera
+   Postulaciones realizadas: 1
+   Aprobación estimada: 74,7%
+   Tramo socioeconómico: 48,8
+
+16. RUT: 23.274.381-5
+   Nombre: Camila Fuentes
+   Carrera: Odontología
+   Institución: Universidad Católica del Norte
+   Postulaciones realizadas: 1
+   Aprobación estimada: 80,3%
+   Tramo socioeconómico: 44,8
+
+17. RUT: 27.816.750-4
+   Nombre: Carlos Rivas
+   Carrera: Derecho
+   Institución: Universidad de Concepción
+   Postulaciones realizadas: 4
+   Aprobación estimada: 92,8%
+   Tramo socioeconómico: 68,5
+
+18. RUT: 18.550.674-7
+   Nombre: Jorge Sánchez
+   Carrera: Ingeniería Comercial
+   Institución: Universidad Austral de Chile
+   Postulaciones realizadas: 2
+   Aprobación estimada: 76,2%
+   Tramo socioeconómico: 35,7
+
+19. RUT: 21.984.385-2
+   Nombre: Ricardo
+   Carrera: Informatica
+   Institución: PUCV
+   Postulaciones realizadas: 0
+   Aprobación estimada: 100,0%
+   Tramo socioeconómico: 90,0
+
+20. RUT: 29.355.514-8
+   Nombre: Paula Reyes
+   Carrera: Ingeniería en Computación
+   Institución: Universidad Técnica Federico Santa María
+   Postulaciones realizadas: 2
+   Aprobación estimada: 60,4%
+   Tramo socioeconómico: 35,0
+
+21. RUT: 27.997.702-5
+   Nombre: Felipe Díaz
+   Carrera: Enfermería
+   Institución: Pontificia Universidad Católica de Valparaíso
+   Postulaciones realizadas: 2
+   Aprobación estimada: 65,8%
+   Tramo socioeconómico: 62,7
+
+22. RUT: 22.222.222-2
+   Nombre: pepito
+   Carrera: derecho
+   Institución: PUCV
+   Postulaciones realizadas: 0
+   Aprobación estimada: 32,0%
+   Tramo socioeconómico: 32,0
+
+23. RUT: 12.525.590-0
+   Nombre: Josefa Navarro
+   Carrera: Arte
+   Institución: Pontificia Universidad Católica de Valparaíso
+   Postulaciones realizadas: 0
+   Aprobación estimada: 77,1%
+   Tramo socioeconómico: 36,1
+
+LISTADO DE BECAS DISPONIBLES
+--------------------------------------------------
+1. Código: BJG-02
+   Nombre: Beca Juan Gómez Millas
+   Tipo: Manutención
+   Cupos disponibles: 20
+   Postulaciones recibidas: 0
+   Monto: $1.150.000
+   Período: 4 meses
+   Requisitos: Promedio >= 5.5
+
+2. Código: BPR-01
+   Nombre: Beca Presidente de la República
+   Tipo: Arancel
+   Cupos disponibles: 40
+   Postulaciones recibidas: 0
+   Porcentaje de descuento: 48,5%
+   Requisitos: Promedio >= 6.0
+
+3. Código: BPC-07
+   Nombre: Beca de Continuidad de Estudios
+   Tipo: Arancel
+   Cupos disponibles: 12
+   Postulaciones recibidas: 0
+   Porcentaje de descuento: 40,0%
+   Requisitos: Cambio de institución en cierre
+
+4. Código: BIA-05
+   Nombre: Beca Indígena
+   Tipo: Arancel
+   Cupos disponibles: 15
+   Postulaciones recibidas: 0
+   Porcentaje de descuento: 35,0%
+   Requisitos: Acreditar ascendencia indígena
+
+5. Código: BEX-06
+   Nombre: Beca Excelencia Académica
+   Tipo: Manutención
+   Cupos disponibles: 25
+   Postulaciones recibidas: 0
+   Monto: $1.300.000
+   Período: 10 meses
+   Requisitos: Top 10% promoción
+
+6. Código: BDA-08
+   Nombre: Beca de Alimentación JUNAEB
+   Tipo: Manutención
+   Cupos disponibles: 100
+   Postulaciones recibidas: 0
+   Monto: $32.000
+   Período: 7 meses
+   Requisitos: Estudiantes con vulnerabilidad
+
+7. Código: BNE-03
+   Nombre: Beca Nuevo Milenio
+   Tipo: Arancel
+   Cupos disponibles: 30
+   Postulaciones recibidas: 0
+   Porcentaje de descuento: 50,0%
+   Requisitos: Promedio >= 5.0
+
+8. Código: BVA-04
+   Nombre: Beca Vocación de Profesor
+   Tipo: Manutención
+   Cupos disponibles: 10
+   Postulaciones recibidas: 0
+   Monto: $1.800.000
+   Período: 2 meses
+   Requisitos: Puntaje PDT alto
+
+9. Código: BFD-09
+   Nombre: Beca de Fotocopias y Documentos
+   Tipo: Arancel
+   Cupos disponibles: 50
+   Postulaciones recibidas: 0
+   Porcentaje de descuento: 30,0%
+   Requisitos: Apoyo en materiales de estudio
+
+10. Código: BCT-10
+   Nombre: Beca de Talento Artístico
+   Tipo: Manutención
+   Cupos disponibles: 8
+   Postulaciones recibidas: 0
+   Monto: $700.000
+   Período: 5 meses
+   Requisitos: Demostrar habilidades artísticas
+
+DETALLE DE POSTULACIONES
+--------------------------------------------------
+1. ID Postulación: PST-013
+   Estudiante: Valentina Muñoz (24.341.639-4)
+   Beca: Beca de Continuidad de Estudios (BPC-07)
+   Estado: En espera
+   Fecha: 24/08/25
+
+2. ID Postulación: PST-014
+   Estudiante: Pedro Campos (18.425.725-2)
+   Beca: Beca de Talento Artístico (BCT-10)
+   Estado: En espera
+   Fecha: 12/09/25
+
+3. ID Postulación: PST-016
+   Estudiante: Constanza Silva (25.946.664-2)
+   Beca: Beca Juan Gómez Millas (BJG-02)
+   Estado: En espera
+   Fecha: 22/09/25
+
+4. ID Postulación: PST-002
+   Estudiante: Sofía Morales (21.488.108-9)
+   Beca: Beca Indígena (BIA-05)
+   Estado: En espera
+   Fecha: 05/08/25
+
+5. ID Postulación: PST-011
+   Estudiante: Francisca Castro (11.914.155-2)
+   Beca: Beca Excelencia Académica (BEX-06)
+   Estado: En espera
+   Fecha: 18/08/25
+
+6. ID Postulación: PST-008
+   Estudiante: Matías Vargas (23.649.301-2)
+   Beca: Beca de Talento Artístico (BCT-10)
+   Estado: En espera
+   Fecha: 18/08/25
+
+7. ID Postulación: PST-007
+   Estudiante: Ricardo Vega (17.714.854-4)
+   Beca: Beca Juan Gómez Millas (BJG-02)
+   Estado: En espera
+   Fecha: 17/08/25
+
+8. ID Postulación: PST-001
+   Estudiante: Sebastián Paredes (11.273.790-4)
+   Beca: Beca Nuevo Milenio (BNE-03)
+   Estado: En espera
+   Fecha: 24/08/25
+
+9. ID Postulación: PST-006
+   Estudiante: Antonia Carrasco (12.304.644-3)
+   Beca: Beca Indígena (BIA-05)
+   Estado: En espera
+   Fecha: 04/08/25
+
+10. ID Postulación: PST-015
+   Estudiante: Camila Fuentes (23.274.381-5)
+   Beca: Beca Nuevo Milenio (BNE-03)
+   Estado: En espera
+   Fecha: 26/08/25
+
+11. ID Postulación: PST-003
+   Estudiante: Carlos Rivas (27.816.750-4)
+   Beca: Beca Vocación de Profesor (BVA-04)
+   Estado: En espera
+   Fecha: 18/08/25
+
+12. ID Postulación: PST-012
+   Estudiante: Carlos Rivas (27.816.750-4)
+   Beca: Beca Excelencia Académica (BEX-06)
+   Estado: En espera
+   Fecha: 12/09/25
+
+13. ID Postulación: PST-019
+   Estudiante: Carlos Rivas (27.816.750-4)
+   Beca: Beca Nuevo Milenio (BNE-03)
+   Estado: En espera
+   Fecha: 23/08/25
+
+14. ID Postulación: PST-020
+   Estudiante: Carlos Rivas (27.816.750-4)
+   Beca: Beca Vocación de Profesor (BVA-04)
+   Estado: En espera
+   Fecha: 04/08/25
+
+15. ID Postulación: PST-004
+   Estudiante: Jorge Sánchez (18.550.674-7)
+   Beca: Beca Indígena (BIA-05)
+   Estado: En espera
+   Fecha: 15/08/25
+
+16. ID Postulación: PST-010
+   Estudiante: Jorge Sánchez (18.550.674-7)
+   Beca: Beca Presidente de la República (BPR-01)
+   Estado: En espera
+   Fecha: 24/08/25
+
+17. ID Postulación: PST-017
+   Estudiante: Paula Reyes (29.355.514-8)
+   Beca: Beca de Continuidad de Estudios (BPC-07)
+   Estado: En espera
+   Fecha: 04/09/25
+
+18. ID Postulación: PST-018
+   Estudiante: Paula Reyes (29.355.514-8)
+   Beca: Beca Nuevo Milenio (BNE-03)
+   Estado: En espera
+   Fecha: 05/08/25
+
+19. ID Postulación: PST-005
+   Estudiante: Felipe Díaz (27.997.702-5)
+   Beca: Beca Presidente de la República (BPR-01)
+   Estado: En espera
+   Fecha: 28/09/25
+
+20. ID Postulación: PST-009
+   Estudiante: Felipe Díaz (27.997.702-5)
+   Beca: Beca Presidente de la República (BPR-01)
+   Estado: En espera
+   Fecha: 05/09/25
+
+RESUMEN DE POSTULACIONES POR ESTADO
+--------------------------------------------------
+Aprobada: 0 postulaciones
+En espera: 20 postulaciones
+Rechazada: 0 postulaciones
+
+================================================================================
+FIN DEL REPORTE
+Sistema desarrollado por: Daniel Monsalve, Ricardo Paez, Vicente Novoa
+================================================================================
