@@ -221,7 +221,7 @@ public class Maps {
                 if (!idBeca.matches("^[A-Z]{3}-\\d{2}$")) {
                     throw new IdBecaInvalidoException("El ID de la beca debe tener el formato ABC-XX.");
                 }
-                if (mapStudent.containsKey(idBeca)) {
+                if (mapBeca.containsKey(idBeca)) {
                     throw new IdBecaInvalidoException("Ya existe una beca con el codigo " + idBeca);
                 }
                 break; // Id Invalido
@@ -248,15 +248,15 @@ public class Maps {
         String requisitos = JOptionPane.showInputDialog("Ingrese los requisitos de la beca:");
         if (requisitos == null || nomBeca.trim().isEmpty()) return;
         
-        String tipoBeca = JOptionPane.showInputDialog("La beca que desea registrar es de Arancel o Manutencion?");
+        String tipoBeca = JOptionPane.showInputDialog("¿La beca que desea registrar es de Arancel o Manutencion? (Ingrese Arancel/Manutencion): ");
         
         if (tipoBeca.equals("Manutencion")){
             int monto;
             try {
-                String montoStr = JOptionPane.showInputDialog("Ingrese el monto de la beca:");
+                String montoStr = JOptionPane.showInputDialog("Ingrese el monto de la beca: ");
                 if (montoStr == null) return;
                 monto = Integer.parseInt(montoStr.trim());
-                if (cupos <= 0) throw new NumberFormatException();
+                if (monto <= 0) throw new NumberFormatException();
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Error: formato de monto inválido.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
@@ -264,10 +264,10 @@ public class Maps {
             
             int periodo;
             try {
-                String periodoStr = JOptionPane.showInputDialog("Ingrese el periodo de la beca:");
+                String periodoStr = JOptionPane.showInputDialog("Ingrese el periodo de la beca: ");
                 if (periodoStr == null) return;
                 periodo = Integer.parseInt(periodoStr.trim());
-                if (cupos <= 0) throw new NumberFormatException();
+                if (periodo <= 0) throw new NumberFormatException();
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Error: formato de periodo inválido.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
@@ -279,10 +279,10 @@ public class Maps {
         else if (tipoBeca.equals("Arancel")) {
             int porcentajeDescuento;
             try {
-                String porcentajeDescuentoStr = JOptionPane.showInputDialog("Ingrese el monto de la beca:");
+                String porcentajeDescuentoStr = JOptionPane.showInputDialog("Ingrese el monto de la beca: ");
                 if (porcentajeDescuentoStr == null) return;
                 porcentajeDescuento = Integer.parseInt(porcentajeDescuentoStr.trim());
-                if (cupos <= 0) throw new NumberFormatException();
+                if (porcentajeDescuento <= 0) throw new NumberFormatException();
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Error: formato de porcentaje inválido.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
