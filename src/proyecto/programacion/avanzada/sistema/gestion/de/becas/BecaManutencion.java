@@ -20,7 +20,7 @@ public class BecaManutencion extends Beca{
     
     @Override
     public void mostrarBeca(){
-        String mensaje = "=== Beca de Arancel ===\n"
+        String mensaje = "=== Beca de Manuntención ===\n"
             + "Código: " + getCodigo() + "\n"
             + "Nombre: " + getNombre() + "\n"
             + "Cupos: " + getCupos() + "\n"

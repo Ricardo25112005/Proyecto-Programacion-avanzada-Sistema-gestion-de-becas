@@ -81,6 +81,19 @@ public class Servicios extends JFrame {
             maps.ShowPostulationsEstudiante();
             volverAlMenu();
         });
+        // Botón para filtrar postulaciones por estado y tipo de beca
+        JButton btnFiltrarPostulaciones = new JButton("Filtrar Postulaciones por Estado/Tipo");
+        btnFiltrarPostulaciones.setMaximumSize(new Dimension(300, 40)); // Establece el tamaño máximo del botón
+        btnFiltrarPostulaciones.setAlignmentX(Component.CENTER_ALIGNMENT); // Centra el botón en el panel
+        // Agrega un ActionListener para ejecutar el filtrado y volver al menú principal
+        btnFiltrarPostulaciones.addActionListener(e -> {
+            dispose(); // Cierra la ventana actual
+            maps.filtrarPostulacionesPorEstadoYTipoBeca(); // Llama al método de filtrado en Maps
+            volverAlMenu(); // Reabre el menú principal
+        });
+        panel.add(btnFiltrarPostulaciones); // Añade el botón al panel
+        panel.add(Box.createRigidArea(new Dimension(0, 10))); // Espacio vertical entre botones
+        
         panel.add(btnMostrarPostulaciones);
         panel.add(Box.createRigidArea(new Dimension(0, 10)));
 

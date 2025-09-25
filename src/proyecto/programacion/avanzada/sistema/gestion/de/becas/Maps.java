@@ -493,6 +493,50 @@ public class Maps {
         }
     }
     
+    public void filtrarPostulacionesPorEstadoYTipoBeca() {
+    // Opciones predefinidas para el estado de la postulación
+    String[] estados = {"En espera", "Aprobada", "Rechazada"};
+    // Opciones predefinidas para el tipo de beca
+    String[] tipos = {"Arancel", "Manutención"};
+    
+    // Solicita al usuario que seleccione un estado mediante un diálogo desplegable
+    String estado = (String) JOptionPane.showInputDialog(null, "Seleccione estado:", "Filtrar Postulaciones",
+            JOptionPane.QUESTION_MESSAGE, null, estados, estados[0]);
+    if (estado == null) return; // Cancela si el usuario cierra el diálogo
+    
+    // Solicita al usuario que seleccione un tipo de beca mediante un diálogo desplegable
+    String tipo = (String) JOptionPane.showInputDialog(null, "Seleccione tipo de beca:", "Filtrar Postulaciones",
+            JOptionPane.QUESTION_MESSAGE, null, tipos, tipos[0]);
+    if (tipo == null) return; // Cancela si el usuario cierra el diálogo
+
+    // Construye el mensaje con los resultados del filtrado
+    StringBuilder resultado = new StringBuilder("Postulaciones " + estado + " para becas de tipo " + tipo + ":\n");
+    int count = 0; // Contador de postulaciones encontradas
+    
+    // Itera sobre todos los estudiantes en mapStudent
+    for (Student s : mapStudent.values()) {
+        // Itera sobre las postulaciones de cada estudiante
+        for (Postulation p : s.getListPostulation()) {
+            // Obtiene la beca asociada a la postulación
+            Beca b = mapBeca.get(p.getIdBeca());
+            // Verifica si la postulación coincide con el estado y tipo seleccionados
+            if (b != null && p.getState().equalsIgnoreCase(estado) && b.getTipo().equalsIgnoreCase(tipo)) {
+                resultado.append("ID: ").append(p.getIdPostulation())
+                        .append(", Estudiante: ").append(s.getName())
+                        .append(", Beca: ").append(b.getNombre()).append("\n");
+                count++;
+            }
+        }
+    }
+    
+    // Muestra los resultados o un mensaje si no se encontraron postulaciones
+    if (count == 0) {
+        JOptionPane.showMessageDialog(null, "No se encontraron postulaciones.", "Información", JOptionPane.INFORMATION_MESSAGE);
+    } else {
+        JOptionPane.showMessageDialog(null, resultado.toString(), "Resultados", JOptionPane.INFORMATION_MESSAGE);
+    }
+}
+    
     public void registrarPostulacion() {
         try {
             //Pedir RUT del estudiante con validación
