@@ -104,7 +104,7 @@ public class ModificarVentana extends JFrame {
         try {
             // Crear un panel para todos los campos
             JDialog dialog = new JDialog(this, "Modificar Estudiante Completo", true);
-            dialog.setSize(400, 440);
+            dialog.setSize(400, 520);
             dialog.setLocationRelativeTo(this);
             dialog.setLayout(new BoxLayout(dialog.getContentPane(), BoxLayout.Y_AXIS));
             dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
