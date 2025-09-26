@@ -5,6 +5,7 @@
 package proyecto.programacion.avanzada.sistema.gestion.de.becas;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.*;
 /**
  * @archivo: Beca.java
  * @Project: Sistema Gestion De Becas
@@ -50,16 +51,40 @@ public abstract class Beca {
         return postulaciones;
     }
     
-    //Mostrar una postulacion en particular
-    public void mostrarPostulaciones(){
-        if (postulaciones.isEmpty()){
-            System.out.println("No hay postulaciones para " + nomBeca);
-        } else {
-            System.out.println("Postulaciones para " + nomBeca + ":");
-            for (Postulation p : postulaciones) {
-                System.out.println(" - " + p);
+    
+    public void mostrarPostulaciones() {
+        if (postulaciones.isEmpty()) {
+            JOptionPane.showMessageDialog(null, 
+                "No hay postulaciones para la beca: " + nomBeca, 
+                "Postulaciones de " + nomBeca, 
+                JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        for (Postulation p : postulaciones) {
+            p.showPostulation(); // Mostrar cada postulación en una ventana separada
+        }
+    }
+
+    // Sobrecarga: Mostrar una postulación específica por ID en ventana
+    public void mostrarPostulaciones(String idPostulation) {
+        for (Postulation p : postulaciones) {
+            if (p.getIdPostulation().equals(idPostulation)) {
+                String mensaje = "ID Postulación: " + p.getIdPostulation() + "\n" +
+                                "Estudiante (RUT): " + p.getIdStudent() + "\n" +
+                                "Fecha: " + p.getDatePostulation() + "\n" +
+                                "Estado: " + p.getState();
+                JOptionPane.showMessageDialog(null, 
+                    mensaje, 
+                    "Postulación " + idPostulation + " de " + nomBeca, 
+                    JOptionPane.INFORMATION_MESSAGE);
+                return;
             }
         }
+        JOptionPane.showMessageDialog(null, 
+            "No se encontró la postulación con ID: " + idPostulation, 
+            "Postulación no encontrada", 
+            JOptionPane.ERROR_MESSAGE);
     }
     
     public void mostrarBeca(){}

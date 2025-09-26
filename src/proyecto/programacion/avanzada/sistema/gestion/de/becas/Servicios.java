@@ -23,7 +23,7 @@ public class Servicios extends JFrame {
     public Servicios(Maps maps) {
         this.maps = maps;
         setTitle("Sistema de Gestión de Becas");
-        setSize(700, 500); // Tamaño para formato de lista
+        setSize(700, 600); // Tamaño para formato de lista
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -97,7 +97,7 @@ public class Servicios extends JFrame {
         panel.add(btnMostrarPostulaciones);
         panel.add(Box.createRigidArea(new Dimension(0, 10)));
 
-        JButton btnBuscar = new JButton("Buscar Postulación");
+        JButton btnBuscar = new JButton("Buscar Postulación Estudiante");
         btnBuscar.setMaximumSize(new Dimension(300, 40));
         btnBuscar.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnBuscar.addActionListener(e -> {
@@ -106,6 +106,17 @@ public class Servicios extends JFrame {
             volverAlMenu();
         });
         panel.add(btnBuscar);
+        panel.add(Box.createRigidArea(new Dimension(0, 10)));
+        
+        JButton btnBuscarPostBeca = new JButton("Buscar Postulación Beca");
+        btnBuscarPostBeca.setMaximumSize(new Dimension(300, 40));
+        btnBuscarPostBeca.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnBuscarPostBeca.addActionListener(e -> {
+            dispose();
+            maps.buscarPostulacionBeca();
+            volverAlMenu();
+        });
+        panel.add(btnBuscarPostBeca);
         panel.add(Box.createRigidArea(new Dimension(0, 10)));
         
         JButton btnBuscarBeca = new JButton("Buscar Beca");

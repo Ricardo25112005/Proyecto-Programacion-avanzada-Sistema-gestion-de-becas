@@ -610,5 +610,45 @@ public class Maps {
         }
     }
     
+    public void buscarPostulacionBeca() {
+        try {
+            // 1. Pedir ID de la beca
+            String idBeca = JOptionPane.showInputDialog("Ingrese ID de la beca:");
+            if (idBeca == null || idBeca.trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, 
+                    "ID de beca no válido.", 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            idBeca = idBeca.trim();
+
+            // 2. Buscar la beca
+            Beca beca = mapBeca.get(idBeca);
+            if (beca == null) {
+                JOptionPane.showMessageDialog(null, 
+                    "Beca no encontrada.", 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // 3. Pedir ID de postulación (opcional)
+            String idPost = JOptionPane.showInputDialog("Ingrese ID de la postulación (dejar vacío para mostrar todas):");
+            if (idPost == null || idPost.trim().isEmpty()) {
+                // Mostrar todas las postulaciones
+                beca.mostrarPostulaciones();
+            } else {
+                // Mostrar postulación específica
+                beca.mostrarPostulaciones(idPost.trim());
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, 
+                "Error al buscar postulación: " + e.getMessage(), 
+                "Error", 
+                JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
     public void aumentarCont(){cont += 1;}
 }

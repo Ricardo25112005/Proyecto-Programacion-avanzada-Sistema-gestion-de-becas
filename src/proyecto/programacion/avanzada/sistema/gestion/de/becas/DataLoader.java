@@ -176,7 +176,13 @@ public class DataLoader {
                     maps.aumentarCont();
                 } else {
                     System.out.println("No se encontró estudiante con RUT: " + d[2]);
-}
+                }
+                Beca b = maps.getMapBeca().get(d[1]);
+                if (b != null){
+                    b.agregarPostulacion(p);
+                }else {
+                    System.out.println("No se encontró Beca con Id: " + d[1]);
+                }
             }
         } catch (IOException e) {
             System.err.println("Error al leer postulaciones: " + e.getMessage());
