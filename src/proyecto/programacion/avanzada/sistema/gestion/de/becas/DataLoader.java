@@ -143,8 +143,6 @@ public class DataLoader {
             }
 
             bw.flush(); // asegurar que se escriba todo
-            System.out.println("Becas guardadas correctamente en " + archivo);
-
         } catch (IOException e) {
             System.err.println("Error al guardar becas: " + e.getMessage());
         }
