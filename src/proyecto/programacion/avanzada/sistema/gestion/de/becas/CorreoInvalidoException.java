@@ -5,8 +5,13 @@
 package proyecto.programacion.avanzada.sistema.gestion.de.becas;
 
 /**
- *
- * @author rpaez
+ * @archivo: CorreoInvalidoException.java
+ * @Project: Sistema Gestion De Becas
+ * @Descripcion: Extencion de una excepcion para capturar errores de formato de correo invalido 
+ * @author Daniel Monsalve, Ricardo Paez, Vicente Novoa
+ * @Lenguaje: Java
+ * @version: 1.0.0
+ * @Fecha: 27-09-25
  */
 public class CorreoInvalidoException extends Exception{
     public CorreoInvalidoException(String mensaje){super(mensaje);}

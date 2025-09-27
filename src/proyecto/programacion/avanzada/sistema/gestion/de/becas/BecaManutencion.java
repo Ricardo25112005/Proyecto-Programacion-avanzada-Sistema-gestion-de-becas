@@ -5,8 +5,13 @@
 package proyecto.programacion.avanzada.sistema.gestion.de.becas;
 
 /**
- *
- * @author rpaez
+ * @archivo: BecaManutencion.java
+ * @Project: Sistema Gestion De Becas
+ * @Descripcion: Clase que representa a una BecaManutención (Subclase de Beca)
+ * @author Daniel Monsalve, Ricardo Paez, Vicente Novoa
+ * @Lenguaje: Java
+ * @version: 1.0.0
+ * @Fecha: 27-09-25
  */
 public class BecaManutencion extends Beca{
     private int monto;

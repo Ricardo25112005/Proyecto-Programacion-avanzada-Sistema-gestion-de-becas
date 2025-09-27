@@ -5,8 +5,13 @@
 package proyecto.programacion.avanzada.sistema.gestion.de.becas;
 
 /**
- *
- * @author rpaez
+ * @archivo: BecaArancel.java
+ * @Project: Sistema Gestion De Becas
+ * @Descripcion: Clase que representa a una BecaArancel (Subclase de Beca)
+ * @author Daniel Monsalve, Ricardo Paez, Vicente Novoa
+ * @Lenguaje: Java
+ * @version: 1.0.0
+ * @Fecha: 27-09-25
  */
 public class BecaArancel extends Beca {
     private float porcentajeDescuento;

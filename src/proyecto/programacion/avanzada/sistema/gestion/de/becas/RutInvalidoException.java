@@ -5,8 +5,13 @@
 package proyecto.programacion.avanzada.sistema.gestion.de.becas;
 
 /**
- *
- * @author rpaez
+ * @archivo: RutInvalidoException.java
+ * @Project: Sistema Gestion De Becas
+ * @Descripcion: Extencion de una excepcion para capturar errores del rut 
+ * @author Daniel Monsalve, Ricardo Paez, Vicente Novoa
+ * @Lenguaje: Java
+ * @version: 1.0.0
+ * @Fecha: 27-09-25
  */
 public class RutInvalidoException extends Exception{
     public RutInvalidoException(String mensaje){super(mensaje);}
