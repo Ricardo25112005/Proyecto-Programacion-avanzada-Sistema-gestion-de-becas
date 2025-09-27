@@ -99,11 +99,6 @@ public class Student {
     public void addPostulation(Postulation p) {
         listPostulation.add(p);
     }
-    //Función que añade una postulación a la lista si se tiene solo los datos de la postulación, no el objeto
-    public void addPostulation(String idPostulation, String idStudent, String idBeca, String datePostulation) {
-        Postulation p = new Postulation(idPostulation, this.rut, idBeca, datePostulation);
-        listPostulation.add(p);
-    }
     //Función que elimina una postulación de la lista
     public void removePostulation(Postulation p) {
         listPostulation.remove(p);

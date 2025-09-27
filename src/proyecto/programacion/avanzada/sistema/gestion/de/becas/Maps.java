@@ -592,7 +592,7 @@ public class Maps {
             String fecha = LocalDate.now().format(formato);
 
             //Crear la nueva postulación
-            Postulation nueva = new Postulation(idPostulation, rut, idBeca, fecha);
+            Postulation nueva = new Postulation(idPostulation, rut, idBeca, fecha, "En espera");
 
             //Agregar al estudiante y a la beca
             estudiante.addPostulation(nueva);

@@ -35,11 +35,11 @@ public class Postulation {
         this.datePostulation = "";
     }
     //Constructor que inicializa una postulación con los datos proporcionados, estableciendo el estado por defecto como "En espera"
-    public Postulation(String idPostulation, String idStudent, String idBeca, String datePostulation){
+    public Postulation(String idPostulation, String idStudent, String idBeca, String datePostulation, String state){
         this.idPostulation = idPostulation;
         this.idStudent = idStudent;
         this.idBeca = idBeca;
-        this.state = "En espera";
+        this.state = state;
         this.datePostulation = datePostulation;
     }
     

@@ -161,8 +161,8 @@ public class DataLoader {
                         d[0],  // codigo postulacion
                         d[2],  // rut estudiante
                         d[1],  // codigo beca
-                        //d[3],  // estado
-                        d[4]   // fecha
+                        d[4],  // fecha
+                        d[3]   // estado
                 );
                 
                 // ====================
