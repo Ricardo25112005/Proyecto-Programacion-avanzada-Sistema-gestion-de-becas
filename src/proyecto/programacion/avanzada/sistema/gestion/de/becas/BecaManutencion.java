@@ -17,7 +17,7 @@ public class BecaManutencion extends Beca{
         this.monto = monto;
         this.periodo = periodo;
     }
-    
+    //sobreescritura de la funcion en la clase beca, para mostrar todos los elementos de este tipo de beca
     @Override
     public void mostrarBeca(){
         String mensaje = "=== Beca de Manuntención ===\n"

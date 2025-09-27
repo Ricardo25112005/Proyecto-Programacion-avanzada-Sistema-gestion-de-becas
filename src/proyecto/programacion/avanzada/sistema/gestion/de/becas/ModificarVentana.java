@@ -24,7 +24,7 @@ public class ModificarVentana extends JFrame {
     private Maps maps;
     private static final Pattern RUT_PATTERN = Pattern.compile("^\\d{1,2}\\.\\d{3}\\.\\d{3}-[0-9K]$"); // Formato XX.XXX.XXX-Y
     private static final Pattern DATE_PATTERN = Pattern.compile("^\\d{2}/\\d{2}/\\d{2}$"); // Formato dd/MM/yy
-
+    //se muestra la ventana especifica para la modificacion de elementos
     public ModificarVentana(Maps maps) {
         this.maps = maps;
         setTitle("Modificar Datos");
@@ -78,7 +78,7 @@ public class ModificarVentana extends JFrame {
         add(panel);
         setVisible(true);
     }
-
+    //funcion que modifica los elementos de un estudiante
     private void modificarAlumno() {
         // Pedir el RUT del estudiante
         String rut = JOptionPane.showInputDialog(this, "Ingrese el RUT del estudiante a modificar (formato XX.XXX.XXX-Y):");
@@ -247,7 +247,7 @@ public class ModificarVentana extends JFrame {
             JOptionPane.showMessageDialog(this, "Error al abrir formulario: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+    //Funcion que modifica una postulacion
     private void modificarPostulacion() {
         String rut = JOptionPane.showInputDialog(this, "Ingrese RUT del estudiante (formato XX.XXX.XXX-Y):");
         if (rut == null || rut.trim().isEmpty() || !RUT_PATTERN.matcher(rut.trim()).matches()) {
@@ -367,7 +367,7 @@ public class ModificarVentana extends JFrame {
             JOptionPane.showMessageDialog(this, "Error al abrir formulario: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+    //Funcion que modifica una beca
     private void modificarBeca() {
         // Pedir el ID de la beca
         String codigo = JOptionPane.showInputDialog(this, "Ingrese el Codigo de la beca a modificar:");

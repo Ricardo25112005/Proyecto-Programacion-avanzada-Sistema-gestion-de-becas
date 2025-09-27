@@ -19,7 +19,7 @@ import java.awt.event.*;
     
 public class Servicios extends JFrame {
     private Maps maps;
-
+    //Se genera el menú principal del cual se llaman las funciones segun el boton que presione el usuario
     public Servicios(Maps maps) {
         this.maps = maps;
         setTitle("Sistema de Gestión de Becas");
@@ -179,7 +179,7 @@ public class Servicios extends JFrame {
             new Servicios(maps).setVisible(true);
         });
     }
-
+    //Funcion para Buscar una postulacion de un estudiante
     private void buscarPostulacion() {
         String rut = JOptionPane.showInputDialog(this, "Ingrese RUT del estudiante (formato XX.XXX.XXX-Y):");
         if (rut == null || rut.trim().isEmpty()) return;
@@ -192,7 +192,7 @@ public class Servicios extends JFrame {
             maps.buscarPostulacion(rut, idPost);
         }
     }
-
+    //Funcion que muestra un submenu con las opciones de eliminar Estudiante, beca y postulacion, ademas de ejecutar las funciones
     private void mostrarSubmenuEliminacion() {
         // Crear opciones para el submenú
         String[] opciones = {

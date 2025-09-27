@@ -51,7 +51,7 @@ public abstract class Beca {
         return postulaciones;
     }
     
-    
+    //muestra todas las postulaciones de la beca
     public void mostrarPostulaciones() {
         if (postulaciones.isEmpty()) {
             JOptionPane.showMessageDialog(null, 

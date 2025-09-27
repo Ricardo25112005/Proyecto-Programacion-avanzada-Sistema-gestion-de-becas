@@ -110,7 +110,7 @@ public class ReportGenerator {
         writer.println("=".repeat(80));
         writer.println();
     }
-    
+    //funcion que escribe estadisticas generales del programa
     private void escribirEstadisticasGenerales(PrintWriter writer) {
         writer.println("ESTADÍSTICAS GENERALES DEL SISTEMA");
         writer.println("-".repeat(50));
@@ -124,7 +124,7 @@ public class ReportGenerator {
         writer.printf("Total de Postulaciones realizadas: %d%n", totalPostulaciones);
         writer.println();
     }
-    
+    //Escribe reporte con todos los estudiantes 
     private void escribirReporteEstudiantes(PrintWriter writer) {
         writer.println("LISTADO DE ESTUDIANTES REGISTRADOS");
         writer.println("-".repeat(50));
@@ -148,7 +148,7 @@ public class ReportGenerator {
             contador++;
         }
     }
-    
+    //Escribe reporte con todos las Becas del sistema
     private void escribirReporteBecas(PrintWriter writer) {
         writer.println("LISTADO DE BECAS DISPONIBLES");
         writer.println("-".repeat(50));
@@ -181,7 +181,7 @@ public class ReportGenerator {
             contador++;
         }
     }
-    
+    //Escribe todas las postulaciones
     private void escribirReportePostulaciones(PrintWriter writer) {
         writer.println("DETALLE DE POSTULACIONES");
         writer.println("-".repeat(50));
@@ -209,7 +209,7 @@ public class ReportGenerator {
             }
         }
     }
-    
+    //Escribe todas las postulaciones, pero agrupadas por estado
     private void escribirPostulacionesPorEstado(PrintWriter writer) {
         writer.println("RESUMEN DE POSTULACIONES POR ESTADO");
         writer.println("-".repeat(50));
@@ -231,7 +231,7 @@ public class ReportGenerator {
         }
         writer.println();
     }
-    
+    //Funcion que escribe la estadisticas basicas de las becas, como la cantidad de estas, total de vupos
     private void escribirEstadisticasBecas(PrintWriter writer) {
         writer.println("ESTADÍSTICAS DE BECAS");
         writer.println("-".repeat(50));
@@ -269,7 +269,7 @@ public class ReportGenerator {
         writer.println("Sistema desarrollado por: Daniel Monsalve, Ricardo Paez, Vicente Novoa");
         writer.println("=".repeat(80));
     }
-    
+    //Funcion que calcula la cantidad total de postulaciones
     private int calcularTotalPostulaciones() {
         int total = 0;
         for (Student estudiante : maps.getMapStudent().values()) {

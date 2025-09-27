@@ -65,7 +65,7 @@ public class Maps {
             JOptionPane.showMessageDialog(null, "Error al mostrar datos: " + e.getMessage());
         }
     }
-
+    //Funcion que muestra solo la postulacion con ese id
     public void buscarPostulacion(String rut, String idPostulation){
         if (rut == null || rut.trim().isEmpty() || idPostulation == null || idPostulation.trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "RUT o ID de postulación inválido.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -110,7 +110,7 @@ public class Maps {
             JOptionPane.showMessageDialog(null, "No existe alumno con ese RUT.", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-    
+    //funcion que crea un alumno desde cero pidiendo su informacion a traves de ventanas
     public void createFromTerminal() {
     String rut;
 
@@ -207,7 +207,7 @@ public class Maps {
 
         JOptionPane.showMessageDialog(null, "Estudiante registrado con éxito.");
     }
-    
+    //funcion que registra beca desde cero
     public void registrarBeca(){
         String idBeca;
         
@@ -299,7 +299,7 @@ public class Maps {
     public void agregarAlumno(Student estudiante){mapStudent.put(estudiante.getRut(), estudiante);}
     public void agregarBeca(Beca beca){mapBeca.put(beca.getCodigo(), beca);}
     
- 
+    //funcion para eliminar una postulacion a traves del estudiante y su beca
     public void eliminarPostulacionEspecifica() {
         try {
             // 1. Pedir RUT del estudiante
@@ -379,7 +379,7 @@ public class Maps {
             JOptionPane.showMessageDialog(null, "Error al eliminar postulación: " + e.getMessage());
         }
     }
-    
+    //Funcion que elimina un estudiante a traves de su rut
     public void eliminarEstudiantePorRUT() {
         try {
             // 1. Pedir RUT del estudiante
@@ -422,7 +422,7 @@ public class Maps {
             JOptionPane.showMessageDialog(null, "Error al eliminar estudiante: " + e.getMessage());
         }
     }
-    
+    //Funcion que elimina una Beca a travez de su id
     public void eliminarBecaPorID() {
         try {
             // 1. Pedir ID de la beca
@@ -462,7 +462,7 @@ public class Maps {
             JOptionPane.showMessageDialog(null, "Error al eliminar beca: " + e.getMessage());
         }
     }
-    
+    //Funcion que muestra los datos de una beca
     public void buscarBeca() {
         String codigo = javax.swing.JOptionPane.showInputDialog(
                 null,
@@ -536,7 +536,7 @@ public class Maps {
         JOptionPane.showMessageDialog(null, resultado.toString(), "Resultados", JOptionPane.INFORMATION_MESSAGE);
     }
 }
-    
+    //Funcion que registra un postulacion desde cero
     public void registrarPostulacion() {
         try {
             //Pedir RUT del estudiante con validación
@@ -609,7 +609,7 @@ public class Maps {
             JOptionPane.showMessageDialog(null, "Error al registrar postulación: " + e.getMessage());
         }
     }
-    
+    //funcion que busca las postulaciones de una beca
     public void buscarPostulacionBeca() {
         try {
             // 1. Pedir ID de la beca
