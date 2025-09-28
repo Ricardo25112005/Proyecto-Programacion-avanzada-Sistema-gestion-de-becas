@@ -175,7 +175,7 @@ public class Maps {
             String socioStr = JOptionPane.showInputDialog("Ingrese tramo socioeconómico (0.0 a 100.0):");
             if (socioStr == null) return;
             socioEconomico = Float.parseFloat(socioStr.trim());
-            if (socioEconomico < 0 || socioEconomico > 100) throw new NumberFormatException();
+            if (socioEconomico < 0.00 || socioEconomico > 100.00) throw new NumberFormatException();
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Error: Tramo socioeconómico inválido.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -195,7 +195,7 @@ public class Maps {
             String aprStr = JOptionPane.showInputDialog("Ingrese aprobación estimada (0.0 a 100.0):");
             if (aprStr == null) return;
             aprobacion = Float.parseFloat(aprStr.trim());
-            if (aprobacion < 0 || aprobacion > 100) throw new NumberFormatException();
+            if (aprobacion < 0.00 || aprobacion > 100.00) throw new NumberFormatException();
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Error: Aprobación estimada inválida.", "Error", JOptionPane.ERROR_MESSAGE);
             return;

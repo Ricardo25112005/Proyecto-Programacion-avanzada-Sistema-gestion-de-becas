@@ -247,7 +247,8 @@ public class ModificarVentana extends JFrame {
             JOptionPane.showMessageDialog(this, "Error al abrir formulario: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    //Funcion que modifica una postulacion
+
+    //Funcion que modifica una postulación
     private void modificarPostulacion() {
         String rut = JOptionPane.showInputDialog(this, "Ingrese RUT del estudiante (formato XX.XXX.XXX-Y):");
         if (rut == null || rut.trim().isEmpty() || !RUT_PATTERN.matcher(rut.trim()).matches()) {
@@ -340,6 +341,19 @@ public class ModificarVentana extends JFrame {
                     String fecha = fechaField.getText().trim();
                     if (!DATE_PATTERN.matcher(fecha).matches()) {
                         throw new IllegalArgumentException("Fecha no válida. Use formato dd/MM/yy.");
+                    }
+
+                    // Validar cupos si se cambia a "Aprobada"
+                    if (estado.equalsIgnoreCase("Aprobada") && !postSeleccionada.getState().equalsIgnoreCase("Aprobada")) {
+                        Beca beca = maps.getMapBeca().get(postSeleccionada.getIdBeca());
+                        if (beca != null) {
+                            long aprobadas = beca.getPostulaciones().stream()
+                                    .filter(p -> p.getState().equalsIgnoreCase("Aprobada"))
+                                    .count();
+                            if (aprobadas >= beca.getCupos()) {
+                                throw new IllegalArgumentException("No hay cupos disponibles para aprobar esta postulación en la beca seleccionada.");
+                            }
+                        }
                     }
 
                     // Confirmar cambios
