@@ -10,7 +10,7 @@ package proyecto.programacion.avanzada.sistema.gestion.de.becas;
  * @Descripcion: Extencion de una excepcion para capturar errores del rut 
  * @author Daniel Monsalve, Ricardo Paez, Vicente Novoa
  * @Lenguaje: Java
- * @version: 1.0.0
+ * @version: 2.0.0
  * @Fecha: 27-09-25
  */
 public class RutInvalidoException extends Exception{

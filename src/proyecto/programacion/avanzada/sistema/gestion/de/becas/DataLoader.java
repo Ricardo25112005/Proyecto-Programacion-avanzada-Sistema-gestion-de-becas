@@ -14,7 +14,7 @@ import java.util.*;
  * de los archivos para poblar las colecciones de mapas.
  * @author Daniel Monsalve, Ricardo Paez, Vicente Novoa
  * @Lenguaje: Java
- * @version: 1.0.0
+ * @version: 2.0.0
  * @Fecha: 30-08-25
  */
 
@@ -23,6 +23,7 @@ public class DataLoader {
     // ====================
     // ESTUDIANTES
     // ====================
+    //Metodo de carga en estudiantes.
     public static void cargarEstudiantes(String archivo, Maps maps) {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(archivo), StandardCharsets.UTF_8))) {
             String linea = br.readLine(); // saltar encabezado
@@ -47,6 +48,7 @@ public class DataLoader {
             System.err.println("Error al leer estudiantes: " + e.getMessage());
         }
     }
+    //Metodo para Guardar estuadiantes en csv.
     public static void guardarEstudiantes(String archivo, Maps maps) {
         try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(archivo), StandardCharsets.UTF_8))) {
             bw.write("rut,nombre,correo,telefono,tramo_socioeconomico,carrera,direccion,institucion,aprobacion_estimada\n");
@@ -67,6 +69,7 @@ public class DataLoader {
     // ====================
     // BECAS
     // ====================
+    //Metodo para cargar las Becas 
     public static void cargarBecas(String archivo, Maps maps) {
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(new FileInputStream(archivo), StandardCharsets.UTF_8))) {
@@ -151,6 +154,7 @@ public class DataLoader {
     // ====================
     // POSTULACIONES
     // ====================
+    //Metodo para cargar Postulaciones.
     public static void cargarPostulaciones(String archivo, Maps maps) {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(archivo), StandardCharsets.UTF_8))) {
             String linea = br.readLine(); // saltar encabezado
@@ -186,7 +190,7 @@ public class DataLoader {
             System.err.println("Error al leer postulaciones: " + e.getMessage());
         }
     }
-    
+    //Metodo para Guardar Postulaciones en csv.
     public static void guardarPostulaciones(String archivo, Maps maps) {
         Set<String> uniquePostulaciones = new HashSet<>();
         try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(archivo), StandardCharsets.UTF_8))) {

@@ -10,12 +10,14 @@ package proyecto.programacion.avanzada.sistema.gestion.de.becas;
  * @Descripcion: Clase que representa a una BecaArancel (Subclase de Beca)
  * @author Daniel Monsalve, Ricardo Paez, Vicente Novoa
  * @Lenguaje: Java
- * @version: 1.0.0
+ * @version: 2.0.0
  * @Fecha: 27-09-25
  */
 public class BecaArancel extends Beca {
+    //Atributos
     private float porcentajeDescuento;
     
+    //Constructor
     public BecaArancel(String codeBeca, String nomBeca, int cupos, String requisitos, float porcentajeDescuento){
         super(codeBeca, nomBeca, cupos, requisitos);
         this.porcentajeDescuento = porcentajeDescuento;
@@ -35,6 +37,7 @@ public class BecaArancel extends Beca {
     @Override
     public String getTipo(){return "Arancel";}
     
+    //Getter y Setters
     public float getPorcentajeDescuento() { return porcentajeDescuento; }
     public void setPorcentajeDescuento(float porcentajeDescuento) { this.porcentajeDescuento = porcentajeDescuento; }
 }

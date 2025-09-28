@@ -10,13 +10,15 @@ package proyecto.programacion.avanzada.sistema.gestion.de.becas;
  * @Descripcion: Clase que representa a una BecaManutención (Subclase de Beca)
  * @author Daniel Monsalve, Ricardo Paez, Vicente Novoa
  * @Lenguaje: Java
- * @version: 1.0.0
+ * @version: 2.0.0
  * @Fecha: 27-09-25
  */
 public class BecaManutencion extends Beca{
+    //Atributos
     private int monto;
     private int periodo;
     
+    //Constructor
     public BecaManutencion(String codeBeca, String nomBeca, int cupos, String requisitos, int monto, int periodo){
         super(codeBeca, nomBeca, cupos, requisitos);
         this.monto = monto;
@@ -37,6 +39,7 @@ public class BecaManutencion extends Beca{
     @Override
     public String getTipo(){return "Manutención";}
     
+    //Getters y Setters
     public int getMonto() { return monto; }
     public void setMonto(int monto) { this.monto = monto; }
     public int getPeriodo() { return periodo; }

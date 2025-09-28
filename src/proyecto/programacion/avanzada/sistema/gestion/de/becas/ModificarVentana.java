@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
  * @Descripcion: Clase que representa la ventana para modificar datos (alumno o postulación)
  * @author Daniel Monsalve, Ricardo Paez, Vicente Novoa
  * @Lenguaje: Java
- * @version: 1.0.0
+ * @version: 2.0.0
  * @Fecha: 22-09-25
  */
 public class ModificarVentana extends JFrame {
@@ -45,7 +45,7 @@ public class ModificarVentana extends JFrame {
         panel.add(Box.createRigidArea(new Dimension(0, 20))); // Espacio después del título
 
         // Botones en formato lista
-        JButton btnModificarAlumno = new JButton("Modificar Alumno");
+        JButton btnModificarAlumno = new JButton("Modificar Estudiante");
         btnModificarAlumno.setMaximumSize(new Dimension(250, 40));
         btnModificarAlumno.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnModificarAlumno.addActionListener(e -> modificarAlumno());

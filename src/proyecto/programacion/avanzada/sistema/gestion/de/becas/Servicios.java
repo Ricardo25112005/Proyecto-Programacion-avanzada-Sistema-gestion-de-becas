@@ -9,7 +9,7 @@ package proyecto.programacion.avanzada.sistema.gestion.de.becas;
  * @Descripcion: Clase que representa al menu del sistema
  * @author Daniel Monsalve, Ricardo Paez, Vicente Novoa
  * @Lenguaje: Java
- * @version: 1.0.0
+ * @version: 2.0.0
  * @Fecha: 26-08-25
  */
 
@@ -40,6 +40,7 @@ public class Servicios extends JFrame {
         panel.add(Box.createRigidArea(new Dimension(0, 20))); // Espacio después del título
 
         // Botones en formato lista
+        // Botón para registrar un nuevo estudiante
         JButton btnRegistrar = new JButton("Registrar Estudiante");
         btnRegistrar.setMaximumSize(new Dimension(300, 40));
         btnRegistrar.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -50,7 +51,8 @@ public class Servicios extends JFrame {
         });
         panel.add(btnRegistrar);
         panel.add(Box.createRigidArea(new Dimension(0, 10)));
-
+        
+        // Botón para registrar una nueva beca
         JButton btnRegistrarBeca = new JButton("Registrar Beca");
         btnRegistrarBeca.setMaximumSize(new Dimension(300, 40));
         btnRegistrarBeca.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -62,6 +64,7 @@ public class Servicios extends JFrame {
         panel.add(btnRegistrarBeca);
         panel.add(Box.createRigidArea(new Dimension(0, 10)));
         
+        // Botón para registrar una nueva postulación
         JButton btnRegistrarPostulacion = new JButton("Registrar Postulacion");
         btnRegistrarPostulacion.setMaximumSize(new Dimension(300, 40));
         btnRegistrarPostulacion.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -73,6 +76,7 @@ public class Servicios extends JFrame {
         panel.add(btnRegistrarPostulacion);
         panel.add(Box.createRigidArea(new Dimension(0, 10)));
 
+        // Botón para mostrar datos de un estudiante y sus postulaciones
         JButton btnMostrarPostulaciones = new JButton("Mostrar Datos Estudiante");
         btnMostrarPostulaciones.setMaximumSize(new Dimension(300, 40));
         btnMostrarPostulaciones.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -96,7 +100,8 @@ public class Servicios extends JFrame {
         
         panel.add(btnMostrarPostulaciones);
         panel.add(Box.createRigidArea(new Dimension(0, 10)));
-
+        
+        // Botón para buscar una postulación de un estudiante
         JButton btnBuscar = new JButton("Buscar Postulación Estudiante");
         btnBuscar.setMaximumSize(new Dimension(300, 40));
         btnBuscar.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -108,6 +113,7 @@ public class Servicios extends JFrame {
         panel.add(btnBuscar);
         panel.add(Box.createRigidArea(new Dimension(0, 10)));
         
+        // Botón para buscar postulaciones asociadas a una beca
         JButton btnBuscarPostBeca = new JButton("Buscar Postulación Beca");
         btnBuscarPostBeca.setMaximumSize(new Dimension(300, 40));
         btnBuscarPostBeca.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -119,6 +125,8 @@ public class Servicios extends JFrame {
         panel.add(btnBuscarPostBeca);
         panel.add(Box.createRigidArea(new Dimension(0, 10)));
         
+        
+        // Botón para buscar una beca específica
         JButton btnBuscarBeca = new JButton("Buscar Beca");
         btnBuscarBeca.setMaximumSize(new Dimension(300, 40));
         btnBuscarBeca.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -129,7 +137,8 @@ public class Servicios extends JFrame {
         });
         panel.add(btnBuscarBeca);
         panel.add(Box.createRigidArea(new Dimension(0, 10)));
-
+        
+        // Botón para acceder a la ventana de modificación
         JButton btnModificar = new JButton("Modificar");
         btnModificar.setMaximumSize(new Dimension(300, 40));
         btnModificar.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -139,7 +148,8 @@ public class Servicios extends JFrame {
         });
         panel.add(btnModificar);
         panel.add(Box.createRigidArea(new Dimension(0, 10)));
-
+        
+        // Botón para acceder al submenú de eliminación
         JButton btnEliminarDatos = new JButton("Eliminar Datos");
         btnEliminarDatos.setMaximumSize(new Dimension(300, 40));
         btnEliminarDatos.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -152,7 +162,7 @@ public class Servicios extends JFrame {
         panel.add(Box.createRigidArea(new Dimension(0, 10)));
         
         // En la clase Servicios.java, dentro del constructor, después de los otros botones:
-
+        // Botón para generar un reporte en formato TXT
         JButton btnGenerarReporte = new JButton("Generar Reporte TXT");
         btnGenerarReporte.setMaximumSize(new Dimension(300, 40));
         btnGenerarReporte.setAlignmentX(Component.CENTER_ALIGNMENT);

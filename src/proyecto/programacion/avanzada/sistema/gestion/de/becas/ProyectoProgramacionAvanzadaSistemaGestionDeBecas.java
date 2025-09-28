@@ -6,7 +6,7 @@ package proyecto.programacion.avanzada.sistema.gestion.de.becas;
  * @Descripcion: archivo main del programa
  * @author Daniel Monsalve, Ricardo Paez, Vicente Novoa
  * @Lenguaje: Java
- * @version: 1.0.0
+ * @version: 2.0.0
  * @Fecha: 20-08-25
  */
 

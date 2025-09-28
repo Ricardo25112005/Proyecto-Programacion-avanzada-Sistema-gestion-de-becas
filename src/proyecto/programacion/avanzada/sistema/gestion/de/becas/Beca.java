@@ -12,13 +12,14 @@ import javax.swing.*;
  * @Descripcion: Clase que representa a una Beca
  * @author Daniel Monsalve, Ricardo Paez, Vicente Novoa
  * @Lenguaje: Java
- * @version: 1.0.0
+ * @version: 2.0.0
  * @Fecha: 27-08-25
  */
 
 //Construccion de la clase Beca
 
 public abstract class Beca {
+    //Atributos
     private String codeBeca;                        //Codigo de la beca: Es un String que identifica a la beca y le da unicidad
     private String nomBeca;                         // Nombre de la beca: Un String que contiene el nombre de la beca
     private int cupos;                              // Un entero que contiene los cupos disponibles de la beca
@@ -90,7 +91,7 @@ public abstract class Beca {
     public void mostrarBeca(){}
     
     
-    //Getters varios para cada atributo
+    //Getters y Setters varios para cada atributo
     public String getCodigo() { return codeBeca; }
     public String getNombre() { return nomBeca; }
     public int getCupos() { return cupos; }

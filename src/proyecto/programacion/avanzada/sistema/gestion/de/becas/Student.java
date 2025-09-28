@@ -18,7 +18,7 @@ import java.awt.event.*;
  * @Descripcion: Clase que representa a un Estudiante
  * @author Daniel Monsalve, Ricardo Paez, Vicente Novoa
  * @Lenguaje: Java
- * @version: 1.0.0
+ * @version: 2.0.0
  * @Fecha: 27-08-25
  */
 
@@ -62,7 +62,7 @@ public class Student {
         this.estimatedApproval = estimatedApproval;
         this.listPostulation = new LinkedList<>();
     }
-    //Metodos 
+    //Metodos Getters y Setters
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
     public String getRut() { return rut; }

@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  * @Descripcion: Clase para generar reportes en formato TXT del sistema
  * @author Daniel Monsalve, Ricardo Paez, Vicente Novoa
  * @Lenguaje: Java
- * @version: 1.0.0
+ * @version: 2.0.0
  * @Fecha: 27-11-25
  */
 
