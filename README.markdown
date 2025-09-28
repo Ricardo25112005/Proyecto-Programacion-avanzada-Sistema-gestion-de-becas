@@ -17,127 +17,76 @@ Este sistema permite a los usuarios gestionar becas para estudiantes. Los usuari
    - En NetBeans, haz clic derecho en el proyecto y selecciona *Clean and Build*.
 4. **Ejecuta el programa**:
    - Haz clic derecho en el proyecto y selecciona *Run*.
-   - El programa se ejecutará en la consola integrada.
-5. **Carga los archivos CSV**:
-   - Selecciona la opción 1 en el menú para cargar los datos de `estudiantes.csv`, `becas.csv` y `postulaciones.csv`.
-
+   - El programa se ejecutará a traves de una ventana de tipo swing.
 ## Funciones Principales
 
 ### Menú Principal
-El programa presenta un menú principal con las siguientes opciones:
-1. Cargar Ajustes
-2. Mostrar Estudiante
-3. Registrar Alumno
-4. Busqueda de Postulacion
-5. Generar Reporte
-6. Salir
+El programa presenta un menú principal en ventana de tipo Swing con las siguientes opciones:
+1. Resigtrar Estudiante
+2. Registrar Beca
+3. Registrar Postulacion
+4. Filtrar Postulaciones por Estado/tipo
+5. Mostrar Datos Estudiante
+6. Buscar Postulaciones Estudiante
+7. Buscar Postulaciones Beca
+8. Buscar Beca
+9. Modificar
+10. Eliminar Datos
+11. Generar Reporte TXT
 
-### Cargar Ajustes
-- **Descripción**: Carga los datos de estudiantes, becas y postulaciones desde archivos CSV utilizando la clase `DataLoader`. Valida y procesa cada línea para crear objetos `Student`, `Beca` y `Postulation`, almacenándolos en mapas para un acceso eficiente.
-- **Complejidad temporal**: O(n) para cada archivo, donde n es el número de líneas.
-
-### Mostrar Estudiante
-- **Descripción**: Solicita el RUT del estudiante y muestra sus datos personales junto con sus postulaciones a becas.
-- **Complejidad temporal**: O(1) promedio para buscar en el mapa, más O(m) para mostrar m postulaciones.
-
-### Registrar Alumno
-- **Descripción**: Permite registrar un nuevo estudiante a través de un terminal.
+### Registrar Estudiante
+- **Descripción**: Permite registrar un nuevo estudiante a través de Ventanas.
 - **Complejidad temporal**: O(1) para validaciones y escritura en CSV, más O(1) promedio para agregar al mapa.
 
-### Búsqueda de Postulación
-- **Descripción:** Permite buscar postulaciones de estudiantes mediante un sub-menú con dos opciones:
-  1. Buscar con ID de postulación y RUT del alumno: Busca una postulación específica usando el RUT del estudiante y el ID de la postulación.
-  2. Buscar solo con RUT del alumno: Muestra todas las postulaciones asociadas a un estudiante según su RUT.
+### Registrar Beca
+- **Descripción**: Permite registrar una nueva Beca a través de Ventanas.
+- **Complejidad temporal**: O(1) para validaciones y escritura en CSV, más O(1) promedio para agregar al mapa.
+
+### Registrar Postulaciones
+- **Descripción**: Permite registrar una nueva Postulacion a través de Ventanas.
+- **Complejidad temporal**: O(1) para validaciones y escritura en CSV, más O(1) promedio para agregar al mapa.
+
+### Filtrar Postulaciones por Estado/Tipo
+- **Descripción**: Permite filtrar las postulaciones por los 3 estados disponibles (En espera, Aprobada y Rechazada), ademas de los dos tipos de Becas disponibles (beca de arancel y beca de manutención).
+
+### Mostrar Datos Estudiante
+- **Descripción**: Permite mostrar los datos de un estudiante a traves de su rut, ademas de mostrar las postulaciones vinculadas a este estudiante.
+- **Complejidad Temporal**: O(1) para encontrar el estudiante y mostrar sus datos, y O(n) para mostrar su lista de postulaciones.
+
+### Buscar Postulaciones Estudiante
+- **Descripción:** Permite buscar postulaciones de estudiantes mediante su rut y el ID de la postulacion, dependiendo de dos casos posibles:
+  1. Si el usuario deja el ID de postulacion vacio muestra todas las postulaciones del Estudiante.
+  2. Si el usuario proporciona un ID de postulacion solo se muestra la postulacion con ese ID.
 - **Complejidad temporal**: O(1) promedio para buscar un estudiante en el mapa, más O(m) para recorrer las m postulaciones del estudiante en ambas opciones.
 
-### Generar Reporte
-- **Descripción**: (Pendiente de implementación completa) Generará un reporte basado en los datos de estudiantes, becas o postulaciones.
-- **Complejidad temporal**: Dependerá de la implementación final (e.g., O(n) para iterar sobre todos los datos).
+### Buscar Postulaciones Beca
+- **Descripción:** Permite buscar postulaciones de Becas mediante su ID de beca y el ID de la postulacion, dependiendo de dos casos posibles:
+  1. Si el usuario deja el ID de postulacion vacio muestra todas las postulaciones de la beca.
+  2. Si el usuario proporciona un ID de postulacion solo se muestra la postulacion con ese ID.
+- **Complejidad temporal**: O(1) promedio para buscar una beca en el mapa, más O(m) para recorrer las m postulaciones de la beca en ambas opciones.
 
-## Ejemplo de Uso
+### Buscar Beca
+- **Descripción**: Permite mostrar los datos de una beca a traves de su ID, ademas de mostrar las postulaciones vinculadas a esta beca.
+- **Complejidad Temporal**: O(1) para encontrar la beca y mostrar sus datos, y O(n) para mostrar su lista de postulaciones.
 
-```
-=== Menú Administrador ===
-1. Cargar Ajustes
-2. Mostrar Estudiante
-3. Registrar Alumno
-4. Busqueda de Postulacion
-5. Generar Reporte
-6. Salir
+### Modificar
+- **Descripción**: Se abre un nuevo submenú con las siguientes opciones vinculadas a la modificación de datos:
+   1.Modificar Alumno: permite modificar los datos vinculados al estudiante a traves de una ventana especifica.
+   2.Modificar Postulación: permite modificar el estado y la fecha de la postulación, esto a traves del rut del estudiante y el id de la beca.
+   3.Modificar Beca: permite modificar los datos vinculados a las becas, incluyendo los datos de la subclase segun que tipo de beca sea, excluyendo el ID de la beca.
+- **Complejidad Temporal**: para Modificar un alumno o beca la complejidad es de O(1) ya que soo debemos encontrar a estos con los mapas, para Modifcar postulacion es de O(n) porque debemos recorrer la lista de postulaciones del alumno hasta encontrar la ID de Beca y modifica la postulacion correspondiente.
 
-```
+### Eliminar Datos
+- **Descripción**: se abre una mini ventana con opciones de eliminacion para las becas, estudiantes y postulaciones:
+   1.Eliminar Postulación por rut  y beca: permite eliminar una postulacion especifica, esto a traves del rut del estudiante y del id de la beca, eliminandolo de la lista de estos.
+   2.Elimnar Estuadiante: permite eliminar Estudiantes, eliminandolo del mapa correspondiente y eliminando las postulaciones vinculadas a estes.
+   3.Eliminar Beca: permite eliminar una beca del mapa de becas, eliminando las postulaciones vinculadas a esta.
+- **Complejidad Temporal**: O(1) para eliminar un estudiante o beca y O(n) para eliminar un postulación, ya que, se debe iterar hasta encontrar la postulación correspondiente
 
-### Cargar Ajustes
-```
-Seleccione una opción: 1
+### Generar Reporte TXT
+- **Descripción**: Generá un reporte basado en los datos de estudiantes, becas y postulaciones.
+- **Complejidad temporal**: O(n) ya que itera sobre todos los datos.
 
->> Ejecutando función: cargarAjustes()
-Datos cargados correctamente.
-```
-
-### Mostrar Estudiante
-```
-Seleccione una opción: 2
-
->> Ejecutando función: mostrarBecas()
-Ingrese el RUT del estudiante: 18.425.725-2
-=== Datos del Postulante ===
-Nombre: Pedro Campos
-RUT: 18.425.725-2
-Dirección: Región: Biobío, Ciudad: Concepción, Calle: Calle 951
-Correo: pedrocampos@gmail.com
-Teléfono: 981490936
-Tramo Socioeconómico: 68.6
-Carrera: Ingeniería Civil
-Institución: Universidad de Concepción
-Aprobación Estimada: 80.0
-
-=== Lista de Postulaciones ===
-ID Postulación: PST-014
-ID Estudiante: 18.425.725-2
-ID Beca: BCT-10
-Estado: RECHAZADA
-Fecha de Postulación: 12/09/25
-Presione una tecla para continuar...
-```
-
-### Registrar Alumno
-```
-Seleccione una opción: 3
-
->> Ejecutando función: registrarAlumno()
-
-Ingrese RUT del estudiante (formato XX.XXX.XXX-Y): 19.123.456-7
-Ingrese nombre del estudiante: Ana López
-Ingrese correo del estudiante: ana.lopez@gmail.com
-Ingrese teléfono del estudiante: 912345678
-Ingrese tramo socioeconómico (0.0 a 100.0): 45.5
-Ingrese carrera del estudiante: Ingeniería Química
-Ingrese dirección del estudiante (formato Región: X; Ciudad: Y; Calle: Z): Región: Metropolitana; Ciudad: Santiago; Calle: Calle 123
-Ingrese institución del estudiante: Universidad de Chile
-Ingrese aprobación estimada (0.0 a 100.0): 85.0
-Estudiante registrado exitosamente: Ana López
-```
-
-### Búsqueda por postulación
-```
-Seleccione una opción: 4
-
->> Ejecutando función: busquedaPostulacion()
-=== Búsqueda de Postulación ===
-1. Buscar con ID de postulación y RUT del alumno
-2. Buscar solo con RUT del alumno
-Seleccione una opción: 1
-Ingrese el RUT del alumno: 18.425.725-2
-Ingrese el ID de la postulación: PST-014
-Postulación encontrada:
-===================================
-ID Postulación: PST-014
-ID Estudiante: 18.425.725-2
-ID Beca: BCT-10
-Estado: RECHAZADA
-Fecha de Postulación: 12/09/25
-```
 
 
 ## Notas y Consideraciones
@@ -150,7 +99,6 @@ Fecha de Postulación: 12/09/25
 
 ## Mejoras Sugeridas
 - Implementar exportación/importación avanzada de reportes en formatos como PDF o Excel.
-- Añadir una interfaz gráfica utilizando Swing o JavaFX para mejorar la usabilidad.
 - Permitir la edición masiva de estudiantes, becas o postulaciones.
 - Integrar una base de datos (e.g., MySQL o SQLite) en lugar de archivos CSV para una mejor persistencia.
 - Generar gráficos (e.g., número de postulaciones por estudiante) usando una librería como JFreeChart.
