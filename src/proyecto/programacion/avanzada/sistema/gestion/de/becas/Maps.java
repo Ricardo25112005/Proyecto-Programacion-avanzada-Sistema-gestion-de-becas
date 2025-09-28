@@ -250,7 +250,7 @@ public class Maps {
         
         String tipoBeca = JOptionPane.showInputDialog("¿La beca que desea registrar es de Arancel o Manutencion? (Ingrese Arancel/Manutencion): ");
         
-        if (tipoBeca.equals("Manutencion")){
+        if (tipoBeca.equals("Manutencion") || tipoBeca.equals("manutencion")){
             int monto;
             try {
                 String montoStr = JOptionPane.showInputDialog("Ingrese el monto de la beca: ");
@@ -276,7 +276,7 @@ public class Maps {
             BecaManutencion nuevaBeca = new BecaManutencion(idBeca, nomBeca, cupos, requisitos, monto, periodo);
             mapBeca.put(idBeca, nuevaBeca);
         } 
-        else if (tipoBeca.equals("Arancel")) {
+        else if (tipoBeca.equals("Arancel") || tipoBeca.equals("arancel")) {
             int porcentajeDescuento;
             try {
                 String porcentajeDescuentoStr = JOptionPane.showInputDialog("Ingrese el monto de la beca: ");
@@ -290,6 +290,11 @@ public class Maps {
             
             BecaArancel nuevaBeca = new BecaArancel(idBeca, nomBeca, cupos, requisitos, porcentajeDescuento);
             mapBeca.put(idBeca, nuevaBeca);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Tipo Invalido");
+            return;
         }
         
         JOptionPane.showMessageDialog(null, "Beca registrada con éxito.");
