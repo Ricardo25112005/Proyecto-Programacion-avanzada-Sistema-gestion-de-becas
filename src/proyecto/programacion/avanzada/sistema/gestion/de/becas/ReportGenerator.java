@@ -110,7 +110,7 @@ public class ReportGenerator {
         writer.println("=".repeat(80));
         writer.println();
     }
-    //funcion que escribe estadisticas generales del programa
+    //Metodo que escribe estadisticas generales del programa
     private void escribirEstadisticasGenerales(PrintWriter writer) {
         writer.println("ESTADÍSTICAS GENERALES DEL SISTEMA");
         writer.println("-".repeat(50));
@@ -231,7 +231,7 @@ public class ReportGenerator {
         }
         writer.println();
     }
-    //Funcion que escribe la estadisticas basicas de las becas, como la cantidad de estas, total de vupos
+    //Metodo que escribe la estadisticas basicas de las becas, como la cantidad de estas, total de vupos
     private void escribirEstadisticasBecas(PrintWriter writer) {
         writer.println("ESTADÍSTICAS DE BECAS");
         writer.println("-".repeat(50));
@@ -269,7 +269,7 @@ public class ReportGenerator {
         writer.println("Sistema desarrollado por: Daniel Monsalve, Ricardo Paez, Vicente Novoa");
         writer.println("=".repeat(80));
     }
-    //Funcion que calcula la cantidad total de postulaciones
+    //Metodo que calcula la cantidad total de postulaciones
     private int calcularTotalPostulaciones() {
         int total = 0;
         for (Student estudiante : maps.getMapStudent().values()) {

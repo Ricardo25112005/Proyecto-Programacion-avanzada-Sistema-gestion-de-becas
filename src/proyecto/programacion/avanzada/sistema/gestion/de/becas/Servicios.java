@@ -183,13 +183,13 @@ public class Servicios extends JFrame {
         add(panel);
     }
 
-    // Función que vuelve a abrir el menú principal
+    // Metodo que vuelve a abrir el menú principal
     private void volverAlMenu() {
         SwingUtilities.invokeLater(() -> {
             new Servicios(maps).setVisible(true);
         });
     }
-    //Funcion para Buscar una postulacion de un estudiante
+    //Metodo para Buscar una postulacion de un estudiante
     private void buscarPostulacion() {
         String rut = JOptionPane.showInputDialog(this, "Ingrese RUT del estudiante (formato XX.XXX.XXX-Y):");
         if (rut == null || rut.trim().isEmpty()) return;
@@ -202,7 +202,7 @@ public class Servicios extends JFrame {
             maps.buscarPostulacion(rut, idPost);
         }
     }
-    //Funcion que muestra un submenu con las opciones de eliminar Estudiante, beca y postulacion, ademas de ejecutar las funciones
+    //Motodo que muestra un submenu con las opciones de eliminar Estudiante, beca y postulacion, ademas de ejecutar las funciones
     private void mostrarSubmenuEliminacion() {
         // Crear opciones para el submenú
         String[] opciones = {

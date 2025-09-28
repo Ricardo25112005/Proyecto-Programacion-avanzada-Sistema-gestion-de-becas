@@ -78,7 +78,7 @@ public class ModificarVentana extends JFrame {
         add(panel);
         setVisible(true);
     }
-    //funcion que modifica los elementos de un estudiante
+    //Metodo que modifica los elementos de un estudiante
     private void modificarAlumno() {
         // Pedir el RUT del estudiante
         String rut = JOptionPane.showInputDialog(this, "Ingrese el RUT del estudiante a modificar (formato XX.XXX.XXX-Y):");
@@ -248,7 +248,7 @@ public class ModificarVentana extends JFrame {
         }
     }
 
-    //Funcion que modifica una postulación
+    //Metodo que modifica una postulación
     private void modificarPostulacion() {
         String rut = JOptionPane.showInputDialog(this, "Ingrese RUT del estudiante (formato XX.XXX.XXX-Y):");
         if (rut == null || rut.trim().isEmpty() || !RUT_PATTERN.matcher(rut.trim()).matches()) {
@@ -381,7 +381,7 @@ public class ModificarVentana extends JFrame {
             JOptionPane.showMessageDialog(this, "Error al abrir formulario: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    //Funcion que modifica una beca
+    //Metodo que modifica una beca
     private void modificarBeca() {
         // Pedir el ID de la beca
         String codigo = JOptionPane.showInputDialog(this, "Ingrese el Codigo de la beca a modificar:");

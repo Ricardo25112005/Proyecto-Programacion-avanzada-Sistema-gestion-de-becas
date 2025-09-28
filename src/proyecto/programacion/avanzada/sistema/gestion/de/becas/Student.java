@@ -82,7 +82,7 @@ public class Student {
     public void setEstimatedApproval(float estimatedApproval) { this.estimatedApproval = estimatedApproval; }
     public float getEstimatedApproval() { return estimatedApproval; }
     public LinkedList<Postulation> getListPostulation(){return listPostulation; }
-    //Función que muestra los datos del estudiante y su lista de postulaciones
+    //Metodo que muestra los datos del estudiante y su lista de postulaciones
     public void showData() {
         String datosEstudiante = "Nombre: " + name +
                                          "\nRUT: " + rut +
@@ -95,11 +95,11 @@ public class Student {
                                          "\nAprobación Estimada: " + estimatedApproval;
                 JOptionPane.showMessageDialog(null, datosEstudiante, "Datos del Estudiante", JOptionPane.INFORMATION_MESSAGE);
     }
-    //Función para añadir una postulación si se tiene el objeto
+    //Metodo para añadir una postulación si se tiene el objeto
     public void addPostulation(Postulation p) {
         listPostulation.add(p);
     }
-    //Función que elimina una postulación de la lista
+    //Metodo que elimina una postulación de la lista
     public void removePostulation(Postulation p) {
         listPostulation.remove(p);
     }

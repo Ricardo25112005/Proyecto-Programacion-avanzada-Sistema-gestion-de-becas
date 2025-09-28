@@ -22,7 +22,7 @@ public class BecaArancel extends Beca {
         super(codeBeca, nomBeca, cupos, requisitos);
         this.porcentajeDescuento = porcentajeDescuento;
     }
-    //sobreescritura de la funcion en la clase beca, para mostrar todos los elementos de este tipo de beca
+    //sobreescritura del metodo en la clase beca, para mostrar todos los elementos de este tipo de beca
     @Override
     public void mostrarBeca(){
         String mensaje = "=== Beca de Arancel ===\n"
